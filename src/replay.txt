@@ -1,0 +1,77 @@
+23:00:44.18035 2020-02-19	START GAME
+23:00:53.09108 2020-02-19	started CreatePlace(BobsHouse, Cottage)
+23:00:53.29055 2020-02-19	succeeded CreatePlace(BobsHouse, Cottage)
+23:00:53.29554 2020-02-19	started CreateCharacter(Bob, B)
+23:00:53.31149 2020-02-19	succeeded CreateCharacter(Bob, B)
+23:00:53.32050 2020-02-19	started SetClothing(Bob, Peasant)
+23:00:53.32944 2020-02-19	succeeded SetClothing(Bob, Peasant)
+23:00:53.33842 2020-02-19	started SetPosition(Bob, BobsHouse.Door)
+23:00:53.36236 2020-02-19	succeeded SetPosition(Bob, BobsHouse.Door)
+23:00:53.36734 2020-02-19	started EnableIcon(Open_Door, Open, BobsHouse.Door, Leave the house, true)
+23:00:53.37236 2020-02-19	succeeded EnableIcon(Open_Door, Open, BobsHouse.Door, Leave the house, true)
+23:00:53.37732 2020-02-19	started ShowMenu()
+23:00:53.39726 2020-02-19	succeeded ShowMenu()
+23:01:04.28790 2020-02-19	input Selected Start
+23:01:04.29288 2020-02-19	started SetCameraFocus(Bob)
+23:01:04.35974 2020-02-19	succeeded SetCameraFocus(Bob)
+23:01:04.36669 2020-02-19	started HideMenu()
+23:01:04.37267 2020-02-19	succeeded HideMenu()
+23:01:04.37766 2020-02-19	started EnableInput()
+23:01:04.38464 2020-02-19	succeeded EnableInput()
+23:01:04.39162 2020-02-19	input arrived Bob at (300.3, 0.1, -3.1)
+23:01:07.66723 2020-02-19	input started walking Bob at (300.3, 0.1, -3.1)
+23:01:07.67221 2020-02-19	input started walking Bob at (300.3, 0.1, -3.1)
+23:01:07.67720 2020-02-19	input started walking Bob at (300.3, 0.1, -3.1)
+23:01:07.68119 2020-02-19	input stopped walking Bob at (300.3, 0.1, -3.1)
+23:01:07.68518 2020-02-19	input started walking Bob at (300.3, 0.1, -3.1)
+23:01:08.04522 2020-02-19	input arrived Bob position BobsHouse.Door.In
+23:01:08.38583 2020-02-19	input arrived Bob at (299.7, 0.1, -2.0)
+23:01:08.44567 2020-02-19	input exited Bob position BobsHouse.Door
+23:01:08.54593 2020-02-19	input exited Bob position BobsHouse.Door.In
+23:01:10.38599 2020-02-19	input arrived Bob at (297.3, 0.1, -0.9)
+23:01:11.35102 2020-02-19	input stopped walking Bob at (297.1, 0.1, -2.8)
+23:01:11.75593 2020-02-19	input started walking Bob at (297.1, 0.1, -2.8)
+23:01:11.76092 2020-02-19	input started walking Bob at (297.1, 0.1, -2.8)
+23:01:11.76591 2020-02-19	input started walking Bob at (297.1, 0.1, -2.8)
+23:01:11.77089 2020-02-19	input stopped walking Bob at (297.1, 0.1, -2.8)
+23:01:11.77488 2020-02-19	input started walking Bob at (297.1, 0.1, -2.8)
+23:01:12.38597 2020-02-19	input arrived Bob at (298.5, 0.1, -2.3)
+23:01:12.50579 2020-02-19	input arrived Bob position BobsHouse.Door
+23:01:12.68591 2020-02-19	input exited Bob position BobsHouse.Door
+23:01:12.70543 2020-02-19	input arrived Bob position BobsHouse.Door.In
+23:01:12.92555 2020-02-19	input exited Bob position BobsHouse.Door.In
+23:01:13.21079 2020-02-19	input stopped walking Bob at (300.8, 0.1, -0.7)
+23:01:14.38662 2020-02-19	input arrived Bob at (300.8, 0.1, -0.7)
+23:01:31.48460 2020-02-19	input started walking Bob at (300.8, 0.1, -0.7)
+23:01:31.48958 2020-02-19	input started walking Bob at (300.8, 0.1, -0.7)
+23:01:31.49457 2020-02-19	input started walking Bob at (300.8, 0.1, -0.7)
+23:01:31.49856 2020-02-19	input stopped walking Bob at (300.8, 0.1, -0.7)
+23:01:31.50255 2020-02-19	input started walking Bob at (300.8, 0.1, -0.7)
+23:01:32.09693 2020-02-19	input stopped walking Bob at (300.2, 0.1, -1.2)
+23:01:32.38941 2020-02-19	input arrived Bob at (300.2, 0.1, -1.2)
+23:01:33.31116 2020-02-19	input Open_Door BobsHouse.Door
+23:01:33.31615 2020-02-19	started SetNarration(The door is locked!)
+23:01:33.32014 2020-02-19	succeeded SetNarration(The door is locked!)
+23:01:33.32512 2020-02-19	started ShowNarration()
+23:01:33.33111 2020-02-19	succeeded ShowNarration()
+23:01:34.42001 2020-02-19	input Close Narration
+23:01:34.42500 2020-02-19	started HideNarration()
+23:01:34.42999 2020-02-19	succeeded HideNarration()
+23:01:34.91423 2020-02-19	input started walking Bob at (300.2, 0.1, -1.2)
+23:01:34.91922 2020-02-19	input started walking Bob at (300.2, 0.1, -1.2)
+23:01:34.92420 2020-02-19	input started walking Bob at (300.2, 0.1, -1.2)
+23:01:34.92819 2020-02-19	input stopped walking Bob at (300.2, 0.1, -1.2)
+23:01:34.93218 2020-02-19	input started walking Bob at (300.2, 0.1, -1.2)
+23:01:35.20545 2020-02-19	input arrived Bob position BobsHouse.Door.In
+23:01:35.48542 2020-02-19	input exited Bob position BobsHouse.Door.In
+23:01:36.43056 2020-02-19	input arrived Bob at (297.4, 0.1, 0.0)
+23:01:37.18554 2020-02-19	input arrived Bob position BobsHouse.Shelf
+23:01:37.18953 2020-02-19	input arrived Bob position BobsHouse.Shelf.Right
+23:01:37.44611 2020-02-19	input exited Bob position BobsHouse.Shelf
+23:01:37.48601 2020-02-19	input exited Bob position BobsHouse.Shelf.Right
+23:01:38.43060 2020-02-19	input arrived Bob at (299.2, 0.1, 0.3)
+23:01:40.43115 2020-02-19	input arrived Bob at (301.1, 0.1, -0.8)
+23:01:41.29702 2020-02-19	input stopped walking Bob at (299.3, 0.1, -0.5)
+23:01:42.43153 2020-02-19	input arrived Bob at (299.3, 0.1, -0.5)
+23:01:54.70613 2020-02-19	succeeded Quit()
+23:01:54.71012 2020-02-19	END GAME
