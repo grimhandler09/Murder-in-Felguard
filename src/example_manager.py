@@ -1,18 +1,12 @@
 import pyautogui
-
-#Interprets response from Camelot when sending command to it
-def check_for_success(command):
-    while(True):
-        i = input()
-        if(i == 'succeeded ' + command):
-            return True
-        elif(i == 'failed ' + command):
-            return False
-        elif(i.startswith('error')):
-            return False
+from begin_game import begin_game_setup
+from action import action
 
 def talk_action(person):
-    command = 'SetDialog(What do you want? [Nothing | Nothing])'
+    action('SetLeft(John)')
+    action('SetRight(' + person + ')')
+    if person == "Queen":
+        command = 'SetDialog(What do you want? [Nothing | Nothing])'
     action(command)
     action('ShowDialog()')
 
@@ -21,69 +15,52 @@ def sit_action(place):
     command = "Sit(John, " + place + ")"
     action(command)
 
-# Send a command to Camelot.
-def action(command):
-    print('start ' + command)
-    return check_for_success(command)
-
-#Setup beginning of the game
-def begin_game_setup():
-    # Create Queens Castle
-    action('CreatePlace(QueensCastle, DiningRoom)')
-    
-    #Create Characters
-    #Main Character(John)
-    action('CreateCharacter(John, B)')
-    action('SetClothing(John, Noble)')
-    action('SetHairStyle(John, Long)')
-    action('SetPosition(John, QueensCastle.BackRightChair)')
-    #Queen
-    action('CreateCharacter(Queen, A)')
-    action('SetClothing(Queen, Queen)')
-    action('SetHairStyle(Queen, Long)')
-    action('SetPosition(Queen, QueensCastle.RightChair)')
-    action('Sit(Queen, QueensCastle.RightChair)')
-    #GuardGallant
-    action('CreateCharacter(GuardGallant, F)')
-    action('SetClothing(GuardGallant, HeavyArmour)')
-    action('SetPosition(GuardGallant, QueensCastle.Door)')
-    action('CreateItem(GallantSword, Sword)')
-    action('SetPosition(GallantSword, GuardGallant)')
-    
-    #Create Items and position them
-    action('CreateItem(QueensCup, Cup)')
-    action('SetPosition(QueensCup, QueensCastle.DiningTable.Right)')
-    action('CreateItem(JohnsCup, Cup)')
-    action('SetPosition(JohnsCup, QueensCastle.DiningTable.BackRight)')
-    action('CreateItem(PythonBox, BlueBook)')
-    action('SetPosition(PythonBox, QueensCastle.Table)')
-    action('ShowMenu()')
-
-    #Enable Icons
-    action('EnableIcon(Sit, Chair, QueensCastle.BackRightChair, Sit, true)')
-    action('EnableIcon(Python, Drink, PythonBox, Command Camelot, true)')
-    action('EnableIcon(Talk, Talk, Queen, Talk to the Queen, true)')
 # Respond to input.
 def main():
     begin_game_setup()
     while(True):
-        i = input()
-        if(i == 'input Selected Start'):
-            action('SetCameraFocus(John)')
+        received = input()
+        if(received == 'input Selected Start'):
+            action('FadeOut()')
+            action('SetCameraFocus(QueensCastle.DiningTable)')
             action('HideMenu()')
             action('EnableInput()')
-        elif(i == 'input Open_Door BobsHouse.Door'):
-            action('SetNarration(The door is locked!)')
+            action('SetNarration(Welcome to the Queen\'s birthday bash!)')
             action('ShowNarration()')
-        elif(i == 'input Close Narration'):
-            action('HideNarration()')
-        elif(i == 'input Sit QueensCastle.BackRightChair'):
-            sit_action('QueensCastle.BackRightChair')
-        elif(i == 'input Python PythonBox'):
+        elif(received.startswith('input Sit')):
+            received = received.split(' ')
+            place = received[len(received) - 1]
+            sit_action(place)
+        elif(received == 'input Python PythonBox'):
             command = pyautogui.prompt("Command")
             action(command)
-        elif(i == 'input Talk Queen'):
-            talk_action('Queen')
+        elif(received.startswith('input Talk')):
+            received = received.split(' ')
+            person = received[len(received) - 1]
+            talk_action(person)
+        elif(received == 'input Close Narration'):
+            action('HideNarration()')
+            action('FadeIn()')
+            action('SetLeft(King)')
+            action('SetRight(Queen)')
+            action('SetDialog(Happy Birthday Darling! It is hard to believe that you\'re 45! [Nothing | Next])')
+            action('ShowDialog()')
+            received = input()
+            action('ClearDialog()')
+            action('SetDialog(In honor of the momentous occasion I got Glenda the Castle Witch to give you a very special present [Nothing | Next])')
+            received = input()
+            action('HideDialog()')
+            action('WalkTo(CastleWitch, QueensCastle.RightWindow)')
+            action('Cast(CastleWitch, Queen)')
+            action('EnableEffect(Queen, Heart)')
+            action('SetLeft(King)')
+            action('SetRight(Queen)')
+            action('SetDialog(Let the party commence! [Nothing | Next])')
+            action('ShowDialog()')
+        elif(received == 'input Selected Nothing'):
+            action('HideDialog()')
+            action('WalkTo(John, QueensCastle.RightWindow)')
+            action('SetCameraFocus(John)')
     
 main() #COMMENT OUT WHEN TESTING
 
