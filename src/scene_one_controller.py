@@ -48,5 +48,8 @@ def scene_one_controller():
         if(received == 'input Python PythonBox'):
             command = pyautogui.prompt("Command")
             action(command)
+        elif(received == 'input ReadLedger GuestLedger'):
+            action('SetNarration(Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie...Noblewoman Celcilia - Wife of Nobleman Jeremy)')
+            action('ShowNarration()')
         else:
             check_master_actions(received)

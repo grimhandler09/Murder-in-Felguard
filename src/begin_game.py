@@ -81,11 +81,14 @@ def begin_game_setup():
     action('SetPosition(CeciliasCup, QueensCastle.DiningTable.FrontLeft)')
     action('CreateItem(PythonBox, BlueBook)')
     action('SetPosition(PythonBox, QueensCastle.Table)')
+    action('CreateItem(GuestLedger, GreenBook)')
+    action('SetPosition(GuestLedger, QueensCastle.Shelf)')
     
     #Enable Icons
     action('EnableIcon(Sit, Chair, QueensCastle.BackRightChair, Sit, true)')
     action('EnableIcon(Python, Drink, PythonBox, Command Camelot, true)')
     action('EnableIcon(Talk, Talk, Queen Margerie, Talk to the Queen, true)')
+    action('EnableIcon(ReadLedger, Research, GuestLedger, Read, true)')
 
     # #EnableEffects
     action('EnableEffect(QueensCastle.Fireplace, Campfire)')

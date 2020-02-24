@@ -14,5 +14,5 @@ main() #COMMENT OUT WHEN TESTING
 
 '''
 Replace the StartExperienceManager batch file with your manager ex:
-python ../../../CS499/CS499Camelot/src/example_manager.py
+python ../../../CS499/CS499Camelot/src/master_game_controller.py
 '''

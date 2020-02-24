@@ -22,3 +22,5 @@ def check_master_actions(received):
         received = received.split(' ')
         person = received[len(received) - 1]
         talk_action(person)
+    elif(received == "input Close Narration"):
+        action("HideNarration()")
