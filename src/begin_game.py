@@ -101,11 +101,20 @@ def begin_game_setup():
     #Enable Icons
     action('EnableIcon(Sit, Chair, QueensCastle.BackRightChair, Sit, true)')
     action('EnableIcon(Python, Drink, PythonBox, Command Camelot, true)')
-    action('EnableIcon(Talk, Talk, Queen Margerie, Talk to the Queen, true)')
+    action('EnableIcon(Talk, Talk, Maester Purcell, Talk to Maester Purcell, true)')
+    action('EnableIcon(Talk, Talk, Guard Gallant, Talk to Guard, true)')
+    action('EnableIcon(Talk, Talk, Queen Margerie, Talk to Queen Margerie, true)')
+    action('EnableIcon(Talk, Talk, Witch Carlita, Talk to Witch Carlita, true)')
+    action('EnableIcon(Talk, Talk, Tiana, Talk to Tiana, true)')
+    action('EnableIcon(Talk, Talk, King Phillip, Talk to the King Phillip, true)')
     action('EnableIcon(ReadLedger, Research, GuestLedger, Read, true)')
 
-    # #EnableEffects
+    #EnableEffects
     action('EnableEffect(QueensCastle.Fireplace, Campfire)')
 
-    
+    #Starting Inventory
+    action('CreateItem(Party Invitation, OpenScroll)')
+    action('EnableIcon(ReadInvitation, Book, Party Invitation, Read, true)')
+
+
     action('ShowMenu()')
