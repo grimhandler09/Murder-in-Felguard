@@ -24,3 +24,8 @@ def check_master_actions(received):
         talk_action(person)
     elif(received == "input Close Narration"):
         action("HideNarration()")
+    elif(received == "input Close List"):
+        action("HideList()")
+    elif(received == "input Key Inventory"):
+        action('ShowList(John)')
+

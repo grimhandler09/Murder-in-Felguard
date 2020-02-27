@@ -66,6 +66,20 @@ def begin_game_setup():
     action('SetHairStyle(Chamber Maid Scarlet, Ponytail)')
     action('SetHairColor(Chamber Maid Scarlet, Brown)')
     action('Face(Chamber Maid Scarlet, QueensCastle.DiningTable)')
+    #Queen's Sister Tiana
+    action('CreateCharacter(Tiana, A)')
+    action('SetClothing(Tiana, Noble)')
+    action('SetPosition(Tiana, QueensCastle.Window)')
+    action('SetHairStyle(Tiana, Straight)')
+    action('SetHairColor(Tiana, Brown)')
+    action('Face(Tiana, QueensCastle.DiningTable)')
+    #Castle Grand Maester Purcell
+    action('CreateCharacter(Maester Purcell, H)')
+    action('SetClothing(Maester Purcell, Priest)')
+    action('SetPosition(Maester Purcell, QueensCastle.Table)')
+    action('SetHairStyle(Maester Purcell, Mage_Full)')
+    action('SetHairColor(Maester Purcell, Gray)')
+    action('Face(Maester Purcell, QueensCastle.DiningTable)')
     #Create Items and position them
     action('CreateItem(QueensCup, GoldCup)')
     action('SetPosition(QueensCup, QueensCastle.DiningTable.Right)')
