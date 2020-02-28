@@ -2,8 +2,8 @@ from action import action
 
 def scene_one_predeath(person):
     if person == 'Maester Purcell':
-        action('SetDialog(Oh, who do we have here? The Queen\'s assistant you say? Well the Queen and I may not' +
-        ' agree on everything but you seem like a fine young gentleman. [Next | Thanks, who are you again?])')
+        action('SetDialog(Oh who do we have here? The Queen\'s assistant you say? Well the Queen and I may not' +
+        ' agree on everything but you seem like a fine young gentleman. [Next | Thanks who are you again?])')
         input()
         action('ClearDialog()')
         action('SetDialog(I\'m not that important. I\'m just the Kingdom\'s Grand Maester. Mainly just an advisory role but' +
@@ -36,5 +36,5 @@ def scene_one_predeath(person):
             action('SetDialog(I\'m sure she\'ll she appreciate what she\'s got coming to her [Next | ...okay])')
             input()
     elif person == 'King Phillip':
-        action('SetDialog(Isn\'t Margerie lovely. I would be devastated if anything were to happen to her [Next | You really outdid yourself])')
+        action('SetDialog(Isn\'t Margerie lovely. I would be devastated if anything were to happen to her [Next | You really out did yourself])')
         input()

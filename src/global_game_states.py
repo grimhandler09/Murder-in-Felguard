@@ -1,4 +1,5 @@
 
+global queen_death
 queen_death = False
 
 
