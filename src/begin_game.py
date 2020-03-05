@@ -13,11 +13,12 @@ def begin_game_setup():
     action('SetClothing(John, Noble)')
     action('SetHairStyle(John, Long)')
     action('SetPosition(John, QueensCastle.BackRightChair)')
-    #action('Sit(John, QueensCastle.BackRightChair)')
+    action('Sit(John, QueensCastle.BackRightChair)')
     #Queen Margerie
     action('CreateCharacter(Queen Margerie, A)')
     action('SetClothing(Queen Margerie, Queen)')
     action('SetHairStyle(Queen Margerie, Long)')
+    action('SetExpression(Queen Margerie, Happy)')
     action('SetPosition(Queen Margerie, QueensCastle.RightChair)')
     action('Sit(Queen Margerie, QueensCastle.RightChair)')
     #Guard Gallant
@@ -31,6 +32,7 @@ def begin_game_setup():
     action('SetClothing(King Phillip, King)')
     action('SetPosition(King Phillip, QueensCastle.LeftChair)')
     action('Sit(King Phillip, QueensCastle.LeftChair)')
+    action('SetExpression(King Phillip, Happy)')
     action('SetHairStyle(King Phillip, Short_Full)')
     #Witch Carlita
     action('CreateCharacter(Witch Carlita, C)')
@@ -73,6 +75,7 @@ def begin_game_setup():
     action('SetHairStyle(Tiana, Straight)')
     action('SetHairColor(Tiana, Brown)')
     action('Face(Tiana, QueensCastle.DiningTable)')
+    action('SetExpression(Tiana, Disgusted)')
     #Castle Grand Maester Purcell
     action('CreateCharacter(Maester Purcell, H)')
     action('SetClothing(Maester Purcell, Priest)')
@@ -80,6 +83,7 @@ def begin_game_setup():
     action('SetHairStyle(Maester Purcell, Mage_Full)')
     action('SetHairColor(Maester Purcell, Gray)')
     action('Face(Maester Purcell, QueensCastle.DiningTable)')
+    
     #Create Items and position them
     action('CreateItem(QueensCup, GoldCup)')
     action('SetPosition(QueensCup, QueensCastle.DiningTable.Right)')
