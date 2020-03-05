@@ -47,3 +47,8 @@ def scene_one_predeath(person):
     elif person == 'King Phillip':
         action('SetDialog(Isn\'t Margerie lovely. I would be devastated if anything were to happen to her [Next | You really out did yourself])')
         wait_for_response(['Next'])
+
+def scene_two_convo(person):
+    if person == 'Guard':
+        action('SetDialog(Don\'t you dare speak to me [Next | Fine])')
+        wait_for_response(['Next'])
