@@ -1,8 +1,7 @@
-import pyautogui
 import time
 from action import action
 from master_action_controller import check_master_actions
-from global_game_states import *
+import global_game_states
 from threading import Timer
 from talk_controller import wait_for_response
 
@@ -34,7 +33,7 @@ def opening_cutscene():
     time.sleep(2.5)
     action('SetLeft(King Phillip)')
     action('SetRight(Queen Margerie)')
-    action('SetDialog(Let the party commence! [HideDialog | Next])')
+    action('SetDialog(Let the party commence! [Next | Next])')
     action('ShowDialog()')
     wait_for_response(['Next'])
     action('HideDialog()')
@@ -90,7 +89,7 @@ def death_cutscene():
     action('SetExpression(Chamber Maid Scarlet, Sad)')
     action('Kneel(King Phillip)')
     action('WalkToSpot(Maester Purcell, 307.5, 0.1, 2.5)')
-    arrest_time = Timer(10.0, arrest_cutscene())
+    arrest_time = Timer(15.0, arrest_cutscene())
     arrest_time.start()
 
 def arrest_cutscene():
@@ -108,16 +107,19 @@ def arrest_cutscene():
     action('SetPosition(TomSword, Guard Tom)')
     action('SetPosition(LanceSword, Guard Lance)')
     action('SetPosition(JimSword, Guard Jim)')
-    action('SetCameraMode(focus)')
-    action('SetCameraFocus(QueensCastle.DiningTable)') #Change to door when the focus gets fixed
+    action('SetCameraFocus(John)')
+    #action('SetCameraFocus(QueensCastle.DiningTable)') #Change to door when the focus gets fixed
     action('Enter(Guard Tom, QueensCastle.Door)')
     action('Enter(Guard Tom, QueensCastle.Door)')
     action('Enter(Guard Tom, QueensCastle.Door)')
     action('SetDialog(Get him! [Next | Next])')
     action('SetRight(null)')
+    action('SetLeft(Guard Lance)')
     action('ShowDialog()')
     wait_for_response(['Next'])
     action('HideDialog()')
+    global_game_states.end_scene_one = True
+    
 
 
 
@@ -127,12 +129,9 @@ def scene_one_controller():
     action('SetCameraFocus(John)')
     action('EnableInput()')
     trigger_death = 0
-    while(True):
+    while(not global_game_states.end_scene_one):
         received = input()
-        if received == 'input Python PythonBox':
-            command = pyautogui.prompt("Command")
-            action(command)
-        elif received == 'input ReadLedger GuestLedger':
+        if received == 'input ReadLedger GuestLedger':
             action('SetNarration(Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie...Noblewoman Celcilia - Wife of Nobleman Jeremy)')
             action('ShowNarration()')
             trigger_death += 1
@@ -144,7 +143,7 @@ def scene_one_controller():
                 trigger_death += 1
             check_master_actions(received)
         
-        if trigger_death > 2 and not get_queen_death():
-                set_queen_death(True)
+        if trigger_death > 2 and not global_game_states.queen_death:
+                global_game_states.queen_death = True
                 death_cutscene()
             

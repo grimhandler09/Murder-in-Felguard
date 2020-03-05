@@ -2,7 +2,8 @@ import pyautogui
 import time
 from action import action
 from master_action_controller import check_master_actions
-from global_game_states import player_inventory
+import global_game_states
+from talk_controller import wait_for_response
 
 chest_inventory = [['Party Invitation', 'Birthday Party Invitation']]
 dirtpile_inventory = [['PlayerSword', 'Sword'], ['CellDoorKey', 'CellKey']]
@@ -55,16 +56,16 @@ def attack_char_action(target):
 def take_leftitem_action(item):
     command = 'Unpocket(John, ' + item +')'
     action(command)
-    if ['CellDoorKey', 'CellKey'] not in player_inventory:
-        player_inventory.append(['CellDoorKey', 'CellKey'])
+    if ['CellDoorKey', 'CellKey'] not in global_game_states.player_inventory:
+        global_game_states.player_inventory.append(['CellDoorKey', 'CellKey'])
     action('DisableIcon(Take, ' + item + ')')
     action('EnableIcon(Stow, hand, ' + item + ', Take, true)')
 
 def take_rightitem_action(item):
     command = 'Draw(John, ' + item +')'
     action(command)
-    if ['PlayerSword', 'Sword'] not in player_inventory:
-        player_inventory.append(['PlayerSword', 'Sword'])
+    if ['PlayerSword', 'Sword'] not in global_game_states.player_inventory:
+       global_game_states.player_inventory.append(['PlayerSword', 'Sword'])
     action('DisableIcon(Take, ' + item + ')')
     action('EnableIcon(Stow, hand, ' + item + ', Take, true)')
 
@@ -89,7 +90,6 @@ def opening_dialog_two():
     time.sleep(1)
     action('SetNarration(John has been arrested by the Queen\'s guards.)')
     action('ShowNarration()')
-    action('EnableInput()')
     input()
     action('HideNarration()')
     action('FadeIn()')
@@ -97,7 +97,7 @@ def opening_dialog_two():
     action('SetRight(John)')
     action('SetDialog(I hope you\'re happy. You just killed the most beloved queen this kingdom has ever had. I can\'t even look at you. [Next | What are you talking about] [Next | I didn\'t do anything])')
     action('ShowDialog()')
-    input()
+    input()        #wait_for_response(['Next'])
     action('HideDialog()')
 
 def scene_two_controller():

@@ -1,15 +1,16 @@
 from action import action
 from talk_controller import *
-from global_game_states import *
+import global_game_states
+import pyautogui
 
 
 def talk_action(person):
     action('SetLeft(John)')
     action('SetRight(' + person + ')')
     action('ShowDialog()')
-    if not get_queen_death():
+    if not global_game_states.queen_death:
         scene_one_predeath(person)
-    elif get_queen_death():
+    elif global_game_states.queen_death:
         scene_two_convo(person)
     action('HideDialog()')
 
@@ -33,7 +34,10 @@ def check_master_actions(received):
         action("HideList()")
     elif received == "input Key Inventory":
         action('ClearList()')
-        for item in player_inventory:
+        for item in global_game_states.player_inventory:
             action('AddToList(' + item[0] + ', ' + item[1] + ')')
         action('ShowList(John)')
+    elif received == 'input Key Interact':
+        command = pyautogui.prompt("Command")
+        action(command)
         
