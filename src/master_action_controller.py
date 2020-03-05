@@ -1,7 +1,7 @@
 from action import action
 from talk_controller import *
 from global_game_states import *
-player_inventory = [['Party Invitation', 'Birthday Party Invitation']]
+
 
 def talk_action(person):
     action('SetLeft(John)')
@@ -9,6 +9,8 @@ def talk_action(person):
     action('ShowDialog()')
     if not get_queen_death():
         scene_one_predeath(person)
+    elif get_queen_death():
+        scene_two_convo(person)
     action('HideDialog()')
 
 #Send sit command with the place as the parameter

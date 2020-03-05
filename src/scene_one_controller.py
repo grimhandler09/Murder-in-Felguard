@@ -75,7 +75,7 @@ def scene_one_controller():
     action('EnableInput()')
     trigger_death = 0
     played = False
-    while(True):
+    while(not played):
         received = input()
         if received == 'input Python PythonBox':
             command = pyautogui.prompt("Command")

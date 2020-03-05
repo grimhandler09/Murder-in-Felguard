@@ -1,3 +1,4 @@
+player_inventory = [['Party Invitation', 'Birthday Party Invitation']]
 
 global queen_death
 queen_death = False
