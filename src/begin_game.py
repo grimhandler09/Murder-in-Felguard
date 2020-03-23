@@ -58,7 +58,7 @@ def begin_game_setup():
     #Merchant Bert
     action('CreateCharacter(Merchant Bert, H)')
     action('SetClothing(Merchant Bert, Merchant)')
-    action('SetPosition(Merchant Bert, QueensCastle.LeftWindow)')
+    action('SetPosition(Merchant Bert, QueensCastle.BackLeftChair)')
     action('SetHairColor(Merchant Bert, Blonde)')
     action('Sit(Merchant Bert, QueensCastle.BackLeftChair)')
     #Chamber Maid Scarlet

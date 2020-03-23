@@ -17,7 +17,7 @@ def opening_cutscene():
     action('FadeIn()')
     action('SetLeft(King Phillip)')
     action('SetRight(Queen Margerie)')
-    action('SetDialog(Happy Birthday Darling! I\'ve invited all of your closest friends and family to celebrate! [Next | Next])')
+    action('SetDialog(Happy Birthday Darling! I\'ve invited all of your closest friends and family to celebrate! [Next| Next])')
     action('ShowDialog()')
     wait_for_response(['Next'])
     action('ClearDialog()')
