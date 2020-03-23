@@ -4,9 +4,9 @@ def wait_for_response(responses):
     response_list = []
     for response in responses:
         response_list.append('input Selected ' + response)
-    received = input()
+    received = input().strip()
     while not received in response_list:
-        received = input()
+        received = input().strip()
     return received
 
 def scene_one_predeath(person):

@@ -58,7 +58,7 @@ def begin_game_setup():
     #Merchant Bert
     action('CreateCharacter(Merchant Bert, H)')
     action('SetClothing(Merchant Bert, Merchant)')
-    action('SetPosition(Merchant Bert, QueensCastle.LeftWindow)')
+    action('SetPosition(Merchant Bert, QueensCastle.BackLeftChair)')
     action('SetHairColor(Merchant Bert, Blonde)')
     action('Sit(Merchant Bert, QueensCastle.BackLeftChair)')
     #Chamber Maid Scarlet
@@ -97,14 +97,11 @@ def begin_game_setup():
     action('SetPosition(KingsCup, QueensCastle.DiningTable.Left)')
     action('CreateItem(CeciliasCup, GoldCup)')
     action('SetPosition(CeciliasCup, QueensCastle.DiningTable.FrontLeft)')
-    action('CreateItem(PythonBox, BlueBook)')
-    action('SetPosition(PythonBox, QueensCastle.Table)')
     action('CreateItem(GuestLedger, GreenBook)')
     action('SetPosition(GuestLedger, QueensCastle.Shelf)')
     
     #Enable Icons
     action('EnableIcon(Sit, Chair, QueensCastle.BackRightChair, Sit, true)')
-    action('EnableIcon(Python, Drink, PythonBox, Command Camelot, true)')
     action('EnableIcon(Talk, Talk, Maester Purcell, Talk to Maester Purcell, true)')
     action('EnableIcon(Talk, Talk, Guard Gallant, Talk to Guard, true)')
     action('EnableIcon(Talk, Talk, Queen Margerie, Talk to Queen Margerie, true)')
