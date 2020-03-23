@@ -2,6 +2,7 @@ from action import action
 from talk_controller import *
 import global_game_states
 import pyautogui
+from talk_controller import wait_for_response   
 
 
 def talk_action(person):
@@ -10,7 +11,7 @@ def talk_action(person):
     action('ShowDialog()')
     if not global_game_states.queen_death:
         scene_one_predeath(person)
-    elif global_game_states.queen_death:
+    elif global_game_states.current_scene == 'scene_two':
         scene_two_convo(person)
     action('HideDialog()')
 

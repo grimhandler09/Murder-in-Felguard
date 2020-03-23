@@ -46,13 +46,13 @@ def begin_game_setup():
     #Noble Jeremy
     action('CreateCharacter(Noble Jeremy, F)')
     action('SetClothing(Noble Jeremy, Noble)')
-    action('SetPosition(Noble Jeremy, QueensCastle.LeftWindow)')
+    action('SetPosition(Noble Jeremy, QueensCastle.FrontRightChair)')
     action('Sit(Noble Jeremy, QueensCastle.FrontRightChair)')
     action('SetHairStyle(Noble Jeremy, Spiky)')
     #Noble Cecilia
     action('CreateCharacter(Noble Cecilia, C)')
     action('SetClothing(Noble Cecilia, Noble)')
-    action('SetPosition(Noble Cecilia, QueensCastle.LeftWindow)')
+    action('SetPosition(Noble Cecilia, QueensCastle.FrontLeftChair)')
     action('SetHairStyle(Noble Cecilia, Short)')
     action('Sit(Noble Cecilia, QueensCastle.FrontLeftChair)')
     #Merchant Bert
