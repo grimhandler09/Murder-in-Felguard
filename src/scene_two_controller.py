@@ -3,7 +3,8 @@ import time
 from action import action
 from master_action_controller import check_master_actions
 import global_game_states
-from talk_controller import wait_for_response
+from talk_controller import *
+
 
 chest_inventory = [['Party Invitation', 'Birthday Party Invitation']]
 dirtpile_inventory = [['PlayerSword', 'Sword'], ['CellDoorKey', 'CellKey']]
@@ -86,18 +87,15 @@ def leave_prison_action(exit_door):
     action(command)
 
 def opening_dialog_two():
-    action('SetCameraFocus(Prison.CellDoor)')
     time.sleep(1)
     action('SetNarration(John has been arrested by the Queen\'s guards.)')
     action('ShowNarration()')
     input()
     action('HideNarration()')
-    action('FadeIn()')
-    action('SetLeft(Guard)')
-    action('SetRight(John)')
-    action('SetDialog(I hope you\'re happy. You just killed the most beloved queen this kingdom has ever had. I can\'t even look at you. [Next | What are you talking about] [Next | I didn\'t do anything])')
-    action('ShowDialog()')
-    input()        #wait_for_response(['Next'])
+    #action('FadeIn()')
+    
+    set_left_right('Guard', 'John')
+    set_dialog('I hope you\'re happy. You just killed the most beloved queen this kingdom has ever had. I can\'t even look at you. [Next | What are you talking about] [Next | I didn\'t do anything]', ['Next'], True)
     action('HideDialog()')
 
 def scene_two_controller():
