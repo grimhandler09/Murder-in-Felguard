@@ -14,6 +14,38 @@ def talk_action(person):
         scene_two_convo(person)
     action('HideDialog()')
 
+def take_leftitem_action(item):
+    if [item, item] not in global_game_states.player_inventory:
+        global_game_states.player_inventory.append([item, item])
+        action('Pickup(John, ' + item +')')
+    else:
+        action('Unpocket(John, ' + item +')')
+    action('DisableIcon(TakeLeft, ' + item + ')')
+    action('EnableIcon(StowLeft, hand, ' + item + ', Take, true)')
+
+def take_rightitem_action(item):
+    if [item, item] not in global_game_states.player_inventory:
+       global_game_states.player_inventory.append([item, item])
+       #action('Pickup(John, ' + item +')')
+       action('Draw(John, ' + item +')')
+    else:
+        action('Draw(John, ' + item +')')
+    action('DisableIcon(TakeRight, ' + item + ')')
+    action('EnableIcon(StowRight, hand, ' + item + ', Take, true)')
+
+def stow_leftitem_action(item):
+    action('Pocket(John, ' + item +')')
+    action('DisableIcon(StowLeft, ' + item + ')')
+    action('EnableIcon(TakeLeft, hand, ' + item + ', Take, true)')
+
+def stow_rightitem_action(item):
+    action('Sheathe(John, ' + item +')')
+    action('DisableIcon(StowRight, ' + item + ')')
+    action('EnableIcon(TakeRight, hand, ' + item + ', Take, true)')
+
+def leave_action(exit_door):
+    action('Exit(John, ' + exit_door + ', true)')
+
 #Send sit command with the place as the parameter
 def sit_action(place):
     command = "Sit(John, " + place + ")"
@@ -32,6 +64,26 @@ def check_master_actions(received):
         action('ClearNarration()')
     elif received == "input Close List":
         action("HideList()")
+    elif received.startswith('input TakeRight'):
+        received = received.split(' ')
+        item = received[2]
+        take_rightitem_action(item)
+    elif received.startswith('input TakeLeft'):
+        received = received.split(' ')
+        item = received[2]
+        take_leftitem_action(item)
+    elif received.startswith('input StowRight'):
+        received = received.split(' ')
+        item = received[2]
+        stow_rightitem_action(item)
+    elif received.startswith('input StowLeft'):
+        received = received.split(' ')
+        item = received[2]
+        stow_leftitem_action(item)
+    elif received.startswith('input Leave'):
+        received = received.split(' ')
+        exit_door = received[2]
+        leave_action(exit_door)
     elif received == "input Key Inventory":
         action('ClearList()')
         for item in global_game_states.player_inventory:

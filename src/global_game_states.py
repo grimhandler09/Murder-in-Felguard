@@ -1,4 +1,6 @@
-player_inventory = [['Party Invitation', 'Birthday Party Invitation']]
+player_inventory = [['Party Invitation', 'Party Invitation']]
+chest_inventory = [['Party Invitation', 'Party Invitation']]
+dirtpile_inventory = [['PlayerSword', 'PlayerSword'], ['CellDoorKey', 'CellDoorKey']]
 
 queen_death = False
 end_scene_one = False
