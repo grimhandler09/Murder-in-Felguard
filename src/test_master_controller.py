@@ -1,4 +1,4 @@
-import example_manager
+import master_game_controller
 
 def test_action_succeed(monkeypatch):
     monkeypatch.setattr('builtins.input', lambda: 'succeeded CreateCharacter(Bob, B)')
