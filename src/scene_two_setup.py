@@ -2,9 +2,11 @@ from action import action
 import time
 
 def scene_two_setup():
-    action('FadeOut()')
+    #action('FadeOut()')
     #Create the Prison that John will be thrown into
     action('CreatePlace(Prison, Dungeon)')
+    #action('SetCameraFocus(Prison.CellDoor)')
+    #action('SetCameraMode(focus)')
     
     #Move Character(John) to the dungeon
     action('SetClothing(John, Peasant)')
