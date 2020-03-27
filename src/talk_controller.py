@@ -47,3 +47,30 @@ def scene_one_predeath(person):
 def scene_two_convo(person):
     if person == 'Guard':
         set_dialog('SetDialog(Don\'t you dare speak to me [Next | Fine]')
+        
+def scene_two_and_half(person):
+    if person == 'Beggar Adeline':
+        action('SetDialog(I\'m not sad about the Queen\'s death. She\'s been rolling in wealth while decent folks can\'t even find a job to support their families. [Next | ... okay?])')
+        wait_for_response(['Next'])
+    elif person == 'Beggar Miles':
+        action('SetDialog(Spare some change for an old man? [Next | Sorry, I\'m broke])')
+        wait_for_response(['Next'])
+    elif person == 'Scout Joanna':
+        action('SetDialog(You don\'t want to go this way. Once outside the town, you\'re on your own. [Next | Thanks!])')
+        wait_for_response(['Next'])
+    elif person == 'Alchemist Jeremy':
+        action('SetDialog(Step inside for all your alchemy needs. Whether it\'s a nice polish for your shoes or a draught for your pain, we\'ve got it here! [Next | I\'ll keep that in mind])')
+    elif person == 'Scout Tom':
+        action('SetDialog(You don\'t want to go this way. Once outside the town, you\'re on your own. [Next | Thanks!])')
+    elif person == 'Drunk Devon':
+        action('SetDialog(My name is Devon. This here is the Tavern, a good place to hear the comings and goings of the town.)')
+        wait_for_response(['Next'])
+    elif person == 'Princess Esmerelda':
+        action('SetDialog(The witches must burn! It is no surprise the Queen is dead given the monarchy\'s flagrant disrespect of the sacred texts and ancient traditions. [Next | err... ok])')
+        wait_for_response(['Next'])
+    elif person == 'Blind Bandit':
+        action('SetDialog(I heard a rumour last fortnight about a contract killing of the Queen, but I didn\'t believe it until now. [Next | ... Interesting])')
+        wait_for_response(['Next'])
+    elif person == 'Gossiping Gail':
+        action('SetDialog(I know everything going on in this town. Go ahead ask me. [Next | I\'d rather not.)')
+        wait_for_response(['Next'])

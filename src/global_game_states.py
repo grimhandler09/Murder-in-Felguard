@@ -5,5 +5,3 @@ dirtpile_inventory = [['PlayerSword', 'PlayerSword'], ['CellDoorKey', 'CellDoorK
 queen_death = False
 end_scene_one = False
 current_scene = 'scene_one'
-
-
