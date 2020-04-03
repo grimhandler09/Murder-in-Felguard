@@ -64,7 +64,6 @@ def check_master_actions(received):
         talk_action(person)
     elif received == "input Close Narration":
         action('HideNarration()')
-        action('ClearNarration()')
     elif received == "input Close List":
         action("HideList()")
     elif received.startswith('input TakeRight'):

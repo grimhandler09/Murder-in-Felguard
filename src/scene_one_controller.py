@@ -33,16 +33,16 @@ def opening_cutscene():
 def death_cutscene():
     action('DisableEffect(Queen Margerie)')
     action('DisableIcon(Talk, Queen Margerie)')
+    action('SetPosition(QueensCup, Queen Margerie)')
     action('SetCameraFocus(QueensCastle.DiningTable)')
     time.sleep(1)
     action('WalkToSpot(Queen Margerie, 305.7, 0.1, 0.6)')
-    action('SetPosition(QueensCup, Queen Margerie)')
     action('Face(Queen Margerie, King Phillip)')
     action('SetCameraFocus(Queen Margerie)')
     action('SetCameraMode(focus)')
     set_left_right('Queen Margerie', 'null')
     set_dialog('Thank you all for coming to my birthday bash! [Next | Next]', ['Next'], True)
-    set_dialog('It so wonderful to see you all here. I look forward to many more glorious years ruling the kingdom! Cheers! [Next | Next]')
+    set_dialog('It\'s so wonderful to see you all here. I look forward to many more glorious years ruling the kingdom! Cheers! [Next | Next]')
     action('HideDialog()')
     action('Drink(Queen Margerie)')
     #action('Put(Queen Margerie, QueensCup)')
@@ -51,11 +51,7 @@ def death_cutscene():
     action('HideDialog()')
     action('SetExpression(Queen Margerie, Disgusted)')
     action('Die(Queen Margerie)')
-    action('SetCameraMode(follow)')
-    action('SetCameraFocus(John)')
-    action('SetNarration(Quick! Gather evidence before the guards arrive!)')
-    action('ShowNarration()')
-    action('EnableInput()')
+    action('SetCameraFocus(QueensCastle.DiningTable)')
     action('WalkToSpot(King Phillip, 307.6, 0.1, -0.9)')
     action('Face(King Phillip, Queen Margerie)')
     action('HideNarration()')
@@ -74,14 +70,15 @@ def death_cutscene():
     action('DisableIcon(Talk, Witch Carlita)')
     action('DisableIcon(Talk, Guard Gallant)')
     action('Kneel(King Phillip)')
+    action('SetCameraFocus(QueensCastle.Door)')
     action('WalkToSpot(Guard Gallant, 305.8, 0.1, -2.3)')
     action('Face(Guard Gallant, Queen Margerie)')
+    action('SetCameraMode(follow)')
+    action('SetCameraFocus(John)')
+    action('EnableInput()')
     action('Kneel(Guard Gallant)')
-    action('WalkToSpot(Maester Purcell, 307.5, 0.1, 2.5)')
-    action('Face(Maester Purcell, Queen Margerie)')
     action('EnableIcon(InspectCup, Research, QueensCup, Inspect Cup, true)')
-    #arrest_time = Timer(15.0, arrest_cutscene())
-    #arrest_time.start()
+    action('EnableIcon(TriggerGuards, Door, QueensCastle.Door, Leave Castle, true)')
 
 def arrest_cutscene():
     action('HideDialog()')
@@ -93,7 +90,7 @@ def arrest_cutscene():
     action('SetCameraFocus(Chamber Maid Scarlet)')
     set_left_right('Chamber Maid Scarlet', 'null')
     action('SetExpression(Chamber Maid Scarlet, Surprised)')
-    set_dialog('Guards! It was the queen\'s aide! I saw him do it! [Next | Next]', ['Next'], True)
+    set_dialog('Guards! It was the queen\'s aide! He killed the Queen! [Next | Next]', ['Next'], True)
     action('HideDialog()')
     action('SetCameraFocus(QueensCastle.Door)')
     action('Enter(Guard Tom, QueensCastle.Door)')
@@ -108,13 +105,15 @@ def prepare_storage():
     action('CreatePlace(CastleStorage, Storage)')
     action('CreateCharacter(Tester, D)')
     action('SetClothing(Tester, Noble)')
-    action('SetPosition(Tester, CastleStorage)')
+    action('SetPosition(Tester, CastleStorage.Shelf)')
+    action('WalkToSpot(Tester, 601.8, 0.1, -2.0)')
     action('Die(Tester)')
     action('CreateItem(AlchemistLetter, OpenScroll)')
     action('SetPosition(AlchemistLetter, CastleStorage.Barrel)')
     action('EnableIcon(ReadAlchemistLetter, Read, AlchemistLetter, Read Letter, true)')
-    action('EnableIcon(OpenStorageChest, ')
-
+    action('EnableIcon(OpenStorageChest, Chest, CastleStorage.Chest, Open Chest, true)')
+    action('EnableIcon(InspectTester, Research, Tester, Inspect Body, true)')
+    action('EnableIcon(ExitStorage, Door, CastleStorage.Door, Exit, true)')
 
 
 def scene_one_controller():
@@ -139,7 +138,7 @@ def scene_one_controller():
             if global_game_states.scene_one_key:
                 action('Exit(John, QueensCastle.BackDoor, true)')
                 prepare_storage()
-                action('Enter(John, CastleStorage.Door)')
+                action('Enter(John, CastleStorage.Door, true)')
             else:
                 action('SetNarration(The door is locked!)')
                 action('ShowNarration()')
@@ -152,6 +151,22 @@ def scene_one_controller():
             else:
                 action('SetNarration(The bag is empty)')
                 action('ShowNarration()')
+        elif received == 'input InspectTester Tester':
+            action('SetNarration(You recognize the body of the Queen\'s taste tester)')
+            action('ShowNarration()')
+        elif received == 'input OpenStorageChest CastleStorage.Chest':
+            action('SetNarration(You find an empty potion bottle. The label is marked with a skull and crossbones)')
+            action('ShowNarration()')
+        elif received == 'input ReadAlchemistLetter AlchemistLetter':
+            action('SetNarration(\"The letter reads: To ensure a lethal dose, use about 10mL-AG\")')
+            action('ShowNarration()')      
+        elif received == 'input ExitStorage CastleStorage.Door':
+            action('Exit(John, CastleStorage.Door, true)')
+            action('Enter(John, QueensCastle.BackDoor, true)')
+            time.sleep(1.0)
+            arrest_cutscene()
+        elif received == 'input TriggerGuards QueensCastle.Door':
+            arrest_cutscene() 
         else:
             if received.startswith('input Talk'):
                 trigger_death += 1
