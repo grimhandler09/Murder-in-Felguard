@@ -11,6 +11,8 @@ def talk_action(person):
     action('ShowDialog()')
     if not global_game_states.queen_death:
         scene_one_predeath(person)
+    elif global_game_states.queen_death and global_game_states.current_scene == 'scene_one':
+        scene_one_postdeath(person)
     elif global_game_states.current_scene == 'scene_two':
         scene_two_convo(person)
     action('HideDialog()')

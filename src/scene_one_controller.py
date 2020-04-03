@@ -42,16 +42,15 @@ def death_cutscene():
     action('SetCameraMode(focus)')
     set_left_right('Queen Margerie', 'null')
     set_dialog('Thank you all for coming to my birthday bash! [Next | Next]', ['Next'], True)
-    set_dialog('It so wonderful to see you all here. I look forward to many more glorious years ruling the kingdom! Cheers! [Next | Next]', ['Next'])
+    set_dialog('It so wonderful to see you all here. I look forward to many more glorious years ruling the kingdom! Cheers! [Next | Next]')
     action('HideDialog()')
     action('Drink(Queen Margerie)')
+    #action('Put(Queen Margerie, QueensCup)')
+    action('SetPosition(QueensCup, QueensCastle.DiningTable.Right)')
+    set_dialog('Now let us... [Next | Next]', ['Next'], True)
+    action('HideDialog()')
     action('SetExpression(Queen Margerie, Disgusted)')
     action('Die(Queen Margerie)')
-    action('SetCameraFocus(Chamber Maid Scarlet)')
-    set_left_right('Chamber Maid Scarlet', 'null')
-    action('SetExpression(Chamber Maid Scarlet, Surprised)')
-    set_dialog('Guards! It was the queen\'s aide! I saw him do it! [Next | Next]', ['Next'], True)
-    action('HideDialog()')
     action('SetCameraMode(follow)')
     action('SetCameraFocus(John)')
     action('SetNarration(Quick! Gather evidence before the guards arrive!)')
@@ -67,11 +66,22 @@ def death_cutscene():
     action('SetExpression(Noble Jeremy, Sad)')
     action('SetExpression(Witch Carlita, Sad)')
     action('SetExpression(Chamber Maid Scarlet, Sad)')
+    action('EnableIcon(Talk, Talk, Noble Jeremy, Talk to Jeremy, true)')
+    action('EnableIcon(Talk, Talk, Noble Cecilia, Talk to Cecilia, true)')
+    action('EnableIcon(Talk, Talk, Merchant Bert, Talk to Bert, true)')
+    action('EnableIcon(Talk, Talk, Chamber Maid Scarlet, Talk to Scarlet, true)')
+    action('EnableIcon(OpenCloset, Door, QueensCastle.BackDoor, Open Door, true)')
+    action('DisableIcon(Talk, Witch Carlita)')
+    action('DisableIcon(Talk, Guard Gallant)')
     action('Kneel(King Phillip)')
+    action('WalkToSpot(Guard Gallant, 305.8, 0.1, -2.3)')
+    action('Face(Guard Gallant, Queen Margerie)')
+    action('Kneel(Guard Gallant)')
     action('WalkToSpot(Maester Purcell, 307.5, 0.1, 2.5)')
-    action('Face(Master Purcell, Queen Margerie)')
-    arrest_time = Timer(15.0, arrest_cutscene())
-    arrest_time.start()
+    action('Face(Maester Purcell, Queen Margerie)')
+    action('EnableIcon(InspectCup, Research, QueensCup, Inspect Cup, true)')
+    #arrest_time = Timer(15.0, arrest_cutscene())
+    #arrest_time.start()
 
 def arrest_cutscene():
     action('HideDialog()')
@@ -80,8 +90,12 @@ def arrest_cutscene():
     action('SetClothing(Guard Tom, HeavyArmour)')
     action('CreateItem(TomSword, Sword)')  
     action('SetPosition(TomSword, Guard Tom)')
+    action('SetCameraFocus(Chamber Maid Scarlet)')
+    set_left_right('Chamber Maid Scarlet', 'null')
+    action('SetExpression(Chamber Maid Scarlet, Surprised)')
+    set_dialog('Guards! It was the queen\'s aide! I saw him do it! [Next | Next]', ['Next'], True)
+    action('HideDialog()')
     action('SetCameraFocus(QueensCastle.Door)')
-    action('WalkTo(Guard Gallant, Queen Margerie)')
     action('Enter(Guard Tom, QueensCastle.Door)')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
@@ -89,7 +103,17 @@ def arrest_cutscene():
     set_dialog('Get him! [Next | Next]', ['Next'], True)
     action('HideDialog()')
     global_game_states.end_scene_one = True
-    
+
+def prepare_storage():
+    action('CreatePlace(CastleStorage, Storage)')
+    action('CreateCharacter(Tester, D)')
+    action('SetClothing(Tester, Noble)')
+    action('SetPosition(Tester, CastleStorage)')
+    action('Die(Tester)')
+    action('CreateItem(AlchemistLetter, OpenScroll)')
+    action('SetPosition(AlchemistLetter, CastleStorage.Barrel)')
+    action('EnableIcon(ReadAlchemistLetter, Read, AlchemistLetter, Read Letter, true)')
+    action('EnableIcon(OpenStorageChest, ')
 
 
 
@@ -102,12 +126,32 @@ def scene_one_controller():
     while(not global_game_states.end_scene_one):
         received = input()
         if received == 'input ReadLedger GuestLedger':
-            action('SetNarration(Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie...Noblewoman Celcilia - Wife of Nobleman Jeremy)')
+            action("SetNarration(Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie...Noblewoman Celcilia - Wife of Nobleman Jeremy)")
             action('ShowNarration()')
             trigger_death += 1
         elif received == 'input ReadInvitation Party Invitation':
             action('SetNarration(You are cordially invited to the Queen\'s Birthday Party. It will truly be one for the ages.)')
             action('ShowNarration()')
+        elif received == 'input InspectCup QueensCup':
+            action('SetNarration(You notice the wine in the cup is a slightly different shade then the wine you had.)')
+            action('ShowNarration()')
+        elif received == 'input OpenCloset QueensCastle.BackDoor':
+            if global_game_states.scene_one_key:
+                action('Exit(John, QueensCastle.BackDoor, true)')
+                prepare_storage()
+                action('Enter(John, CastleStorage.Door)')
+            else:
+                action('SetNarration(The door is locked!)')
+                action('ShowNarration()')
+        elif received == 'input CheckClosetKeyBag ClosetKeyBag':
+            if global_game_states.queen_death and not global_game_states.scene_one_key:
+                action('Take(John, ClosetKey, ClosetKeyBag)')
+                action('Pocket(John, ClosetKey)')
+                global_game_states.player_inventory.append(['ClosetKey, A mysterious key'])
+                global_game_states.scene_one_key = True
+            else:
+                action('SetNarration(The bag is empty)')
+                action('ShowNarration()')
         else:
             if received.startswith('input Talk'):
                 trigger_death += 1
