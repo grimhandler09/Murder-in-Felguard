@@ -122,7 +122,7 @@ def scene_one_controller():
     action('SetCameraFocus(John)')
     action('EnableInput()')
     trigger_death = 0
-    while(not global_game_states.end_scene_one):
+    while(global_game_states.end_scene_one):
         received = input()
         if received == 'input ReadLedger GuestLedger':
             action("SetNarration(Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie...Noblewoman Celcilia - Wife of Nobleman Jeremy)")

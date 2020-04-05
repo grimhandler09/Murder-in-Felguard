@@ -1,8 +1,11 @@
 from action import action
 from talk_controller import *
 import global_game_states
-import pyautogui
 from talk_controller import wait_for_response   
+
+def add_clue(clue):
+    if clue not in global_game_states.current_clues:
+        global_game_states.current_clues.append(clue)
 
 def display_clues_action():
     if not global_game_states.current_clues == []:
