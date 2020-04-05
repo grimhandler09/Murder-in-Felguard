@@ -69,3 +69,17 @@ def scene_two_and_half_convo(person):
         set_dialog('I heard a rumour last fortnight about a contract killing of the Queen, but I didn\'t believe it until now. [Next | ... Interesting])')
     elif person == 'Gossiping Gail':
         set_dialog('I know everything going on in this town. Go ahead ask me. [Next | I\'d rather not.)')
+        
+def scene_four_convo(person):
+    if person == 'Maester Purcell':
+        set_dialog('Oh! Where am I? Oh that\'s right, the tavern. I really should be going. Who are you again? *The maester gets a glassy look and stares off in the distance* [Next | erm... ok?]')
+    elif person == 'Witch Carlita':
+        set_dialog('That Maester Purcell sure acts like a fool, but he\'s sharp as a tack. Don\'t let him fool you [Next | Thanks for the heads up]')
+    elif person == 'Noble Jeremy':
+        set_dialog('This murder is the most interesting thing to happen in years. Remember back when the Queen\'s Uncle got his leg eaten by that shark? Now that was a story. [Next | ...Fascinating.')
+    elif person == 'Noble Cecilia':
+        set_dialog('Tiana has always been jealous of her sister, I just can\'t imagine she would poison her. [Next | ...]')
+    elif person == 'Merchant Bert':
+        set_dialog('I sold the Alchemist a whole cart-load of ingredients last week, some of them were poisons. If you want to look for clues, I\'d start with the Alchemist shop [Next | Thanks, I\'ll take a look around.]')
+    elif person == 'Chamber Maid Scarlet':
+        set_dialog('*Scarlet sits silently trembling, fumbling for words*')     

@@ -13,6 +13,7 @@ def opening_dialog_two_and_half():
     action('HideNarration()')
     
 def startup():
+    global_game_states.in_city = True
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
     action('HideMenu()')
@@ -23,14 +24,11 @@ def enter_building(door):
     if(door == 'input Enter City.GreenHouseDoor'):
         global_game_states.city_position = 'tavern'
         global_game_states.current_scene = 'scene_four'
-        global_game_states.in_city = False
     elif(door == 'input Enter City.BrownHouseDoor'):
         global_game_states.city_position = 'alchemist'
         global_game_states.current_scene = 'scene_three'
-        global_game_states.in_city = False
 
 def scene_two_and_half_controller(city_position):
-    global_game_states.current_scene = 'scene_two_and_half'
     if (global_game_states.city_position == 'dungeon'):
         action('Enter(John, City.WestEnd, True)')  
         startup()
@@ -40,7 +38,7 @@ def scene_two_and_half_controller(city_position):
     elif(global_game_states.city_position == 'alchemist'):
         action('Enter(John, City.BrownHouseDoor, True)')
         startup()
-    while(global_game_states.in_city):
+    while(global_game_states.current_scene == 'scene_two_and_half'):
         received = input()
         if (received.startswith() == 'input Enter'):
             enter_building(received)

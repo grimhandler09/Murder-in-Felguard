@@ -4,6 +4,8 @@ from scene_two_setup import scene_two_setup
 from scene_two_controller import scene_two_controller
 from CitySetup import CitySetup
 from scene_two_and_half_controller import scene_two_and_half_controller
+#from scene_three_controller import scene_three_controller
+from scene_four_controller import scene_four_controller
 import global_game_states
 
 # Respond to input.
@@ -18,7 +20,14 @@ def main():
             scene_two_controller()
             global_game_states.current_scene = "scene_two_and_half"
             CitySetup()
-            scene_two_and_half_controller()
+            while(global_game_states.accuse == False):
+                if(global_game_states.current_scene == "scene_two_and_half"):
+                    scene_two_and_half_controller(global_game_states.city_position)
+                #elif (global_game_states.current_scene == "scene_three"):
+                    #scene_three_controller()
+                elif(global_game_states.current_scene == "scene_four"):
+                    scene_four_controller()
+                
             
         
     

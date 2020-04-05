@@ -81,6 +81,6 @@ def CitySetup():
     action('EnableIcon(Talk, Talk, Blind Bandit, Talk to Blind Bandit, true)')
     action('EnableIcon(Talk, Talk, Priestess Esmerelda, Talk to Priestess Esmerelda, true)')
     action('EnableIcon(Talk, Talk, Gossiping Gail, Talk to Gossiping Gail, true)')
-    action('EnableIcon(Enter, Open, City.BrownHouseDoor, Enter the Alchemist Shop, true)')
-    action('EnableIcon(Enter, Open , City.GreenHouseDoor, Enter the Tavern, true)')
+    action('EnableIcon(Enter, Exit, City.BrownHouseDoor, Enter the Alchemist Shop, true)')
+    action('EnableIcon(Enter, Exit , City.GreenHouseDoor, Enter the Tavern, true)')
     

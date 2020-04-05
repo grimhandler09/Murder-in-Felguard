@@ -7,3 +7,5 @@ end_scene_one = False
 current_scene = 'scene_one'
 city_position = 'dungeon'
 in_city = False
+accuse = False
+accused = 'John'
