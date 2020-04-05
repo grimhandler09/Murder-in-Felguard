@@ -2,6 +2,7 @@ import pyautogui
 import time
 from action import action
 from master_action_controller import check_master_actions
+from master_action_controller import add_clue
 import global_game_states
 from talk_controller import *
 
@@ -43,8 +44,7 @@ def read_book(book):
     received = ''
     if book == 'PrisonLedger':
         PrisonLedgerClues = 'Talking to the town Alchemist, Queen\'s Servant, or Grand Maester may yield additional evidence'
-        if PrisonLedgerClues not in global_game_states.current_clues:
-            global_game_states.current_clues.append(PrisonLedgerClues)
+        add_clue(PrisonLedgerClues)
         approach(book)
         action('ShowDialog()')
         while received != 'input Selected Exit':
