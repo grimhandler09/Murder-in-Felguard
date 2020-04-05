@@ -8,8 +8,10 @@ acquired_CellDoorKey = True
 #scene_three_clues = []
 current_clues = []
 
+
+
 queen_death = False
 end_scene_one = False
 current_scene = 'scene_one'
-
+scene_one_key = False
 
