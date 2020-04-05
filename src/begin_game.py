@@ -120,8 +120,8 @@ def begin_game_setup():
     action('EnableEffect(QueensCastle.Fireplace, Campfire)')
 
     #Starting Inventory
-    action('CreateItem(Party Invitation, OpenScroll)')
-    action('EnableIcon(ReadInvitation, Book, Party Invitation, Read, true)')
+    action('CreateItem(Party_Invitation, OpenScroll)')
+    action('EnableIcon(ReadInvitation, Book, Party_Invitation, Read, true)')
 
 
     action('ShowMenu()')

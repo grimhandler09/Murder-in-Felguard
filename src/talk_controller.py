@@ -6,7 +6,7 @@ def set_left_right(left, right):
 
 def set_dialog(dialog, responses=['Next'], show=False):
     action('ClearDialog()')
-    action("SetDialog(\""+dialog+"\")")
+    action('SetDialog(\"'+dialog+'\")')
     if show:
         action('ShowDialog()')
     return wait_for_response(responses)
@@ -65,4 +65,5 @@ def scene_one_postdeath(person):
 
 def scene_two_convo(person):
     if person == 'Guard':
-        set_dialog('SetDialog(Don\'t you dare speak to me [Next | Fine])')
+        set_dialog('Wait, how did you open the cell... [Next | I need to escape, for the King (Attack)]', ['Next'], True)
+        action('HideDialog()')
