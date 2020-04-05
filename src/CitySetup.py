@@ -9,26 +9,26 @@ def CitySetup():
     
     #Create City Characters
     #Beggar Adeline
-    action('CreateCharacter(Beggar Adeline, f, 70')
+    action('CreateCharacter(Beggar Adeline, G')
     action('SetClothing(Beggar Adeline, Beggar)')
     action('SetHairStyle(Beggar Adeline, Long)')
     action('SetPosition(Beggar Adeline, City.Fountain)')
     
     #Beggar Miles
-    action('CreateCharacter(Begger Miles, m, 70')
+    action('CreateCharacter(Begger Miles, H')
     action('SetClothing(Beggar Miles, Beggar')
     action('SetHairStyle(Beggar Miles, Mage)')
     action('SetPosition(Beggar Miles, City.Bench)')
     action('Sit(Beggar Miles, City.Bench')
     
     #Alchemist Jeremy
-    action('CreateCharacter(Alchemist Jeremy, m, 40)')
+    action('CreateCharacter(Alchemist Jeremy, F)')
     action('SetClothing(Alchemist Jeremy, Merchant')
     action('SetHairStyle(Alchemist Jeremy, Spiky')
     action('SetPosition(Alchemist Jeremy, City.BrownHouseDoor')
     
     #Scout Joanna
-    action('CreateCharacter(Scout Joanna, f, 25)')
+    action('CreateCharacter(Scout Joanna, C)')
     action('SetClothing(Scout Joanna, LightArmour)')
     action('SetHairStyle(Scout Joanna, Ponytail)')
     action('SetPosition(Scout Joanna, NorthEnd)')
@@ -36,7 +36,7 @@ def CitySetup():
     action('SetPosition(JoannaTorch, Scout Joanna)')
     
     #Scout Tom
-    action('CreateCharacter(Scout Tom, m, 25)')
+    action('CreateCharacter(Scout Tom, D)')
     action('SetClothing(Scout Tom, LightArmour)')
     action('SetHairStyle(Scout Tom, Short)')
     action('SetPosition(Scout Tom, WestEnd)')
@@ -44,7 +44,7 @@ def CitySetup():
     action('SetPosition(TomTorch, Scout Joanna)')
     
     #Drunk Devon
-    action('CreateCharacter(Drunk Devon, m, 40)')
+    action('CreateCharacter(Drunk Devon, F)')
     action('SetClothing(Drunk Devon, Peasant)')
     action('SetHairStyle(Drunk Devon, Musketeer)')
     action('SetPosition(Drunk Devon, City.GreenHouseDoor)')
@@ -52,7 +52,7 @@ def CitySetup():
     action('SetPosition(DevonsBottle, Drunk Devon)')
     
     #Priestess Esmerelda
-    action('CreateCharacter(Priestess Esmerelda, f, 40)')
+    action('CreateCharacter(Priestess Esmerelda, E)')
     action('SetClothing(Priestess Esmerelda, Priest)')
     action('SetHairStyle(Priestess Esmerelda, Bun)')
     action('SetPosition(Priestess Esmerelda, RedHouseDoor)')
@@ -60,13 +60,13 @@ def CitySetup():
     action('SetPosition(EsmereldaBook, Priestess Esmerelda)')
     
     #Blind Bandit
-    action('CreateCharacter(Blind Bandit, f, 25)')
+    action('CreateCharacter(Blind Bandit, C)')
     action('SetClothing(Blind Band, Bandit)')
     action('SetHairStyle(Blind Bandit, Long)')
     action('SetPosition(Blind Bandit, Alley)')
     
     #Gossiping Gail
-    action('CreateCharacter(Gossiping Gail, f, 16)')
+    action('CreateCharacter(Gossiping Gail, A)')
     action('SetClothing(Gossiping Gail, Peasant)')
     action('SetHairStyle(Gossiping Gail, Spiky)')
     action('SetPosition(Gossiping Gail, City.BlueHouseDoor)')
@@ -83,5 +83,4 @@ def CitySetup():
     action('EnableIcon(Talk, Talk, Gossiping Gail, Talk to Gossiping Gail, true)')
     action('EnableIcon(Enter, Open, City.BrownHouseDoor, Enter the Alchemist Shop, true)')
     action('EnableIcon(Enter, Open , City.GreenHouseDoor, Enter the Tavern, true)')
-    action('EnableIcon(Enter, Open, City.WestEnd, Enter the Dungeon, true)')
     

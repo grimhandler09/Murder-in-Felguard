@@ -2,6 +2,8 @@ from begin_game import begin_game_setup
 from scene_one_controller import scene_one_controller
 from scene_two_setup import scene_two_setup
 from scene_two_controller import scene_two_controller
+from CitySetup import CitySetup
+from scene_two_and_half_controller import scene_two_and_half_controller
 import global_game_states
 
 # Respond to input.
@@ -14,6 +16,10 @@ def main():
             global_game_states.current_scene = "scene_two"
             scene_two_setup()
             scene_two_controller()
+            global_game_states.current_scene = "scene_two_and_half"
+            CitySetup()
+            scene_two_and_half_controller()
+            
         
     
 main() #COMMENT OUT WHEN TESTING
