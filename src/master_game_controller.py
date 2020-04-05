@@ -27,9 +27,6 @@ def main():
                     #scene_three_controller()
                 elif(global_game_states.current_scene == "scene_four"):
                     scene_four_controller()
-                
-            
-        
     
 main() #COMMENT OUT WHEN TESTING
 
