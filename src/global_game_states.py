@@ -15,3 +15,8 @@ end_scene_one = False
 current_scene = 'scene_one'
 scene_one_key = False
 
+#already exist in clue system but still needed for Alchemist convo
+found_poison_purchase = False #Evidence for buyer of poison
+found_poison = False #Evidence for alchemist
+identified_poison = False #used as a step for found_potion
+

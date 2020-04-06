@@ -1,4 +1,5 @@
 from action import action
+import global_game_states
 
 def set_left_right(left, right):
     action('SetLeft('+left+')')
@@ -67,3 +68,38 @@ def scene_two_convo(person):
     if person == 'Guard':
         set_dialog('Wait, how did you open the cell... [Next | I need to escape, for the King (Attack)]', ['Next'], True)
         action('HideDialog()')
+
+def scene_three_convo(person):
+    pr = 'input Selected Menu'
+    while(pr != 'input Selected Done' and person == 'Alchemist Henry'):
+	#if pr == 'input Selected Menu' and found_poison_purchase == False and found_poison == False and identified_poison == False:
+	    pr = set_dialog('Welcome! Feel free to look around. [Done | Thanks]')
+	elif pr == 'input Selected Menu' and found_poison_purchase == True and found_poison == False and identified_poison == False:
+	    pr = set_dialog('Find anything you like? [Purchase | Who is Tianna?] [Done | Still looking around]')
+	elif pr == 'input Selected Menu' and found_poison_purchase == False and found_poison == True and identified_poison == False:
+	    pr = set_dialog('Need help with anything else? [Free | Are you sure I can have this?] [Done | No, thanks]')
+	elif pr == 'input Selected Menu' and found_poison_purchase == True and found_poison == True and identified_poison == False:
+	    pr = set_dialog('Need help with anything else? [Purchase | Who is Tianna?] [Free | Are you sure I can have this?] [Done | No, thanks]')
+	elif pr == 'input Selected Menu' and found_poison_purchase == False and found_poison == False and identified_poison == True:
+	    pr = set_dialog('Find anything you like? [About | Actually...] [Done | Still looking around]')
+	elif pr == 'input Selected Menu' and found_poison_purchase == True and found_poison == False and identified_poison == True:
+	    pr = set_dialog('Find anything you like? [Purchase | Who is Tianna?] [About | Actually...] [Done | Still looking around]')
+	elif pr == 'input Selected Menu' and found_poison_purchase == False and found_poison == True and identified_poison == True:
+	    pr = set_dialog('Need help with anything else? [Free | Are you sure I can have this?] [About | Actually...] [Done | No, thanks]')
+	elif pr == 'input Selected Menu' and found_poison_purchase == True and found_poison == True and identified_poison == True:
+	    pr = set_dialog('Need help with anything else? [Purchase | Who is Tianna?] [Free | Are you sure I can have this?] [About | Actually...] [Done | No, thanks]
+
+	elif pr == 'input Selected Purchase':
+	    pr = set_dialog('Oh, Tianna? She's the Queen's sister. She recently bought some giant rat poison to help clear the sewers. [Menu | Thanks]')
+	elif pr == 'input Selected Free':
+	    pr = set_dialog('If you\'re investigating for the king, take it! Quick, before I change my mind! [Menu | Okay...]')
+	elif pr == 'input Selected About' and found_poison == False
+	    pr = set_dialog('Oh, the giant rat poison? I usually don't sell it to civilians. [About2 | The king asked me]')
+	elif pr == 'input Selected About' and found_poison == True
+	    pr = set_dialog('The giant rat poison? Didn't you already grab it? [Menu | Yeah...]')
+	elif pr == 'input Selected About2'
+	    pr = set_dialog('You\'re investigating for the king? Take the display bottle. It's the one with a skull and crossbones. [Menu | Thanks]')
+	    action(EnableIcon('TakeLeft, hand, Poison, false)')
+	    add_clue('Found Poison')
+	    found_poison = True
+
