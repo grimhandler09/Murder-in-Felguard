@@ -1,12 +1,10 @@
 import time
 from action import action
-from master_action_controller import check_master_actions
+from master_action_controller import check_master_actions, scene_start
 import global_game_states
-from threading import Timer
 from talk_controller import *
 
 def opening_cutscene():
-    action('FadeOut()')
     action('SetCameraFocus(QueensCastle.DiningTable)')
     action('HideMenu()')
     action('EnableInput()')
@@ -69,8 +67,8 @@ def death_cutscene():
     action('EnableIcon(OpenCloset, Door, QueensCastle.BackDoor, Open Door, true)')
     action('DisableIcon(Talk, Witch Carlita)')
     action('DisableIcon(Talk, Guard Gallant)')
-    action('Kneel(King Phillip)')
     action('SetCameraFocus(QueensCastle.Door)')
+    action('Kneel(King Phillip)')
     action('WalkToSpot(Guard Gallant, 305.8, 0.1, -2.3)')
     action('Face(Guard Gallant, Queen Margerie)')
     action('SetCameraMode(follow)')
@@ -99,7 +97,8 @@ def arrest_cutscene():
     set_left_right('Guard Tom', 'null')
     set_dialog('Get him! [Next | Next]', ['Next'], True)
     action('HideDialog()')
-    global_game_states.end_scene_one = True
+    global_game_states.current_scene = 'scene_two'
+    global_game_states.prev_scene = 'scene_one'
 
 def prepare_storage():
     action('CreatePlace(CastleStorage, Storage)')
@@ -116,13 +115,11 @@ def prepare_storage():
     action('EnableIcon(ExitStorage, Door, CastleStorage.Door, Exit, true)')
 
 
-def scene_one_controller():
-    #opening_cutscene()
-    action('HideMenu()')
-    action('SetCameraFocus(John)')
-    action('EnableInput()')
+def castle_controller():
+    scene_start()
+    opening_cutscene()
     trigger_death = 0
-    while(global_game_states.end_scene_one):
+    while(global_game_states.current_scene == 'scene_one'):
         received = input()
         if received == 'input ReadLedger GuestLedger':
             action("SetNarration(Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie...Noblewoman Celcilia - Wife of Nobleman Jeremy)")
@@ -146,7 +143,9 @@ def scene_one_controller():
             if global_game_states.queen_death and not global_game_states.scene_one_key:
                 action('Take(John, ClosetKey, ClosetKeyBag)')
                 action('Pocket(John, ClosetKey)')
-                global_game_states.player_inventory.append(['ClosetKey, A mysterious key'])
+                action('SetNarration(You find a key in the bag!)')
+                action('ShowNarration()')
+                global_game_states.player_inventory.append(['ClosetKey', 'A mysterious key'])
                 global_game_states.scene_one_key = True
             else:
                 action('SetNarration(The bag is empty)')

@@ -2,7 +2,8 @@ from action import action
 import global_game_states
 import time
 
-def scene_two_setup():
+def dungeon_setup():
+
     action('FadeOut()')
 
     #Create the Prison that John will be thrown into

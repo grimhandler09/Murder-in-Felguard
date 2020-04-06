@@ -1,7 +1,12 @@
 from action import action
 from talk_controller import *
 import global_game_states
-from talk_controller import wait_for_response   
+
+def scene_start():
+    action('HideMenu()')
+    action('SetCameraFocus(John)')
+    action('SetCameraMode(follow)')
+    action('EnableInput()')
 
 def add_clue(clue):
     if clue not in global_game_states.current_clues:
@@ -35,6 +40,10 @@ def talk_action(person):
         scene_one_postdeath(person)
     elif global_game_states.current_scene == 'scene_two':
         scene_two_convo(person)
+    elif global_game_states.current_scene == 'scene_two_and_half':
+        scene_two_and_half_convo(person)
+    elif global_game_states.current_scene == 'scene_four':
+        scene_four_convo()
     action('HideDialog()')
 
 def remove_item(item):
@@ -109,9 +118,9 @@ def check_master_actions(received):
         stow_leftitem_action(item)
     elif received == "input Key Inventory":
         action('ClearList()')
+        action('HideList()')
         for item in global_game_states.player_inventory:
             action('AddToList(' + item[0] + ', ' + item[1] + ')')
         action('ShowList(John)')
     elif received == 'input Key Interact':
         display_clues_action()
-        
