@@ -7,7 +7,6 @@ def begin_game_setup():
     
     #Set at Night
     action('SetNight()')
-    
     #Create Characters
     #Main Character(John)
     action('CreateCharacter(John, B)')
@@ -66,6 +65,8 @@ def begin_game_setup():
     action('CreateCharacter(Chamber Maid Scarlet, E)')
     action('SetClothing(Chamber Maid Scarlet, Peasant)')
     action('SetPosition(Chamber Maid Scarlet, QueensCastle.BackDoor)')
+    action('WalkToSpot(Chamber Maid Scarlet, 310.6, 0.1, -1.7)')
+    action('Face(Chamber Maid Scarlet, QueensCastle.DiningTable)')
     action('SetHairStyle(Chamber Maid Scarlet, Ponytail)')
     action('SetHairColor(Chamber Maid Scarlet, Brown)')
     action('Face(Chamber Maid Scarlet, QueensCastle.DiningTable)')
@@ -99,7 +100,10 @@ def begin_game_setup():
     action('CreateItem(CeciliasCup, GoldCup)')
     action('SetPosition(CeciliasCup, QueensCastle.DiningTable.FrontLeft)')
     action('CreateItem(GuestLedger, GreenBook)')
-    action('SetPosition(GuestLedger, QueensCastle.Shelf)')
+    action('SetPosition(GuestLedger, QueensCastle.Table)')
+    action('CreateItem(ClosetKeyBag, Bag)')
+    action('SetPosition(ClosetKeyBag, QueensCastle.Shelf)')
+    action('CreateItem(ClosetKey, GreenKey)')
     
     #Enable Icons
     action('EnableIcon(Sit, Chair, QueensCastle.BackRightChair, Sit, true)')
@@ -110,13 +114,15 @@ def begin_game_setup():
     action('EnableIcon(Talk, Talk, Tiana, Talk to Tiana, true)')
     action('EnableIcon(Talk, Talk, King Phillip, Talk to the King Phillip, true)')
     action('EnableIcon(ReadLedger, Research, GuestLedger, Read, true)')
+    action('EnableIcon(CheckClosetKeyBag, Magnifyingglass, ClosetKeyBag, Inspect, true)')
 
     #EnableEffects
     action('EnableEffect(QueensCastle.Fireplace, Campfire)')
 
     #Starting Inventory
-    action('CreateItem(Party Invitation, OpenScroll)')
-    action('EnableIcon(ReadInvitation, Book, Party Invitation, Read, true)')
+    action('CreateItem(Party_Invitation, OpenScroll)')
+    action('EnableIcon(ReadInvitation, Book, Party_Invitation, Read, true)')
+
 
     #Start in black
     action('FadeOut()')

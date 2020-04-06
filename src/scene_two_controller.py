@@ -1,3 +1,4 @@
+import pyautogui
 import time
 from action import action
 from master_action_controller import check_master_actions
@@ -22,7 +23,7 @@ def look_inside_nonfurniture_action(container):
 def look_inside_furniture_action(container):
     approach(container)
     action('OpenFurniture(John, ' + container + ')')
-    inventory(global_game_states.dungeon_chest_inventory, container)
+    inventory(global_game_states.chest_inventory, container)
     action('CloseFurniture(John, ' + container + ')')
 
 def use_PrisonDoor_action(door):
@@ -66,8 +67,7 @@ def read_book(book):
 def leave_action(exit_door):
     action('Exit(John, ' + exit_door + ', true)')
     global_game_states.current_scene = 'scene_two_and_half'
-    global_game_states.prev_scene = 'scene_two'
-    
+
 def opening_dialog_two():
     action('DisableInput()')
     action('SetCameraFocus(John)')
@@ -83,7 +83,7 @@ def opening_dialog_two():
 
     action('HideDialog()')
 
-def dungeon_controller():
+def scene_two_controller():
     opening_dialog_two()
     #action('SetCameraFocus(John)')
     #action('SetCameraMode(follow)')

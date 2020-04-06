@@ -3,6 +3,7 @@ import global_game_states
 import time
 
 def dungeon_setup():
+
     action('FadeOut()')
 
     #Create the Prison that John will be thrown into
