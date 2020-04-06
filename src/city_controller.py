@@ -6,37 +6,37 @@ import global_game_states
 from talk_controller import *
 
 def determine_entry():
-    if (global_game_states.prev_scene == 'scene__two'):
+    if global_game_states.prev_scene == 'scene_two':
         action('Enter(John, City.WestEnd, True)')
-    elif(global_game_states.prev_scene == 'scene_three'):
+    elif global_game_states.prev_scene == 'scene_three':
         action('Enter(John, City.BrownHouseDoor, True)')
-    elif(global_game_states.prev_scene == 'scene_four'):
+    elif global_game_states.prev_scene == 'scene_four':
         action('Enter(John, City.GreenHouseDoor, True)')
 
-def opening_dialog_two_and_half():
+def opening_dialog():
     time.sleep(1)
     action('SetNarration(John must explore the city to solve the Queen\'s Murder.)')
     action('ShowNarration()')
 
 def enter_building(door):
-    if(door == 'City.GreenHouseDoor'):
-        global_game_states.city_position = 'scene_two_and_half'
+    if door == 'City.GreenHouseDoor':
+        global_game_states.prev_scene = 'scene_two_and_half'
         global_game_states.current_scene = 'scene_four'
-    elif(door == 'City.BrownHouseDoor'):
+    elif door == 'City.BrownHouseDoor':
         global_game_states.prev_scene = 'scene_two_and_half'
         global_game_states.current_scene = 'scene_three'
     action('Exit(John, ' + door + ', True)')
 
-def city_controller(city_position):
+def city_controller():
     scene_start()
-    if global_game_states.first_town_entry:
+    if global_game_states.first_city_entry:
         city_setup()
-        opening_dialog_two_and_half()
-        global_game_states.first_town_entry = False
+        opening_dialog()
+        global_game_states.first_city_entry = False
     determine_entry()
-    while(global_game_states.current_scene == 'scene_two_and_half'):
+    while global_game_states.current_scene == 'scene_two_and_half':
         received = input()
-        if (received.startswith() == 'input Enter'):
+        if received.startswith('input Enter'):
             door = received[12:]
             enter_building(door)
         else:

@@ -2,6 +2,12 @@ from action import action
 from talk_controller import *
 import global_game_states
 
+def scene_start():
+    action('HideMenu()')
+    action('SetCameraFocus(John)')
+    action('SetCameraMode(follow)')
+    action('EnableInput()')
+
 def add_clue(clue):
     if clue not in global_game_states.current_clues:
         global_game_states.current_clues.append(clue)
@@ -112,6 +118,7 @@ def check_master_actions(received):
         stow_leftitem_action(item)
     elif received == "input Key Inventory":
         action('ClearList()')
+        action('HideList()')
         for item in global_game_states.player_inventory:
             action('AddToList(' + item[0] + ', ' + item[1] + ')')
         action('ShowList(John)')

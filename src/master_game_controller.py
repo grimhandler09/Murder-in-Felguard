@@ -12,11 +12,11 @@ import global_game_states
 # Respond to input.
 def main():
     begin_game_setup()
-    while(True):
+    while True:
         received = input()
-        if(received == 'input Selected Start'):
-            castle_controller()
-            while(not global_game_states.accused == ''):
+        if received == 'input Selected Start':
+            #castle_controller()
+            while global_game_states.accused == '':
                 if global_game_states.current_scene == 'scene_two':
                     dungeon_setup()
                     dungeon_controller()

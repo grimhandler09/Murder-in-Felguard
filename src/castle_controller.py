@@ -67,8 +67,8 @@ def death_cutscene():
     action('EnableIcon(OpenCloset, Door, QueensCastle.BackDoor, Open Door, true)')
     action('DisableIcon(Talk, Witch Carlita)')
     action('DisableIcon(Talk, Guard Gallant)')
-    action('Kneel(King Phillip)')
     action('SetCameraFocus(QueensCastle.Door)')
+    action('Kneel(King Phillip)')
     action('WalkToSpot(Guard Gallant, 305.8, 0.1, -2.3)')
     action('Face(Guard Gallant, Queen Margerie)')
     action('SetCameraMode(follow)')
@@ -143,7 +143,9 @@ def castle_controller():
             if global_game_states.queen_death and not global_game_states.scene_one_key:
                 action('Take(John, ClosetKey, ClosetKeyBag)')
                 action('Pocket(John, ClosetKey)')
-                global_game_states.player_inventory.append(['ClosetKey, A mysterious key'])
+                action('SetNarration(You find a key in the bag!)')
+                action('ShowNarration()')
+                global_game_states.player_inventory.append(['ClosetKey', 'A mysterious key'])
                 global_game_states.scene_one_key = True
             else:
                 action('SetNarration(The bag is empty)')

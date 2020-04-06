@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from action import action
 
 def set_left_right(left, right):

@@ -9,13 +9,13 @@ def city_setup():
     
     #Create City Characters
     #Beggar Adeline
-    action('CreateCharacter(Beggar Adeline, G')
+    action('CreateCharacter(Beggar Adeline, G)')
     action('SetClothing(Beggar Adeline, Beggar)')
     action('SetHairStyle(Beggar Adeline, Long)')
     action('SetPosition(Beggar Adeline, City.Fountain)')
     
     #Beggar Miles
-    action('CreateCharacter(Begger Miles, H')
+    action('CreateCharacter(Beggar Miles, H)')
     action('SetClothing(Beggar Miles, Beggar)')
     action('SetHairStyle(Beggar Miles, Mage)')
     action('SetPosition(Beggar Miles, City.Bench)')
@@ -31,7 +31,7 @@ def city_setup():
     action('CreateCharacter(Scout Joanna, C)')
     action('SetClothing(Scout Joanna, LightArmour)')
     action('SetHairStyle(Scout Joanna, Ponytail)')
-    action('SetPosition(Scout Joanna, NorthEnd)')
+    action('SetPosition(Scout Joanna, City.NorthEnd)')
     action('CreateItem(JoannaTorch, Torch)')
     action('SetPosition(JoannaTorch, Scout Joanna)')
     
@@ -39,7 +39,7 @@ def city_setup():
     action('CreateCharacter(Scout Tom, D)')
     action('SetClothing(Scout Tom, LightArmour)')
     action('SetHairStyle(Scout Tom, Short)')
-    action('SetPosition(Scout Tom, WestEnd)')
+    action('SetPosition(Scout Tom, City.WestEnd)')
     action('CreateItem(TomTorch, Torch)')
     action('SetPosition(TomTorch, Scout Joanna)')
     
@@ -54,16 +54,16 @@ def city_setup():
     #Priestess Esmerelda
     action('CreateCharacter(Priestess Esmerelda, E)')
     action('SetClothing(Priestess Esmerelda, Priest)')
-    action('SetHairStyle(Priestess Esmerelda, Bun)')
-    action('SetPosition(Priestess Esmerelda, RedHouseDoor)')
+    action('SetHairStyle(Priestess Esmerelda, Short)')
+    action('SetPosition(Priestess Esmerelda, City.RedHouseDoor)')
     action('CreateItem(EsmereldaBook, RedBook)')
     action('SetPosition(EsmereldaBook, Priestess Esmerelda)')
     
     #Blind Bandit
     action('CreateCharacter(Blind Bandit, C)')
-    action('SetClothing(Blind Band, Bandit)')
+    action('SetClothing(Blind Bandit, Bandit)')
     action('SetHairStyle(Blind Bandit, Long)')
-    action('SetPosition(Blind Bandit, Alley)')
+    action('SetPosition(Blind Bandit, City.Alley)')
     
     #Gossiping Gail
     action('CreateCharacter(Gossiping Gail, A)')
