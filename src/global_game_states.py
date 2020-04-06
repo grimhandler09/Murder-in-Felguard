@@ -1,10 +1,26 @@
-player_inventory = [['Party Invitation', 'Party Invitation']]
-chest_inventory = [['Party Invitation', 'Party Invitation']]
-dirtpile_inventory = [['PlayerSword', 'PlayerSword'], ['CellDoorKey', 'CellDoorKey']]
-
-queen_death = False
-end_scene_one = False
+#Global
 current_scene = 'scene_one'
-city_position = 'dungeon'
-accuse = False
+prev_scene = ''
 accused = 'John'
+player_inventory = [['Party Invitation', 'Party Invitation']]
+
+#Castle
+queen_death = False
+
+#Dungeon
+first_town_entry = True
+dirtpile_inventory = [['PlayerSword', 'PlayerSword'], ['CellDoorKey', 'CellDoorKey']]
+dungeon_chest_inventory = [['Party Invitation', 'Party Invitation']]
+
+#City
+
+#Alchemy Shop
+
+#Tavern
+first_tavern_entry = True
+
+
+
+
+
+

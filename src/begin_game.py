@@ -7,6 +7,7 @@ def begin_game_setup():
     
     #Set at Night
     action('SetNight()')
+    
     #Create Characters
     #Main Character(John)
     action('CreateCharacter(John, B)')
@@ -117,5 +118,8 @@ def begin_game_setup():
     action('CreateItem(Party Invitation, OpenScroll)')
     action('EnableIcon(ReadInvitation, Book, Party Invitation, Read, true)')
 
+    #Start in black
+    action('FadeOut()')
 
+    #Show the menu
     action('ShowMenu()')

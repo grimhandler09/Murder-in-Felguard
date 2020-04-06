@@ -1,8 +1,13 @@
 from action import action
 from talk_controller import *
 import global_game_states
-import pyautogui
 from talk_controller import wait_for_response   
+
+def scene_start():
+    action('SetCameraFocus(John)')  
+    action('SetCameraMode(follow)')
+    action('HideMenu()')
+    action('EnableInput()')
 
 def display_clues_action():
     if not global_game_states.current_clues == []:
