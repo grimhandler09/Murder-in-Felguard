@@ -1,7 +1,6 @@
 from action import action
 from talk_controller import *
-import global_game_states
-from talk_controller import wait_for_response   
+import global_game_states 
 
 def add_clue(clue):
     if clue not in global_game_states.current_clues:
@@ -35,6 +34,8 @@ def talk_action(person):
         scene_one_postdeath(person)
     elif global_game_states.current_scene == 'scene_two':
         scene_two_convo(person)
+    elif global_game_states.current_scene == 'scene_three':
+        scene_three_convo(person)
     action('HideDialog()')
 
 def remove_item(item):

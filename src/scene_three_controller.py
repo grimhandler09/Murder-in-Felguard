@@ -1,7 +1,7 @@
 import pyautogui
 import time
 from action import action
-from master_action_controller import check_master_actions
+from master_action_controller import *
 import global_game_states
 from threading import Timer
 from talk_controller import *
@@ -15,6 +15,8 @@ def inspect_item(item):
 		action('ShowNarration()')
 	elif item == 'BluePotion2':
 		#BluePotion2 = aqua fortis
+		action('SetNarration(The label reads - Aqua Fortis)')
+		action('ShowNarration()')
 	elif item == 'GreenPotion1':
 		#GreenPotion1 = Strength Potion
 		action('SetNarration(The label reads - Strength Potion)')
@@ -33,6 +35,8 @@ def inspect_item(item):
 		action("ShowNarration()")
 	elif item == 'PurplePotion1':
 		#PurplePotion1 = Withering Potion
+		action('SetNarration(The label reads - Withering Potion)')
+		action('ShowNarration()')
 	elif item == 'RedPotion1':
 		#RedPotion1 = Health Potion
 		action('SetNarration(The label reads - Health Potion)')
@@ -64,7 +68,7 @@ def inspect_item(item):
 			elif pr == 'input Selected Green2':
 				pr = set_dialog('Speed Potion: Run faster than a horse! [Second | Back]')
 			elif pr == 'input Selected Green3':
-				pr = set_dialog('Night Vision Potion: See at night like it's day! Warning: looking at bright lights amy cause blindness. [Second | Back]')
+				pr = set_dialog('Night Vision Potion: See at night like it\'s day! Warning: looking at bright lights any cause blindness. [Second | Back]')
 		#Purple Potions
 			elif pr == 'input Selected Third':
 				pr = set_dialog('We offer two purple potions: Giant Rat Poison and Withering Potions. [Purple1 | Giant Rat Poison] [Purple2 | Withering Potion] [Menu | Back]')
@@ -77,7 +81,7 @@ def inspect_item(item):
 			elif pr == 'input Selected Fourth':
 				pr = set_dialog('We offer two red potions: Health Potions and Food Potions. [Red1 | Health Potion] [Red2 | Food Potion] [Menu | Back]
 			elif pr == 'input Selected Red1':
-				pr = set_dialog('Health Potion: it's the best health pot around! [Fourth | Back]')
+				pr = set_dialog('Health Potion: it\'s the best health pot around! [Fourth | Back]')
 			elif pr == 'input Selected Red2':
 				pr = set_dialog('Food Potion: Add to food to make it fantastic! [Fourth | Back]')
 
@@ -91,7 +95,7 @@ def inspect_item(item):
 			if pr == 'input Selected Menu':
 				pr = set_dialog('There is a book sticking out of the bookcase. Which part do you want to read? [First | First Page] [Second | Second Page] [Third | Third Page] [Next | Put it back]')
 			elif pr == 'input Selected First':
-				pr = set_dialog(12x Speed Potion - Gossiping Gail. 1x Aqua Fortis - Priestess Esmerelda. [Menu | Back]')
+				pr = set_dialog('12x Speed Potion - Gossiping Gail. 1x Aqua Fortis - Priestess Esmerelda. [Menu | Back]')
 			elif pr == 'input Selected Second':
 				pr = set_dialog('2x Food Potion - Castle Chefs. 5x Withering Potion - Scout Joanna. 1x Night Vision Potion - Blind Bandit. [Menu | Back]')
 			elif pr == 'input Selected Third':
