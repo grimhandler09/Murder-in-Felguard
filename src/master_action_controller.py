@@ -1,11 +1,5 @@
 from action import action
-from talk_controller import set_left_right
-from talk_controller import set_dialog
-from talk_controller import wait_for_response
-from talk_controller import scene_one_predeath
-from talk_controller import scene_one_postdeath
-from talk_controller import scene_two_convo
-#from talk_controller import scene_three_convo
+from talk_controller import *
 import global_game_states
 
 def scene_start():
@@ -48,8 +42,10 @@ def talk_action(person):
         scene_two_convo(person)
     elif global_game_states.current_scene == 'scene_two_and_half':
         scene_two_and_half_convo(person)
+    elif global_game_states.current_scene == 'scene_three':
+        scene_four_convo(person)
     elif global_game_states.current_scene == 'scene_four':
-        scene_four_convo()
+        scene_four_convo(person)
     action('HideDialog()')
 
 def remove_item(item):

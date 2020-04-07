@@ -1,6 +1,6 @@
 from action import action
 
-def scene_three_setup():
+def alchemist_shop_setup():
 	action('CreatePlace(Alch, AlchemyShop)')
 	action('SetPosition(John, Alch.Door)')
 

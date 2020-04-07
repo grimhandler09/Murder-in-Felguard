@@ -34,6 +34,7 @@ def city_controller():
         opening_dialog()
         global_game_states.first_city_entry = False
     determine_entry()
+    action('FadeIn')
     while global_game_states.current_scene == 'scene_two_and_half':
         received = input()
         if received.startswith('input Enter'):

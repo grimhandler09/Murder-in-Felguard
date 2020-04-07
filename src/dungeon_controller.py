@@ -63,8 +63,8 @@ def read_book(book):
 
 def leave_action(exit_door):
     action('Exit(John, ' + exit_door + ', true)')
-    global_game_states.current_scene = 'scene_two_and_half'
-    global_game_states.prev_scene = 'scene_two'
+    global_game_states.current_scene = 'scene_four'
+    global_game_states.prev_scene = 'scene_two_and_half'
 
 def opening_dialog_two():
     action('DisableInput()')
@@ -84,7 +84,7 @@ def opening_dialog_two():
 def dungeon_controller():
     scene_start()
     opening_dialog_two()
-    #action('EnableInput()')
+    action('EnableInput()')
     while(global_game_states.current_scene == 'scene_two'):
         received = input()
         if received.startswith('input Look_in'):

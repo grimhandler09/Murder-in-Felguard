@@ -22,7 +22,7 @@ first_tavern_entry = True
 #scene_four_clues = []
 
 #Global
-current_scene = 'scene_two' #Change back to scene_one
+current_scene = 'scene_one'
 prev_scene = ''
 accused = ''
 player_inventory = [['Party_Invitation', 'Party_Invitation']]

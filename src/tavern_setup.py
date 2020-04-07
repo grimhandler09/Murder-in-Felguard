@@ -3,8 +3,8 @@ from action import action
 def tavern_setup():
     action('CreatePlace("Tavern", Tavern)')
     #Set at Night
-    action('SetNight()')
-    action('SetPosition(John, Tavern.Door)')
+    #action('SetNight()')
+    #action('SetPosition(John, Tavern.Door)')
     #Witch Carlita
     action('SetPosition(Witch Carlita, Tavern.BackDoor)')
     #Noble Jeremy

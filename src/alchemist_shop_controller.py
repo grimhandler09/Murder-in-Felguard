@@ -103,7 +103,7 @@ def inspect_item(item):
 		action('SetNarration(The cauldron is bubbling happily.)')
 		action('ShowNarration()')
 
-def scene_three_controller():
+def alchemist_shop_controller():
 	action('FadeIn()')
 	action('SetCameraFocus(John)')
 	action('SetCameraMode(follow)')
