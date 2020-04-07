@@ -52,7 +52,7 @@ def read_book(book):
             '[AlchemistInfo | Read about the Alchemist] [Queen\'sServantInfo | Read about the Queen\'s personal servant] [GrandMa' +
             'esterInfo | Read about the Grand Maester] [Exit | Stop reading]', ['AlchemistInfo', 'Queen\'sServantInfo', 'GrandMaesterInfo', 'Exit'])
             if received == 'input Selected AlchemistInfo':
-                received = set_dialog('A local Alchemist in town confirmed the type of poison used to kill the Queen. [Next | Next]')
+                received = set_dialog('The wine has been sent to the local alchemist for inspection. [Next | Next]')
             elif received == 'input Selected Queen\'sServantInfo':
                 received = set_dialog('The Queen\'s servant claims she saw the suspect put something in the Queen\'s drink. [Next | Next]')
             elif received == 'input Selected GrandMaesterInfo':
@@ -66,7 +66,8 @@ def read_book(book):
 
 def leave_action(exit_door):
     action('Exit(John, ' + exit_door + ', true)')
-    global_game_states.current_scene = 'scene_two_and_half'
+    global_game_states.current_scene = 'scene_three'#two_and_half'
+    global_game_states.previous_scene = 'scene_two'
 
 def opening_dialog_two():
     action('DisableInput()')
@@ -74,7 +75,7 @@ def opening_dialog_two():
     action('SetCameraMode(follow)')
     action('SetNarration(John has been arrested by the Queen\'s guards.)')
     action('ShowNarration()')
-    input()#wait_for_response('Next')
+    input()
     action('HideNarration()')
     action('FadeIn()')
     set_left_right('Guard', 'John')
@@ -85,8 +86,6 @@ def opening_dialog_two():
 
 def scene_two_controller():
     opening_dialog_two()
-    #action('SetCameraFocus(John)')
-    #action('SetCameraMode(follow)')
     action('EnableInput()')
     while(global_game_states.current_scene == 'scene_two'):
         received = input()

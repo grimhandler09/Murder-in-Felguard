@@ -1,5 +1,11 @@
 from action import action
-from talk_controller import *
+from talk_controller import set_left_right
+from talk_controller import set_dialog
+from talk_controller import wait_for_response
+from talk_controller import scene_one_predeath
+from talk_controller import scene_one_postdeath
+from talk_controller import scene_two_convo
+#from talk_controller import scene_three_convo
 import global_game_states
 from talk_controller import wait_for_response   
 
