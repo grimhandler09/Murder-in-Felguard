@@ -124,4 +124,8 @@ def begin_game_setup():
     action('EnableIcon(ReadInvitation, Book, Party_Invitation, Read, true)')
 
 
+    #Start in black
+    action('FadeOut()')
+
+    #Show the menu
     action('ShowMenu()')

@@ -1,7 +1,6 @@
-import pyautogui
 import time
 from action import action
-from master_action_controller import check_master_actions
+from master_action_controller import check_master_actions, scene_start
 from master_action_controller import add_clue
 import global_game_states
 from talk_controller import *
@@ -23,7 +22,7 @@ def look_inside_nonfurniture_action(container):
 def look_inside_furniture_action(container):
     approach(container)
     action('OpenFurniture(John, ' + container + ')')
-    inventory(global_game_states.chest_inventory, container)
+    inventory(global_game_states.dungeon_chest_inventory, container)
     action('CloseFurniture(John, ' + container + ')')
 
 def use_PrisonDoor_action(door):
@@ -46,11 +45,10 @@ def read_book(book):
         PrisonLedgerClues = 'Talking to the town Alchemist, Queen\'s Servant, or Grand Maester may yield additional evidence'
         add_clue(PrisonLedgerClues)
         approach(book)
-        action('ShowDialog()')
         while received != 'input Selected Exit':
             received = set_dialog('There are several entries that you could read to discover more clues about the Queen\'s Death ' + 
             '[AlchemistInfo | Read about the Alchemist] [Queen\'sServantInfo | Read about the Queen\'s personal servant] [GrandMa' +
-            'esterInfo | Read about the Grand Maester] [Exit | Stop reading]', ['AlchemistInfo', 'Queen\'sServantInfo', 'GrandMaesterInfo', 'Exit'])
+            'esterInfo | Read about the Grand Maester] [Exit | Stop reading]', ['AlchemistInfo', 'Queen\'sServantInfo', 'GrandMaesterInfo', 'Exit'], True)
             if received == 'input Selected AlchemistInfo':
                 received = set_dialog('The wine has been sent to the local alchemist for inspection. [Next | Next]')
             elif received == 'input Selected Queen\'sServantInfo':
@@ -59,15 +57,14 @@ def read_book(book):
                 received = set_dialog('The Grand Maester claimed that the currently jailed suspect was falsely accused, but provided no evidence to the guards. [Next | Next]')
         action('HideDialog()')
     if book == 'Note_From_King':
-        action('ShowDialog()')
         received = set_dialog('I know in my heart that you are innocent, just as I know that my dear Queen Margerie was stolen from me by some dark force.' +
-        ' Take this key, escape your cell, and do whatever it takes to uncover the identity of the true murderer. I command it. -King Phillip [Next | Next]')
+        ' Take this key, escape your cell, and do whatever it takes to uncover the identity of the true murderer. I command it. -King Phillip [Next | Next]', ['Next'], True)
     action('HideDialog()')
 
 def leave_action(exit_door):
     action('Exit(John, ' + exit_door + ', true)')
-    global_game_states.current_scene = 'scene_three'#two_and_half'
-    global_game_states.previous_scene = 'scene_two'
+    global_game_states.current_scene = 'scene_two_and_half'
+    global_game_states.prev_scene = 'scene_two'
 
 def opening_dialog_two():
     action('DisableInput()')
@@ -84,9 +81,10 @@ def opening_dialog_two():
 
     action('HideDialog()')
 
-def scene_two_controller():
+def dungeon_controller():
+    scene_start()
     opening_dialog_two()
-    action('EnableInput()')
+    #action('EnableInput()')
     while(global_game_states.current_scene == 'scene_two'):
         received = input()
         if received.startswith('input Look_in'):
