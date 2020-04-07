@@ -12,6 +12,9 @@ dungeon_chest_inventory = [['Party_Invitation', 'Party_Invitation']]
 #City
 first_city_entry = True
 #Alchemy Shop
+found_poison_purchase = False #Evidence for buyer of poison
+found_poison = False #Evidence for alchemist
+identified_poison = False #used as a step for found_potion
 #scene_three_clues = []
 
 #Tavern
@@ -19,7 +22,7 @@ first_tavern_entry = True
 #scene_four_clues = []
 
 #Global
-current_scene = 'scene_two' #Change back to scene_one
+current_scene = 'scene_one'
 prev_scene = ''
 accused = ''
 player_inventory = [['Party_Invitation', 'Party_Invitation']]

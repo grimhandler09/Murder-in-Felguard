@@ -42,8 +42,10 @@ def talk_action(person):
         scene_two_convo(person)
     elif global_game_states.current_scene == 'scene_two_and_half':
         scene_two_and_half_convo(person)
+    elif global_game_states.current_scene == 'scene_three':
+        scene_four_convo(person)
     elif global_game_states.current_scene == 'scene_four':
-        scene_four_convo()
+        scene_four_convo(person)
     action('HideDialog()')
 
 def remove_item(item):
