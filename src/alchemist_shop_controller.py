@@ -4,6 +4,7 @@ from master_action_controller import *
 import global_game_states
 from threading import Timer
 from talk_controller import *
+from add_clue import add_clue
 #from master_action_controller import add_clue
 
 def inspect_item(item):

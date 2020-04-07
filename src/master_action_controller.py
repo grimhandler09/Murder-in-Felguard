@@ -8,10 +8,6 @@ def scene_start():
     action('SetCameraMode(follow)')
     action('EnableInput()')
 
-def add_clue(clue):
-    if clue not in global_game_states.current_clues:
-        global_game_states.current_clues.append(clue)
-
 def display_clues_action():
     if not global_game_states.current_clues == []:
         action('SetNarration(These are the clues gathered so far)')
