@@ -67,6 +67,13 @@ def read_book(book):
             set_left_right('John', 'Guard')
             set_dialog('If you\'re really trying to help the King, you might wanna actually leave before I throw you back in your cell. Just a thought. [Next | Next]', ['Next'], True)
         action('HideDialog()')
+        time.sleep(0.25)
+        action('SetNarration(Clues regarding the Queen\'s murder such as the one obtained here will be stored and can be accessed from anywhere in the game by pressing \'E\'.)')
+        action('ShowNarration()')
+        received = input()
+        while not (received == 'input Close Narration'):
+            received = input()
+        action('HideNarration()')
     if book == 'Note From King':
         action('DisableInput()')
         NextDialogOption = set_dialog('I know in my heart that you are innocent, just as I know that my dear Queen Margerie was stolen from me by some dark force.' +
@@ -101,6 +108,7 @@ def change_clothes_action(attire):
     action('FadeOut')
     action('SetClothing(John, Bandit)')
     action('DisableIcon(Change of Clothes, Change Clothes)')
+    action('DisableIcon(Look_Inside_Chest, Prison.Chest)')
     remove_item('Change of Clothes')
     action('SetNarration(John has changed into more discreet clothes.)')
     action('ShowNarration()')
