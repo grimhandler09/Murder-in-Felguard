@@ -29,5 +29,8 @@ accused = ''
 player_inventory = [['Party_Invitation', 'Party_Invitation']]
 list_of_inventories = [player_inventory, dungeon_chest_inventory, dirtpile_inventory]
 current_clues = []
-character_list = []
+character_list = ['Guard Gallant', 'King Phillip', 'Witch Carlita', 'Noble Jeremy', 'Noble Cecilia','Merchant Bert', 'Chamber Maid Scarlet', 'Tiana', 
+    'Maester Purcell', 'Beggar Adeline', 'Beggar Miles', 'Alchemist Jeremy', 'Scout Joanna', 'Scout Tom', 'Drunk Devon', 
+    'Priestess Esmerelda', 'Blind Bandit', 'Gossiping Gail', 'Guard', 'Alchemist Henry'
+]
 

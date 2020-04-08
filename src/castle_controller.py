@@ -120,11 +120,14 @@ def prepare_storage():
 def castle_controller():
     scene_start()
     opening_cutscene()
+    action('SetNarration(Welcome to Our Game! Important controls: I - Bring up player inventory, E - Bring up player clues)')
+    action('ShowNarration()')
+    input()
     trigger_death = 0
     while(global_game_states.current_scene == 'scene_one'):
         received = input()
         if received == 'input ReadLedger GuestLedger':
-            action("SetNarration(\"Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie\n...Noblewoman Celcilia - Wife of Nobleman Jeremy\")")
+            action("SetNarration(Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie...Noblewoman Celcilia - Wife of Nobleman Jeremy)")
             action('ShowNarration()')
             trigger_death += 1
         elif received == 'input ReadInvitation Party_Invitation':

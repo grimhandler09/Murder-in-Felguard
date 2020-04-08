@@ -28,6 +28,7 @@ def main():
                     alchemist_shop_controller()
                 elif global_game_states.current_scene == 'scene_four':
                     tavern_controller()
+            #print('start testing')
             #end_cutscene()
     
 main() #COMMENT OUT WHEN TESTING

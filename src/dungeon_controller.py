@@ -65,8 +65,8 @@ def read_book(book):
 
 def leave_action(exit_door):
     action('Exit(John, ' + exit_door + ', true)')
-    global_game_states.current_scene = 'scene_four'
-    global_game_states.prev_scene = 'scene_two_and_half'
+    global_game_states.current_scene = 'scene_two_and_half'
+    global_game_states.prev_scene = 'scene_two'
 
 def opening_dialog_two():
     action('DisableInput()')

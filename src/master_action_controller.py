@@ -127,4 +127,10 @@ def check_master_actions(received):
     elif received == 'input Key Interact':
         display_clues_action()
     elif received.startswith('input Accuse'):
-        global_game_states.accused = received[13:]
+        acc_character = received[13:]
+        set_left_right('John', acc_character)
+        received = set_dialog('Are you sure you want to accuse ' + acc_character + '? You can only do this once! [Yes | Yes] [No | No]', ['Yes', 'No'], True)
+        if received == 'input Selected Yes':
+            global_game_states.accused = acc_character
+        action('HideDialog()')
+         
