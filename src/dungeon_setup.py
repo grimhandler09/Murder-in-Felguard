@@ -23,6 +23,7 @@ def dungeon_setup():
     action('SetClothing(Guard, LightArmour)')
     action('SetHairStyle(Guard, Short)')
     action('SetPosition(Guard, Prison.CellDoor)')
+    action('WalkToSpot(Guard, -608.6, 0.0, -2.7)')
 
     #Create Items and position them
     action('CreateItem(CellDoorKey, BlueKey)')

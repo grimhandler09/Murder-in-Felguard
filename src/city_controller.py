@@ -5,6 +5,10 @@ from city_setup import city_setup
 import global_game_states
 from talk_controller import *
 
+def enable_accusation():
+    for char in global_game_states.character_list:
+        action('EnableIcon(Accuse, Arrest, ' + char +', Accuse ' + char + ', false)')
+
 def determine_entry():
     if global_game_states.prev_scene == 'scene_two':
         action('Enter(John, City.WestEnd, True)')
@@ -31,10 +35,12 @@ def city_controller():
     scene_start()
     if global_game_states.first_city_entry:
         city_setup()
+        enable_accusation()
         opening_dialog()
         global_game_states.first_city_entry = False
     determine_entry()
-    while global_game_states.current_scene == 'scene_two_and_half':
+    action('FadeIn()')
+    while global_game_states.current_scene == 'scene_two_and_half' and global_game_states.accused == '':
         received = input()
         if received.startswith('input Enter'):
             door = received[12:]

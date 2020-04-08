@@ -15,7 +15,7 @@ def main():
     while True:
         received = input()
         if received == 'input Selected Start':
-            #castle_controller()
+            castle_controller()
             while global_game_states.accused == '':
                 if global_game_states.current_scene == 'scene_two':
                     dungeon_setup()

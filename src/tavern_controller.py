@@ -10,7 +10,7 @@ def tavern_controller():
     if global_game_states.first_tavern_entry:
         tavern_setup()
         global_game_states.first_tavern_entry = False
-    while(global_game_states.current_scene == 'scene_four'):
+    while global_game_states.current_scene == 'scene_four' and global_game_states.accused == '':
         received = input()
         if (received.startswith() == 'input Enter'):
             global_game_states.current_scene = 'scene_two_and_half'

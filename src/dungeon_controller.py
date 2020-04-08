@@ -29,14 +29,16 @@ def use_PrisonDoor_action(door):
     action('OpenFurniture(John, ' + door + ')')
     action('DisableIcon(UsePrisonDoor, ' + door + ')')
     action('EnableIcon(Leave, Door, Prison.Door, Leave, true)')
-    # action('EnableIcon(Look_up, hand, Prison.Chest, Look through chest, true)')
-    # action('EnableIcon(Read, research, PrisonLedger, Read, true)')
-    # action('Face(Guard, John)')
-    # set_left_right('John', 'Guard')
-    # scene_two_convo('Guard')
-    # approach('Guard')
-    # action('Attack(John, Guard, true)')
-    # action('Die(Guard)')
+    action('EnableIcon(Look_up, hand, Prison.Chest, Look through chest, true)')
+    action('EnableIcon(Read, research, PrisonLedger, Read, true)')
+    action('DisableInput()')
+    action('Face(Guard, John)')
+    set_left_right('John', 'Guard')
+    scene_two_convo('Guard')
+    approach('Guard')
+    action('Attack(John, Guard, true)')
+    action('EnableInput()')
+    action('Die(Guard)')
 
 def read_book(book):
     set_left_right('John', 'null')
@@ -85,7 +87,7 @@ def dungeon_controller():
     scene_start()
     opening_dialog_two()
     action('EnableInput()')
-    while(global_game_states.current_scene == 'scene_two'):
+    while global_game_states.current_scene == 'scene_two':
         received = input()
         if received.startswith('input Look_in'):
             received = received.split(' ')

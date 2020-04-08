@@ -124,3 +124,5 @@ def check_master_actions(received):
         action('ShowList(John)')
     elif received == 'input Key Interact':
         display_clues_action()
+    elif received.startswith('input Accuse'):
+        global_game_states.accused = received[13:]

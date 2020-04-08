@@ -41,6 +41,7 @@ def scene_one_predeath(person):
             set_dialog('You would understand if you grew up with her[Next | I\'m sure]')
         else:
             set_dialog('I\'m sure she\'ll she appreciate what she\'s got coming to her [Next | ...okay]')
+        #add_clue('The Queen\'s sister, Tiana, bears some animosty towards the queen')
     elif person == 'King Phillip':
         set_dialog('Isn\'t Margerie lovely. I would be devastated if anything were to happen to her [Next | You really out did yourself]')
 
@@ -60,6 +61,8 @@ def scene_one_postdeath(person):
         set_dialog('No, I poured the wine straight out of the bottle when I was setting up earlier. Everyone\'s cups were filled from the same bottle. [Next | Where did you get the wine?]')
         set_dialog('Where we always get it, the local tavern. [Next | Where was the taste tester?]')
         set_dialog('Errrm....I think he was off today because of the Queen\'s birthday [Next | Thanks for your time]')
+        #add_clue('The chambermaid says she poured the drink, but didn\'t notice anything unusual')
+        #add_clue('The chambermaid noted the Queen\'s taste tester was nowhere to be found')
 
     
 
