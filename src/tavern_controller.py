@@ -12,10 +12,10 @@ def tavern_controller():
         global_game_states.first_tavern_entry = False
     action('SetPosition(John, Tavern.Door)')
     action('FadeIn()')
-    while(global_game_states.current_scene == 'scene_four'):
+    while global_game_states.current_scene == 'tavern' and global_game_states.accused == '':
         received = input()
         if (received.startswith() == 'input Enter'):
-            global_game_states.current_scene = 'scene_two_and_half'
-            global_game_states.prev_scene = 'scene_four'
+            global_game_states.current_scene = 'city'
+            global_game_states.prev_scene = 'tavern'
         elif (received.startswith() == 'input Talk'):
             check_master_actions(received)
