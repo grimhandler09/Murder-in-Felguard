@@ -125,7 +125,7 @@ def castle_controller():
             action("SetNarration(Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie...Noblewoman Celcilia - Wife of Nobleman Jeremy)")
             action('ShowNarration()')
             trigger_death += 1
-        elif received == 'input ReadInvitation Party_Invitation':
+        elif received == 'input ReadInvitation Party Invitation':
             action('SetNarration(You are cordially invited to the Queen\'s Birthday Party. It will truly be one for the ages.)')
             action('ShowNarration()')
         elif received == 'input InspectCup QueensCup':

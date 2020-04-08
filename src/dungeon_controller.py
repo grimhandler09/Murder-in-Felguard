@@ -32,8 +32,8 @@ def use_PrisonDoor_action(door):
     action('DisableIcon(UsePrisonDoor, ' + door + ')')
     action('EnableIcon(Leave, Door, Prison.Door, Leave, true)')
     action('EnableIcon(Look_Inside_Chest, hand, Prison.Chest, Look through chest, true)')
-    action('EnableIcon(Read, research, PrisonLedger, Read, true)')
-    action('EnableIcon(Read, research, DireNews, Read, true)')
+    action('EnableIcon(Read, research, Prison Ledger, Read, true)')
+    action('EnableIcon(Read, research, Dire News, Read, true)')
     action('EnableIcon(Sit, Chair, Prison.Chair, Sit, true)')
     action('Face(Guard, John)')
     set_left_right('John', 'Guard')
@@ -47,7 +47,7 @@ def use_PrisonDoor_action(door):
 def read_book(book):
     set_left_right('John', 'null')
     NextDialogOption = ''
-    if book == 'PrisonLedger':
+    if book == 'Prison Ledger':
         PrisonLedgerClues = 'Talking to the town Alchemist, Queen\'s Servant, or Grand Maester may yield additional evidence'
         add_clue(PrisonLedgerClues)
         while NextDialogOption != 'input Selected Exit':
@@ -67,12 +67,12 @@ def read_book(book):
             set_left_right('John', 'Guard')
             set_dialog('If you\'re really trying to help the King, you might wanna actually leave before I throw you back in your cell. Just a thought. [Next | Next]', ['Next'], True)
         action('HideDialog()')
-    if book == 'Note_From_King':
+    if book == 'Note From King':
         action('DisableInput()')
         NextDialogOption = set_dialog('I know in my heart that you are innocent, just as I know that my dear Queen Margerie was stolen from me by some dark force.' +
         ' Take this key, escape your cell, and do whatever it takes to uncover the identity of the true murderer. I command it. -King Phillip [Next | Next]', ['Next'], True)
         action('HideDialog()')
-    if book == 'DireNews':
+    if book == 'Dire News':
         approach(book)
         action('SetNarration(This missive describes the untimely and tragic death of the Queen. Penned by Royal Successor Tianna.)')
         action('ShowNarration()')
@@ -100,8 +100,8 @@ def change_clothes_action(attire):
     action('HideList()')
     action('FadeOut')
     action('SetClothing(John, Bandit)')
-    action('DisableIcon(Change_of_Clothes, Change Clothes)')
-    remove_item('Change_of_Clothes')
+    action('DisableIcon(Change of Clothes, Change Clothes)')
+    remove_item('Change of Clothes')
     action('SetNarration(John has changed into more discreet clothes.)')
     action('ShowNarration()')
     received = input()
@@ -136,7 +136,7 @@ def dungeon_controller():
             received = received.split(' ')
             container = received[2]
             look_inside_nonfurniture_action(container)
-        elif ((global_game_states.acquired_CellDoorKey) and (['CellDoorKey', 'CellDoorKey'] in global_game_states.player_inventory)):
+        elif ((global_game_states.acquired_CellDoorKey) and (['Cell Door Key', 'Cell Door Key'] in global_game_states.player_inventory)):
             action('EnableIcon(UsePrisonDoor, door, Prison.CellDoor, Open, true)')
             global_game_states.acquired_CellDoorKey = False
         elif received.startswith('input Look_Inside_Chest'):
@@ -148,8 +148,7 @@ def dungeon_controller():
             door = received[2]
             use_PrisonDoor_action(door)
         elif received.startswith('input Read'):
-            received = received.split(' ')
-            book = received[2]
+            book = received[11:]
             read_book(book)
             time.sleep(0.25)
             action('EnableInput()')
@@ -162,8 +161,7 @@ def dungeon_controller():
             unconscious_body = received[2]
             check_body_action(unconscious_body)
         elif received.startswith('input ChangeClothes'):
-            received = received.split(' ')
-            attire = received[2]
+            attire = received[20:]
             change_clothes_action(attire)
         else:
             check_master_actions(received)
