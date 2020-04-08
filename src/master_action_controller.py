@@ -105,20 +105,16 @@ def check_master_actions(received):
     elif received == 'input Close List':
         action('HideList()')
     elif received.startswith('input TakeRight'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[16:]
         take_rightitem_action(item)
     elif received.startswith('input TakeLeft'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[15:]
         take_leftitem_action(item)
     elif received.startswith('input StowRight'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[16:]
         stow_rightitem_action(item)
     elif received.startswith('input StowLeft'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[15:]
         stow_leftitem_action(item)
     elif received == "input Key Inventory":
         action('ClearList()')

@@ -6,8 +6,8 @@ scene_one_key = False
 #Dungeon
 acquired_CellDoorKey = True
 dungeon_guard_lives = False
-dirtpile_inventory = [['Note_From_King', 'Note_From_King'], ['CellDoorKey', 'CellDoorKey']]
-dungeon_chest_inventory = [['Change_of_Clothes', 'Change_of_Clothes']]
+dirtpile_inventory = [['Note From King', 'Note From King'], ['Cell Door Key', 'Cell Door Key']]
+dungeon_chest_inventory = [['Change of Clothes', 'Change of Clothes']]
 #scene_two_clues = []
 
 #City
@@ -26,7 +26,7 @@ first_tavern_entry = True
 current_scene = 'scene_one'
 prev_scene = ''
 accused = ''
-player_inventory = [['Party_Invitation', 'Party_Invitation']]
+player_inventory = [['Party Invitation', 'Party Invitation']]
 list_of_inventories = [player_inventory, dungeon_chest_inventory, dirtpile_inventory]
 current_clues = []
 
