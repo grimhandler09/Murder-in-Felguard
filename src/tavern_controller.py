@@ -17,5 +17,5 @@ def tavern_controller():
         if (received.startswith('input Enter')):
             global_game_states.current_scene = 'city'
             global_game_states.prev_scene = 'tavern'
-        elif (received.startswith('input Talk')):
+        else:
             check_master_actions(received)

@@ -12,6 +12,8 @@ dungeon_clues = []
 
 #City
 first_city_entry = True
+blind_bandit_clue = False
+priestess_false_trail = False
 city_clues = []
 
 #Alchemy Shop
@@ -23,6 +25,9 @@ alchemist_shop_clues = []
 
 #Tavern
 first_tavern_entry = True
+maester_purcell_senile = False
+cecilia_accusations = False
+chamber_maid_odd_behaviours = False
 tavern_clues = []
 
 #Ending
