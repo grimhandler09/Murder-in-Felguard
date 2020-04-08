@@ -5,8 +5,9 @@ scene_one_key = False
 
 #Dungeon
 acquired_CellDoorKey = True
+dungeon_guard_lives = False
 dirtpile_inventory = [['Note_From_King', 'Note_From_King'], ['CellDoorKey', 'CellDoorKey']]
-dungeon_chest_inventory = [['Party_Invitation', 'Party_Invitation']]
+dungeon_chest_inventory = [['Change_of_Clothes', 'Change_of_Clothes']]
 #scene_two_clues = []
 
 #City

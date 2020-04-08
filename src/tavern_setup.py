@@ -1,7 +1,7 @@
 from action import action
 
 def tavern_setup():
-    action('CreatePlace("Tavern", Tavern)')
+    action('CreatePlace(Tavern, Tavern)')
     #Set at Night
     #action('SetNight()')
     #action('SetPosition(John, Tavern.Door)')
