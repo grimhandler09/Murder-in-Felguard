@@ -74,7 +74,7 @@ def read_book(book):
         action('HideDialog()')
     if book == 'Dire News':
         approach(book)
-        midscene_narration('SetNarration(This missive describes the untimely and tragic death of the Queen. Penned by Royal Successor Tianna.)')
+        midscene_narration('This missive describes the untimely and tragic death of the Queen. Penned by Royal Successor Tianna.')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
 
@@ -93,7 +93,7 @@ def change_clothes_action(attire):
     action('DisableIcon(Change of Clothes, Change Clothes)')
     action('DisableIcon(Look_Inside_Chest, Prison.Chest)')
     remove_item('Change of Clothes')
-    midscene_narration('SetNarration(John has changed into more discrete clothes.)')
+    midscene_narration('John has changed into more discrete clothes.')
     action('FadeIn()')
 
 def opening_dialog_two():
