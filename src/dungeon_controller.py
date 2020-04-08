@@ -1,8 +1,6 @@
 import time
 from action import action
-from master_action_controller import check_master_actions, scene_start
-from master_action_controller import add_clue
-from master_action_controller import remove_item
+from master_action_controller import check_master_actions, scene_start, midscene_narration, add_clue, remove_item
 import global_game_states
 from talk_controller import *
 
@@ -68,12 +66,7 @@ def read_book(book):
             set_dialog('If you\'re really trying to help the King, you might wanna actually leave before I throw you back in your cell. Just a thought. [Next | Next]', ['Next'], True)
         action('HideDialog()')
         time.sleep(0.25)
-        action('SetNarration(Clues regarding the Queen\'s murder such as the one obtained here will be stored and can be accessed from anywhere in the game by pressing \'E\'.)')
-        action('ShowNarration()')
-        received = input()
-        while not (received == 'input Close Narration'):
-            received = input()
-        action('HideNarration()')
+        midscene_narration('Clues regarding the Queen\'s murder such as the one obtained here will be stored and can be accessed from anywhere in the game by pressing \'E\'.')
     if book == 'Note From King':
         action('DisableInput()')
         NextDialogOption = set_dialog('I know in my heart that you are innocent, just as I know that my dear Queen Margerie was stolen from me by some dark force.' +
@@ -81,22 +74,12 @@ def read_book(book):
         action('HideDialog()')
     if book == 'Dire News':
         approach(book)
-        action('SetNarration(This missive describes the untimely and tragic death of the Queen. Penned by Royal Successor Tianna.)')
-        action('ShowNarration()')
-        received = input()
-        while not (received == 'input Close Narration'):
-            received = input()
-        action('HideNarration()')
+        midscene_narration('SetNarration(This missive describes the untimely and tragic death of the Queen. Penned by Royal Successor Tianna.)')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
 
 def check_body_action(unconscious_body):
-    action('SetNarration(The guard is unconscious but still breathing. She will live.)')
-    action('ShowNarration()')
-    received = input()
-    while not (received == 'input Close Narration'):
-        received = input()
-    action('HideNarration()')
+    midscene_narration('The guard is unconscious but still breathing. She will live.')
 
 def leave_action(exit_door):
     action('Exit(John, ' + exit_door + ', true)')
@@ -110,21 +93,11 @@ def change_clothes_action(attire):
     action('DisableIcon(Change of Clothes, Change Clothes)')
     action('DisableIcon(Look_Inside_Chest, Prison.Chest)')
     remove_item('Change of Clothes')
-    action('SetNarration(John has changed into more discrete clothes.)')
-    action('ShowNarration()')
-    received = input()
-    while not (received == 'input Close Narration'):
-        received = input()
-    action('HideNarration()')
+    midscene_narration('SetNarration(John has changed into more discrete clothes.)')
     action('FadeIn()')
 
 def opening_dialog_two():
-    action('SetNarration(John has been arrested by the Queen\'s guards.)')
-    action('ShowNarration()')
-    received = input()
-    while not (received == 'input Close Narration'):
-        received = input()
-    action('HideNarration()')
+    midscene_narration('John has been arrested by the Queen\'s guards.')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
     action('Face(John, Guard)')
