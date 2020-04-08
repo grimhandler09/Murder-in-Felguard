@@ -31,7 +31,7 @@ execution_characters = ['Noble Jeremy', 'Noble Cecilia', 'Tiana']
 #Global
 current_scene = 'castle'
 prev_scene = ''
-accused = 'Maester Purcell'
+accused = ''
 player_inventory = [['Party Invitation', 'Party Invitation']]
 list_of_inventories = [player_inventory, dungeon_chest_inventory, dirtpile_inventory]
 current_clues = []
