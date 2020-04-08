@@ -24,18 +24,22 @@ def dungeon_setup():
     action('SetHairStyle(Guard, Short)')
     action('SetPosition(Guard, Prison.CellDoor)')
 
-    #Create Items and position them
+    #Create Items and position them 'Change_of_Clothes'
     action('CreateItem(CellDoorKey, BlueKey)')
     action('SetPosition(CellDoorKey, QueensCastle.Door)')
     action('CreateItem(PrisonLedger, PurpleBook)')
-    action('SetPosition(PrisonLedger, Prison.Table.Left)')
+    action('SetPosition(PrisonLedger, Prison.Bookshelf.Left)')
+    action('CreateItem(DireNews, OpenScroll)')
+    action('SetPosition(DireNews, Prison.Table.Left)')
     action('CreateItem(Note_From_King, OpenScroll)')
     action('SetPosition(Note_From_King, Prison.DirtPile)')
     action('AddToList(Note_From_King, OpenScroll)')
+    action('CreateItem(Change_of_Clothes, RedCloth)')
     
     #Enable Icons
     action('EnableIcon(Sit, Bed, Prison.Bed, Sit, true)')
-    action('EnableIcon(Look_in, hand, Prison.DirtPile, Look through dirt, true)')
+    action('EnableIcon(Look_in_DirtPile, hand, Prison.DirtPile, Look through dirt, true)')
     action('EnableIcon(TakeLeft, hand, CellDoorKey, Take, true)')
     action('EnableIcon(Read, Research, Note_From_King, Read, true)')
     action('EnableIcon(TakeLeft, hand, Party_Invitation, Take, true)')
+    action('EnableIcon(ChangeClothes, armour, Change_of_Clothes, Change Clothes, true)')

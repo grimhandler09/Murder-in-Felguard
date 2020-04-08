@@ -66,7 +66,12 @@ def scene_one_postdeath(person):
 
 def scene_two_convo(person):
     if person == 'Guard':
-        set_dialog('Wait, how did you open the cell... [Next | I need to escape, for the King (Attack)]', ['Next'], True)
+        received = set_dialog('Wait, how did you open the cell... [Attack | I need to escape, for the King! (Attack)] [Talk | Listen, the King told me to escape', ['Attack', 'Talk'], True)
+        if received == 'input Selected Talk':
+            received = set_dialog('You expect me to believe that? I\'m calling the other guards. [Attack | I can\'t let you do that! (Attack)] [Show | I have a letter from the King!]', ['Attack', 'Show'])
+            if received == 'input Selected Show':
+                set_dialog('That has the King\'s official seal on it... Fine, I\'ll let you go, but get out of here before I change my mind. [Next | Next]')
+                global_game_states.dungeon_guard_lives = True
         action('HideDialog()')
         
 def scene_two_and_half_convo(person):
