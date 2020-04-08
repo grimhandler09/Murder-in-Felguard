@@ -21,7 +21,7 @@ def wait_for_response(responses):
         received = input().strip()
     return received
 
-def scene_one_predeath(person):
+def castle_predeath(person):
     if person == 'Maester Purcell':
         set_dialog('Oh, who do we have here? The Queen\'s assistant you say? Well, the Queen and I may not agree on everything' +
         ' but you seem like a fine young gentleman. [Next | Thanks who are you again?]')
@@ -45,7 +45,7 @@ def scene_one_predeath(person):
     elif person == 'King Phillip':
         set_dialog('Isn\'t Margerie lovely. I would be devastated if anything were to happen to her [Next | You really out did yourself]')
 
-def scene_one_postdeath(person):
+def castle_postdeath(person):
     if person == 'King Phillip':
         set_dialog('My Margerie...what has happened to you! Please find out what has happened. [Next | I\'m so sorry Phillip, let me look around]')
     if person == 'Tiana':
@@ -64,17 +64,17 @@ def scene_one_postdeath(person):
 
     
 
-def scene_two_convo(person):
+def dungeon_convo(person):
     if person == 'Guard':
-        received = set_dialog('Wait, how did you open the cell... [Attack | I need to escape, for the King! (Attack)] [Talk | Listen, the King told me to escape', ['Attack', 'Talk'], True)
+        received = set_dialog('Wait, how did you open the cell... [Attack | I need to escape, for the King! (Attack)] [Talk | Listen, the King told me to escape. (Persuade)', ['Attack', 'Talk'], True)
         if received == 'input Selected Talk':
-            received = set_dialog('You expect me to believe that? I\'m calling the other guards. [Attack | I can\'t let you do that! (Attack)] [Show | I have a letter from the King!]', ['Attack', 'Show'])
+            received = set_dialog('You expect me to believe that? I\'m calling the other guards. [Attack | I can\'t let you do that! (Attack)] [Show | I have a letter from the King! (Persuade)]', ['Attack', 'Show'])
             if received == 'input Selected Show':
                 set_dialog('That has the King\'s official seal on it... Fine, I\'ll let you go, but get out of here before I change my mind. [Next | Next]')
                 global_game_states.dungeon_guard_lives = True
         action('HideDialog()')
         
-def scene_two_and_half_convo(person):
+def city_convo(person):
     if person == 'Beggar Adeline':
         set_dialog('I\'m not sad about the Queen\'s death. She\'s been rolling in wealth while decent folks can\'t even find a job to support their families. [Next | ... okay?]')
     elif person == 'Beggar Miles':
@@ -94,7 +94,7 @@ def scene_two_and_half_convo(person):
     elif person == 'Gossiping Gail':
         set_dialog('I know everything going on in this town. Go ahead ask me. [Next | I\'d rather not.')
 
-def scene_three_convo(person):
+def alchemist_shop_convo(person):
     pr = 'input Selected Menu'
     while(pr != 'input Selected Done' and person == 'Alchemist Henry'):
         if pr == 'input Selected Menu' and global_game_states.found_poison_purchase == False and global_game_states.found_poison == False and global_game_states.identified_poison == False:
@@ -129,7 +129,7 @@ def scene_three_convo(person):
             #add_clue('Found Poison')
             global_game_states.found_poison = True
         
-def scene_four_convo(person):
+def tavern_convo(person):
     if person == 'Maester Purcell':
         set_dialog('Oh! Where am I? Oh that\'s right, the tavern. I really should be going. Who are you again? *The maester gets a glassy look and stares off in the distance* [Next | erm... ok?]')
     elif person == 'Witch Carlita':

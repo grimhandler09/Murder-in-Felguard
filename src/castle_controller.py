@@ -98,8 +98,8 @@ def arrest_cutscene():
     set_left_right('Guard Tom', 'null')
     set_dialog('Get him! [Next | Next]', ['Next'], True)
     action('HideDialog()')
-    global_game_states.current_scene = 'scene_two'
-    global_game_states.prev_scene = 'scene_one'
+    global_game_states.current_scene = 'dungeon'
+    global_game_states.prev_scene = 'castle'
     add_clue('The chamber maid has accused of killing the queen')
 
 def prepare_storage():
@@ -124,7 +124,7 @@ def castle_controller():
     action('ShowNarration()')
     input()
     trigger_death = 0
-    while(global_game_states.current_scene == 'scene_one'):
+    while(global_game_states.current_scene == 'castle'):
         received = input()
         if received == 'input ReadLedger GuestLedger':
             action("SetNarration(Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie...Noblewoman Celcilia - Wife of Nobleman Jeremy)")
@@ -138,7 +138,7 @@ def castle_controller():
             action('ShowNarration()')
             add_clue('The Queen\'s Cup of wine had an odd coloring too it')
         elif received == 'input OpenCloset QueensCastle.BackDoor':
-            if global_game_states.scene_one_key:
+            if global_game_states.castle_key:
                 action('Exit(John, QueensCastle.BackDoor, true)')
                 prepare_storage()
                 action('Enter(John, CastleStorage.Door, true)')
@@ -146,13 +146,13 @@ def castle_controller():
                 action('SetNarration(The door is locked!)')
                 action('ShowNarration()')
         elif received == 'input CheckClosetKeyBag ClosetKeyBag':
-            if global_game_states.queen_death and not global_game_states.scene_one_key:
+            if global_game_states.queen_death and not global_game_states.castle_key:
                 action('Take(John, ClosetKey, ClosetKeyBag)')
                 action('Pocket(John, ClosetKey)')
                 action('SetNarration(You find a key in the bag!)')
                 action('ShowNarration()')
                 global_game_states.player_inventory.append(['ClosetKey', 'A mysterious key'])
-                global_game_states.scene_one_key = True
+                global_game_states.castle_key = True
             else:
                 action('SetNarration(The bag is empty)')
                 action('ShowNarration()')
@@ -165,9 +165,9 @@ def castle_controller():
             action('ShowNarration()')
             add_clue('In castle storage, you found a suspicious looking potion bottle')
         elif received == 'input ReadAlchemistLetter AlchemistLetter':
-            action('SetNarration(\"The letter reads: To ensure a lethal dose, use about 10mL-AG\")')
+            action('SetNarration(\"The letter reads: To ensure a lethal dose, use about 10mL-AH\")')
             action('ShowNarration()')      
-            add_clue('A letter in the castle storage referenced a poison written by a mysterious AG')
+            add_clue('A letter in the castle storage referenced a poison written by a mysterious AH')
         elif received == 'input ExitStorage CastleStorage.Door':
             action('Exit(John, CastleStorage.Door, true)')
             action('Enter(John, QueensCastle.BackDoor, true)')

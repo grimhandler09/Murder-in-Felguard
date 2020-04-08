@@ -7,28 +7,32 @@ from talk_controller import *
 
 def enable_accusation():
     for char in global_game_states.character_list:
-        action('EnableIcon(Accuse, Arrest, ' + char +', Accuse ' + char + ', false)')
+        action('EnableIcon(Accuse, arrest, ' + char +', Accuse ' + char + ', false)')
 
 def determine_entry():
-    if global_game_states.prev_scene == 'scene_two':
+    if global_game_states.prev_scene == 'dungeon':
         action('Enter(John, City.WestEnd, True)')
-    elif global_game_states.prev_scene == 'scene_three':
+    elif global_game_states.prev_scene == 'alchemist_shop':
         action('Enter(John, City.BrownHouseDoor, True)')
-    elif global_game_states.prev_scene == 'scene_four':
+    elif global_game_states.prev_scene == 'tavern':
         action('Enter(John, City.GreenHouseDoor, True)')
 
 def opening_dialog():
     time.sleep(1)
     action('SetNarration(John must explore the city to solve the Queen\'s Murder.)')
     action('ShowNarration()')
+    input()
+    action('SetNarration(\"You can now accuse every person you meet of killing Queen Margerie. Be careful, once you commit to accusing' +
+    ' an individual, you can\'t go back!\")')
+    action('ShowNarration()')
 
 def enter_building(door):
     if door == 'City.GreenHouseDoor':
-        global_game_states.prev_scene = 'scene_two_and_half'
-        global_game_states.current_scene = 'scene_four'
+        global_game_states.prev_scene = 'city'
+        global_game_states.current_scene = 'tavern'
     elif door == 'City.BrownHouseDoor':
-        global_game_states.prev_scene = 'scene_two_and_half'
-        global_game_states.current_scene = 'scene_three'
+        global_game_states.prev_scene = 'city'
+        global_game_states.current_scene = 'alchemist_shop'
     action('Exit(John, ' + door + ', True)')
 
 def city_controller():
@@ -40,7 +44,7 @@ def city_controller():
         global_game_states.first_city_entry = False
     determine_entry()
     action('FadeIn()')
-    while global_game_states.current_scene == 'scene_two_and_half' and global_game_states.accused == '':
+    while global_game_states.current_scene == 'city' and global_game_states.accused == '':
         received = input()
         if received.startswith('input Enter'):
             door = received[12:]
