@@ -9,6 +9,7 @@ from tavern_setup import tavern_setup
 from tavern_controller import tavern_controller
 #from end_cutscenes import end_cutscene
 import global_game_states
+from end_cutscenes import end_cutscene
 
 
 # Respond to input.
@@ -28,8 +29,7 @@ def main():
                     alchemist_shop_controller()
                 elif global_game_states.current_scene == 'scene_four':
                     tavern_controller()
-            #print('start testing')
-            #end_cutscene()
+            end_cutscene()
     
 main() #COMMENT OUT WHEN TESTING
 
