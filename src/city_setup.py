@@ -26,6 +26,7 @@ def city_setup():
     action('SetClothing(Alchemist Jeremy, Merchant)')
     action('SetHairStyle(Alchemist Jeremy, Spiky)')
     action('SetPosition(Alchemist Jeremy, City.BrownHouseDoor)')
+    action('WalkToSpot(Alchemist Jeremy, 925.3, 0.3, 5.0)')
     
     #Scout Joanna
     action('CreateCharacter(Scout Joanna, C)')
@@ -42,6 +43,7 @@ def city_setup():
     action('SetPosition(Scout Tom, City.WestEnd)')
     action('CreateItem(TomTorch, Torch)')
     action('SetPosition(TomTorch, Scout Joanna)')
+    action('WalkToSpot(Scout Tom, 916.0, 0.3, -12.6)')
     
     #Drunk Devon
     action('CreateCharacter(Drunk Devon, F)')
@@ -50,6 +52,7 @@ def city_setup():
     action('SetPosition(Drunk Devon, City.GreenHouseDoor)')
     action('CreateItem(DevonsBottle, Bottle)')
     action('SetPosition(DevonsBottle, Drunk Devon)')
+    action('WalkToSpot(Drunk Devon, 906.4, 0.3, -1.2)')
     
     #Priestess Esmerelda
     action('CreateCharacter(Priestess Esmerelda, E)')
