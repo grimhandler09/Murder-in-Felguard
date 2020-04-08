@@ -49,38 +49,38 @@ def inspect_item(item):
 		pr = 'input Selected Menu'
 		while(pr != 'input Selected Next'):
 			if pr == 'input Selected Menu':
-				pr = set_dialog('There is a book sticking out of the bookcase. Which part do you want to read? [First | Blue Potions] [Second | Green Potions] [Third | Purple Potions] [Fourth | Red Potions] [Next | Put it back]')
+				pr = set_dialog('There is a book sticking out of the bookcase. Which part do you want to read? \n[First| Blue Potions] \n[Second| Green Potions] \n[Third| Purple Potions] \n[Fourth| Red Potions] \n[Next| Put it back]')
 		#Blue Potions
 			elif pr == 'input Selected First':
-				pr = set_dialog('We offer two blue potions: Aqua Regia and Aqua Fortis. [Blue1 | Aqua Regia] [Blue2 | Aqua Fortis] [Menu | Back]')
+				pr = set_dialog('We offer two blue potions: Aqua Regia and Aqua Fortis.\n[Blue1| Aqua Regia] \n[Blue2| Aqua Fortis] \n[Menu| Back]')
 			elif pr == 'input Selected Blue1':
-				pr = set_dialog('Aqua Regia: Can disolve gold. Also known as nitrohydrochloric acid. [First | Back]')
+				pr = set_dialog('Aqua Regia: Can disolve gold. Also known as nitrohydrochloric acid \n[First| Back]')
 			elif pr == 'input Selected Blue2':
-				pr = set_dialog('Aqua Fortis: Also known as Fuming Nitric Acid. Creates toxic fumes. [First | Back]')
+				pr = set_dialog('Aqua Fortis: Also known as Fuming Nitric Acid. Creates toxic fumes. \n[First| Back]')
 		#Green Potions
 			elif pr == 'input Selected Second':
-				pr = set_dialog('We offer three green potions: Strength Potions, Speed Potions, and Night Vision Potions. [Green1 | Strength Potions] [Green2 | Speed Potions] [Green3 | Night Vision Potions] [Menu | Back]')
+				pr = set_dialog('We offer three green potions: Strength Potions, Speed Potions, and Night Vision Potions. \n[Green1| Strength Potions] \n[Green2| Speed Potions] \n[Green3| Night Vision Potions] \n[Menu| Back]')
 			elif pr == 'input Selected Green1':
-				pr = set_dialog('Strength Potion: Lift a thousand pounds! [Second | Back]')
+				pr = set_dialog('Strength Potion: Lift a thousand pounds! \n[Second| Back]')
 			elif pr == 'input Selected Green2':
-				pr = set_dialog('Speed Potion: Run faster than a horse! [Second | Back]')
+				pr = set_dialog('Speed Potion: Run faster than a horse! \n[Second| Back]')
 			elif pr == 'input Selected Green3':
-				pr = set_dialog('Night Vision Potion: See at night like it\'s day! Warning: looking at bright lights amy cause blindness. [Second | Back]')
+				pr = set_dialog('Night Vision Potion: See at night like it\'s day! Warning: looking at bright lights amy cause blindness. \n[Second| Back]')
 		#Purple Potions
 			elif pr == 'input Selected Third':
-				pr = set_dialog('We offer two purple potions: Giant Rat Poison and Withering Potions. [Purple1 | Giant Rat Poison] [Purple2 | Withering Potion] [Menu | Back]')
+				pr = set_dialog('We offer two purple potions: Giant Rat Poison and Withering Potions. \n[Purple1| Giant Rat Poison] \n[Purple2| Withering Potion] \n[Menu| Back]')
 			elif pr == 'input Selected Purple1':
-				pr = set_dialog('Giant Rat Poison keeps our sewers clean! Warning: Highly Toxic. [Third | Back]')
+				pr = set_dialog('Giant Rat Poison keeps our sewers clean! Warning: Highly Toxic. \n[Third| Back]')
 				global_game_states.identified_poison = True
 			elif pr == 'input Selected Purple2':
-				pr = set_dialog('Withering Potion: Kills weeds fast! Safe in small or moderate amounts! [Third | Back]')
+				pr = set_dialog('Withering Potion: Kills weeds fast! Safe in small or moderate amounts! \n[Third| Back]')
 		#Red Potions
 			elif pr == 'input Selected Fourth':
-				pr = set_dialog('We offer two red potions: Health Potions and Food Potions. [Red1 | Health Potion] [Red2 | Food Potion] [Menu | Back]')
+				pr = set_dialog('We offer two red potions: Health Potions and Food Potions. \n[Red1| Health Potion] \n[Red2| Food Potion] \n[Menu| Back]')
 			elif pr == 'input Selected Red1':
-				pr = set_dialog('Health Potion: it\'s the best health pot around! [Fourth | Back]')
+				pr = set_dialog('Health Potion: it\'s the best health pot around! \n[Fourth| Back]')
 			elif pr == 'input Selected Red2':
-				pr = set_dialog('Food Potion: Add to food to make it fantastic! [Fourth | Back]')
+				pr = set_dialog('Food Potion: Add to food to make it fantastic! \n[Fourth| Back]')
 
 	elif item == 'Alch.LeftBookcase':
 		#LeftBookcase = sales ledger
@@ -90,13 +90,13 @@ def inspect_item(item):
 		pr = 'input Selected Menu'
 		while(pr != 'input Selected Next'):
 			if pr == 'input Selected Menu':
-				pr = set_dialog('There is a book sticking out of the bookcase. Which part do you want to read? [First | First Page] [Second | Second Page] [Third | Third Page] [Next | Put it back]')
+				pr = set_dialog('There is a book sticking out of the bookcase. Which part do you want to read? \n[First| First Page] \n[Second| Second Page] \n[Third| Third Page] \n[Next| Put it back]')
 			elif pr == 'input Selected First':
-				pr = set_dialog('12x Speed Potion - Gossiping Gail. 1x Aqua Fortis - Priestess Esmerelda. [Menu | Back]')
+				pr = set_dialog('12x Speed Potion - Gossiping Gail. 1x Aqua Fortis - Priestess Esmerelda. \n[Menu| Back]')
 			elif pr == 'input Selected Second':
-				pr = set_dialog('2x Food Potion - Castle Chefs. 5x Withering Potion - Scout Joanna. 1x Night Vision Potion - Blind Bandit. [Menu | Back]')
+				pr = set_dialog('2x Food Potion - Castle Chefs. 5x Withering Potion - Scout Joanna. 1x Night Vision Potion - Blind Bandit. \n[Menu| Back]')
 			elif pr == 'input Selected Third':
-				pr = set_dialog('1x Giant Rat Poison - Tiana. 3x Health Potion - Prison Guards. The rest is empty. [Menu | Back]')
+				pr = set_dialog('1x Giant Rat Poison - Tiana. 3x Health Potion - Prison Guards. The rest is empty. \n[Menu| Back]')
 				global_game_states.found_poison_purchase = True
 				add_clue('Found Tianna bought poison')
 	elif item == 'Alch.Cauldron':
