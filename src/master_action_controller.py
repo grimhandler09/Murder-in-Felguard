@@ -58,6 +58,7 @@ def take_leftitem_action(item):
     if [item, item] not in global_game_states.player_inventory:
         global_game_states.player_inventory.append([item, item])
         remove_item(item)
+        action('HideList()')
         action('Pickup(John, ' + item +')')
     else:
         action('Unpocket(John, ' + item +')')
@@ -69,6 +70,7 @@ def take_rightitem_action(item):
        global_game_states.player_inventory.append([item, item])
        remove_item(item)
        #action('Pickup(John, ' + item +')')
+       action('HideList()')
        action('Draw(John, ' + item +')')
     else:
         action('Draw(John, ' + item +')')
@@ -98,25 +100,21 @@ def check_master_actions(received):
     elif received.startswith('input Talk'):
         person = received[11:]
         talk_action(person)
-    elif received == "input Close Narration":
+    elif received == 'input Close Narration':
         action('HideNarration()')
-    elif received == "input Close List":
-        action("HideList()")
+    elif received == 'input Close List':
+        action('HideList()')
     elif received.startswith('input TakeRight'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[16:]
         take_rightitem_action(item)
     elif received.startswith('input TakeLeft'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[15:]
         take_leftitem_action(item)
     elif received.startswith('input StowRight'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[16:]
         stow_rightitem_action(item)
     elif received.startswith('input StowLeft'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[15:]
         stow_leftitem_action(item)
     elif received == "input Key Inventory":
         action('ClearList()')
