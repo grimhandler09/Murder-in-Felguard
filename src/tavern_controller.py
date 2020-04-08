@@ -14,8 +14,8 @@ def tavern_controller():
     action('FadeIn()')
     while global_game_states.current_scene == 'tavern' and global_game_states.accused == '':
         received = input()
-        if (received.startswith() == 'input Enter'):
-            global_game_states.current_scene = 'city'
-            global_game_states.prev_scene = 'tavern'
-        elif (received.startswith() == 'input Talk'):
+         if (received.startswith('input Enter')):
+            global_game_states.current_scene = 'scene_two_and_half'
+            global_game_states.prev_scene = 'scene_four'
+        else:
             check_master_actions(received)
