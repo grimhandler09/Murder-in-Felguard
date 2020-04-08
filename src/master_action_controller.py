@@ -8,6 +8,14 @@ def scene_start():
     action('SetCameraMode(follow)')
     action('EnableInput()')
 
+def midscene_narration(text):
+    action('SetNarration(' + text + ')')
+    action('ShowNarration()')
+    received = input()
+    while not (received == 'input Close Narration'):
+        received = input()
+    action('HideNarration()')
+
 def add_clue(clue):
     if clue not in global_game_states.current_clues:
         global_game_states.current_clues.append(clue)
