@@ -37,7 +37,7 @@ def use_PrisonDoor_action(door):
     action('EnableIcon(Sit, Chair, Prison.Chair, Sit, true)')
     action('Face(Guard, John)')
     set_left_right('John', 'Guard')
-    scene_two_convo('Guard')
+    dungeon_convo('Guard')
     if not global_game_states.dungeon_guard_lives:
         approach('Guard')
         action('Attack(John, Guard, true)')
@@ -93,8 +93,8 @@ def check_body_action(unconscious_body):
 
 def leave_action(exit_door):
     action('Exit(John, ' + exit_door + ', true)')
-    global_game_states.current_scene = 'scene_two_and_half'
-    global_game_states.prev_scene = 'scene_two'
+    global_game_states.current_scene = 'city'
+    global_game_states.prev_scene = 'dungeon'
 
 def change_clothes_action(attire):
     action('HideList()')
@@ -102,7 +102,7 @@ def change_clothes_action(attire):
     action('SetClothing(John, Bandit)')
     action('DisableIcon(Change of Clothes, Change Clothes)')
     remove_item('Change of Clothes')
-    action('SetNarration(John has changed into more discreet clothes.)')
+    action('SetNarration(John has changed into more discrete clothes.)')
     action('ShowNarration()')
     received = input()
     while not (received == 'input Close Narration'):
@@ -130,7 +130,7 @@ def dungeon_controller():
     scene_start()
     opening_dialog_two()
     action('EnableInput()')
-    while(global_game_states.current_scene == 'scene_two'):
+    while global_game_states.current_scene == 'dungeon':
         received = input()
         if received.startswith('input Look_in_DirtPile'):
             received = received.split(' ')

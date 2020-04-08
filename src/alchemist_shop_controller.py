@@ -4,6 +4,7 @@ from master_action_controller import *
 import global_game_states
 from threading import Timer
 from talk_controller import *
+from alchemist_shop_setup import alchemist_shop_setup
 #from master_action_controller import add_clue
 
 def inspect_item(item):
@@ -104,6 +105,9 @@ def inspect_item(item):
 		action('ShowNarration()')
 
 def alchemist_shop_controller():
+	if global_game_state.first_alchemist_entry:
+		alchemist_shop_setup()
+		global_game_state.first_alchemist_entry = False
 	action('FadeIn()')
 	action('SetCameraFocus(John)')
 	action('SetCameraMode(follow)')
