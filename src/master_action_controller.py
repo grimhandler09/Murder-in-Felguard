@@ -47,7 +47,7 @@ def talk_action(person):
     elif global_game_states.current_scene == 'city':
         city_convo(person)
     elif global_game_states.current_scene == 'alchemist_shop':
-        tavern_convo(person)
+        alchemist_shop_convo(person)
     elif global_game_states.current_scene == 'tavern':
         tavern_convo(person)
     action('HideDialog()')

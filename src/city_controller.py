@@ -4,6 +4,7 @@ from master_action_controller import check_master_actions, scene_start
 from city_setup import city_setup
 import global_game_states
 from talk_controller import *
+from alchemist_shop_setup import alchemist_shop_setup
 
 def enable_accusation():
     for char in global_game_states.character_list:
@@ -39,6 +40,7 @@ def city_controller():
     scene_start()
     if global_game_states.first_city_entry:
         city_setup()
+        alchemist_shop_setup()
         enable_accusation()
         opening_dialog()
         global_game_states.first_city_entry = False
