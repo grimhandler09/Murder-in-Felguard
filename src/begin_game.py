@@ -26,7 +26,7 @@ def begin_game_setup():
     action('SetClothing(Guard Gallant, HeavyArmour)')
     action('SetPosition(Guard Gallant, QueensCastle.Door)')
     action('CreateItem(GallantSword, Sword)')
-    action('SetPosition(GallantSword, Guard Gallant)')
+    action('Draw(Guard Gallant, GallantSword)')
     #King Phillip
     action('CreateCharacter(King Phillip, H)')
     action('SetClothing(King Phillip, King)')
@@ -120,8 +120,8 @@ def begin_game_setup():
     action('EnableEffect(QueensCastle.Fireplace, Campfire)')
 
     #Starting Inventory
-    action('CreateItem(Party_Invitation, OpenScroll)')
-    action('EnableIcon(ReadInvitation, Book, Party_Invitation, Read, true)')
+    action('CreateItem(Party Invitation, OpenScroll)')
+    action('EnableIcon(ReadInvitation, Book, Party Invitation, Read, true)')
 
 
     #Start in black

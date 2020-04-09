@@ -105,6 +105,9 @@ def inspect_item(item):
 		action('ShowNarration()')
 
 def alchemist_shop_controller():
+	if global_game_state.first_alchemist_entry:
+		alchemist_shop_setup()
+		global_game_state.first_alchemist_entry = False
 	action('FadeIn()')
 	action('SetCameraFocus(John)')
 	action('SetCameraMode(follow)')

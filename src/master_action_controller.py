@@ -8,6 +8,28 @@ def scene_start():
     action('SetCameraMode(follow)')
     action('EnableInput()')
 
+def midscene_narration(text):
+    action('SetNarration(' + text + ')')
+    action('ShowNarration()')
+    received = input()
+    while not (received == 'input Close Narration'):
+        received = input()
+    action('HideNarration()')
+
+def add_clue(clue):
+    if clue not in global_game_states.current_clues:
+        global_game_states.current_clues.append(clue)
+        if global_game_states.current_scene == 'castle':
+            global_game_states.castle_clues.append(clue)
+        elif global_game_states.current_scene == 'dungeon':
+            global_game_states.dungeon_clues.append(clue)
+        elif global_game_states.current_scene == 'city':
+            global_game_states.city_clues.append(clue)
+        elif global_game_states.current_scene == 'alchemist_shop':
+            global_game_states.alchemist_shop_clues.append(clue)
+        elif global_game_states.current_scene == 'tavern':
+            global_game_states.tavern_clues.append(clue)
+
 def display_clues_action():
     if not global_game_states.current_clues == []:
         action('SetNarration(These are the clues gathered so far)')
@@ -17,8 +39,7 @@ def display_clues_action():
         for item in global_game_states.current_clues:
             all_clues = '' + item
         set_left_right('John', 'null')
-        action('ShowDialog()')
-        set_dialog(all_clues + ' [Next | Next]')
+        set_dialog(all_clues + ' [Next | Next]', ['Next'], True)
         action('HideDialog()')
     else:
         action('SetNarration(Clues will be stored here when they are found.)')
@@ -31,17 +52,17 @@ def talk_action(person):
     action('SetRight(' + person + ')')
     action('ShowDialog()')
     if not global_game_states.queen_death:
-        scene_one_predeath(person)
-    elif global_game_states.queen_death and global_game_states.current_scene == 'scene_one':
-        scene_one_postdeath(person)
-    elif global_game_states.current_scene == 'scene_two':
-        scene_two_convo(person)
-    elif global_game_states.current_scene == 'scene_two_and_half':
-        scene_two_and_half_convo(person)
-    elif global_game_states.current_scene == 'scene_three':
-        scene_four_convo(person)
-    elif global_game_states.current_scene == 'scene_four':
-        scene_four_convo(person)
+        castle_predeath(person)
+    elif global_game_states.queen_death and global_game_states.current_scene == 'castle':
+        castle_postdeath(person)
+    elif global_game_states.current_scene == 'dungeon':
+        dungeon_convo(person)
+    elif global_game_states.current_scene == 'city':
+        city_convo(person)
+    elif global_game_states.current_scene == 'alchemist_shop':
+        tavern_convo(person)
+    elif global_game_states.current_scene == 'tavern':
+        tavern_convo(person)
     action('HideDialog()')
 
 def remove_item(item):
@@ -54,6 +75,7 @@ def take_leftitem_action(item):
     if [item, item] not in global_game_states.player_inventory:
         global_game_states.player_inventory.append([item, item])
         remove_item(item)
+        action('HideList()')
         action('Pickup(John, ' + item +')')
     else:
         action('Unpocket(John, ' + item +')')
@@ -65,6 +87,7 @@ def take_rightitem_action(item):
        global_game_states.player_inventory.append([item, item])
        remove_item(item)
        #action('Pickup(John, ' + item +')')
+       action('HideList()')
        action('Draw(John, ' + item +')')
     else:
         action('Draw(John, ' + item +')')
@@ -94,25 +117,21 @@ def check_master_actions(received):
     elif received.startswith('input Talk'):
         person = received[11:]
         talk_action(person)
-    elif received == "input Close Narration":
+    elif received == 'input Close Narration':
         action('HideNarration()')
-    elif received == "input Close List":
-        action("HideList()")
+    elif received == 'input Close List':
+        action('HideList()')
     elif received.startswith('input TakeRight'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[16:]
         take_rightitem_action(item)
     elif received.startswith('input TakeLeft'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[15:]
         take_leftitem_action(item)
     elif received.startswith('input StowRight'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[16:]
         stow_rightitem_action(item)
     elif received.startswith('input StowLeft'):
-        received = received.split(' ')
-        item = received[2]
+        item = received[15:]
         stow_leftitem_action(item)
     elif received == "input Key Inventory":
         action('ClearList()')
@@ -122,3 +141,12 @@ def check_master_actions(received):
         action('ShowList(John)')
     elif received == 'input Key Interact':
         display_clues_action()
+    elif received.startswith('input Accuse'):
+        acc_character = received[13:]
+        set_left_right('John', acc_character)
+        received = set_dialog('Are you sure you want to accuse ' + acc_character + '? You can only do this once! [Yes | Yes] [No | No]', ['Yes', 'No'], True)
+        if received == 'input Selected Yes':
+            global_game_states.accused = acc_character
+            action('FadeOut()')
+        action('HideDialog()')
+         

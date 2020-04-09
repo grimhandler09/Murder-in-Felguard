@@ -2,14 +2,13 @@ from begin_game import begin_game_setup
 from castle_controller import castle_controller
 from dungeon_setup import dungeon_setup
 from dungeon_controller import dungeon_controller
-from city_setup import city_setup
 from city_controller import city_controller
 from alchemist_shop_setup import alchemist_shop_setup
 from alchemist_shop_controller import alchemist_shop_controller
 from tavern_setup import tavern_setup
 from tavern_controller import tavern_controller
-#from end_cutscenes import end_cutscene
 import global_game_states
+from end_cutscenes import end_cutscene
 
 
 # Respond to input.
@@ -20,18 +19,16 @@ def main():
         if received == 'input Selected Start':
             castle_controller()
             while global_game_states.accused == '':
-                if global_game_states.current_scene == 'scene_two':
+                if global_game_states.current_scene == 'dungeon':
                     dungeon_setup()
                     dungeon_controller()
-                elif global_game_states.current_scene == 'scene_two_and_half':
+                elif global_game_states.current_scene == 'city':
                     city_controller()
-                elif global_game_states.current_scene == 'scene_three':
-                    alchemist_shop_setup()
+                elif global_game_states.current_scene == 'alchemist_shop':
                     alchemist_shop_controller()
-                elif global_game_states.current_scene == 'scene_four':
+                elif global_game_states.current_scene == 'tavern':
                     tavern_controller()
-            #end_cutscene()
-    
+            end_cutscene()
 main() #COMMENT OUT WHEN TESTING
 
 #Replace the StartExperienceManager batch file with your manager ex:
