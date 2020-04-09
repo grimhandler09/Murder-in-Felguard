@@ -101,11 +101,10 @@ def arrest_cutscene():
     add_clue('The chamber maid has accused John of killing the queen')
 
 def prepare_storage():
-    action('CreatePlace(CastleStorage, Storage)')
     action('CreateCharacter(Tester, D)')
     action('SetClothing(Tester, Noble)')
     action('SetPosition(Tester, CastleStorage.Shelf)')
-    action('WalkToSpot(Tester, 601.8, 0.1, -2.0)')
+    action('WalkToSpot(Tester, 2101.8, 0.1, -2.1)')
     action('Die(Tester)')
     action('CreateItem(AlchemistLetter, OpenScroll)')
     action('SetPosition(AlchemistLetter, CastleStorage.Barrel)')

@@ -7,7 +7,7 @@ def dungeon_setup():
     action('FadeOut()')
 
     #Create the Prison that John will be thrown into
-    action('CreatePlace(Prison, Dungeon)')
+    
     action('SetCameraFocus(Prison.CellDoor)')
     action('SetCameraMode(follow)')
     
@@ -23,7 +23,7 @@ def dungeon_setup():
     action('SetClothing(Guard Lyra, LightArmour)')
     action('SetHairStyle(Guard Lyra, Short)')
     action('SetPosition(Guard Lyra, Prison.CellDoor)')
-    action('WalkToSpot(Guard Lyra, -608.6, 0.0, -2.7)')
+    #action('WalkToSpot(Guard Lyra, -608.6, 0.0, -2.7)')
 
     #Create Items and position them 'Change_of_Clothes'
     action('CreateItem(Cell Door Key, BlueKey)')

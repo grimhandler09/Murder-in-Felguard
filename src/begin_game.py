@@ -4,6 +4,12 @@ from action import action
 def begin_game_setup():
     #Create Queens Castle
     action('CreatePlace(QueensCastle, DiningRoom)')
+    action('CreatePlace(Prison, Dungeon)')
+    action('CreatePlace(City, City)')
+    action('CreatePlace(Gallows, Ruins)')
+    action('CreatePlace(Alch, AlchemyShop)')
+    action('CreatePlace(Tavern, Tavern)')
+    action('CreatePlace(CastleStorage, Storage)')
     
     #Set at Night
     action('SetNight()')

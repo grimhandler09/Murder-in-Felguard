@@ -1,7 +1,7 @@
 from action import action
 
 def tavern_setup():
-    action('CreatePlace(Tavern, Tavern)')
+    
     #Set at Night
     #action('SetNight()')
     #action('SetPosition(John, Tavern.Door)')
@@ -34,5 +34,6 @@ def tavern_setup():
     #Enable Icons
     #action('EnableIcon(Sit, Chair, Tavern.StoolBackRight, Sit, true)')
     action('EnableIcon(Enter, Exit , Tavern.Door, Leave the Tavern, true)')
+    action('EnableIcon(Talk, Talk , Witch Carlita, Talk to Witch Carlita, true)')
     #Enable Effects
     action('EnableEffect(Tavern.Fireplace, Campfire)')
