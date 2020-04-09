@@ -2,6 +2,7 @@ from action import action
 from talk_controller import *
 import global_game_states
 from add_clue import add_clue
+import time
 
 def scene_start():
     action('HideMenu()')
@@ -10,7 +11,7 @@ def scene_start():
     action('EnableInput()')
 
 def midscene_narration(text):
-    action('SetNarration(' + text + ')')
+    action('SetNarration(\"' + text + '\")')
     action('ShowNarration()')
     received = input()
     while not (received == 'input Close Narration'):
@@ -19,24 +20,18 @@ def midscene_narration(text):
 
 def display_clues_action():
     if not global_game_states.current_clues == []:
-        action('SetNarration(These are the clues gathered so far)')
-        action('ShowNarration()')
-        input()
-        action('HideNarration()')
+        midscene_narration('These are the clues gathered so far')
+        all_clues = ''
         for item in global_game_states.current_clues:
-            all_clues = '' + item
+            all_clues = all_clues + ' ' + item
         set_left_right('John', 'null')
         set_dialog(all_clues + ' [Next | Next]', ['Next'], True)
         action('HideDialog()')
     else:
-        action('SetNarration(Clues will be stored here when they are found.)')
-        action('ShowNarration()')
-        input()
-        action('HideNarration()')
+        midscene_narration('Clues will be stored here when they are found.')
 
 def talk_action(person):
-    action('SetLeft(John)')
-    action('SetRight(' + person + ')')
+    set_left_right('John', person)
     action('ShowDialog()')
     if not global_game_states.queen_death:
         castle_predeath(person)
@@ -96,6 +91,19 @@ def sit_action(place):
     command = "Sit(John, " + place + ")"
     action(command)
 
+#Don't read this. Nothing is going on here. Mind your business
+def drink_beverage_action(item):
+    action('HideList()')
+    action('Drink(John)')
+    if item == 'Poison':
+        midscene_narration('What a delicious beverage!')
+        time.sleep(2)
+        midscene_narration('John begins to feel a strange sensation just moments after ingesting the thick purple liquid...')
+        action('Die(John)')
+        midscene_narration('(Accusation Score: 0/5.  The pressure of making a deadly accusation caused John to be parched, and not being the brightest individual, he drank the first thing he could. As it turns out, deadly poison is deadly. The actual perpetrators remain free, however, that is the last thing on John\'s mind. Clue Score: ')
+        midscene_narration('Thanks for playing, try again and probably don\'t drink the poison!')
+        action('ShowMenu()')
+
 def check_master_actions(received):
     if received.startswith('input Sit'):
         received = received.split(' ')
@@ -120,6 +128,9 @@ def check_master_actions(received):
     elif received.startswith('input StowLeft'):
         item = received[15:]
         stow_leftitem_action(item)
+    elif received.startswith('input Drink'):
+        item = received[12:]
+        drink_beverage_action(item)
     elif received == "input Key Inventory":
         action('ClearList()')
         action('HideList()')

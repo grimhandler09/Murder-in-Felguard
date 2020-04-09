@@ -18,20 +18,20 @@ def dungeon_setup():
     action('SetClothing(John, Peasant)')
     action('SetPosition(John, Prison.CellDoor.Inside)')
 
-    #Create CellDoor Guard
-    action('CreateCharacter(Guard, C)')
-    action('SetClothing(Guard, LightArmour)')
-    action('SetHairStyle(Guard, Short)')
-    action('SetPosition(Guard, Prison.CellDoor)')
-    action('WalkToSpot(Guard, -608.6, 0.0, -2.7)')
+    #Create CellDoor Guard Lyra
+    action('CreateCharacter(Guard Lyra, C)')
+    action('SetClothing(Guard Lyra, LightArmour)')
+    action('SetHairStyle(Guard Lyra, Short)')
+    action('SetPosition(Guard Lyra, Prison.CellDoor)')
+    action('WalkToSpot(Guard Lyra, -608.6, 0.0, -2.7)')
 
     #Create Items and position them 'Change_of_Clothes'
     action('CreateItem(Cell Door Key, BlueKey)')
     action('SetPosition(Cell Door Key, QueensCastle.Door)')
-    action('CreateItem(Prison Ledger, PurpleBook)')
-    action('SetPosition(Prison Ledger, Prison.Bookshelf.Left)')
-    action('CreateItem(Dire News, OpenScroll)')
-    action('SetPosition(Dire News, Prison.Table.Left)')
+    action('CreateItem(Dire News, PurpleBook)')
+    action('SetPosition(Dire News, Prison.Bookshelf.Left)')
+    action('CreateItem(Prison Ledger, OpenScroll)')
+    action('SetPosition(Prison Ledger, Prison.Table.Left)')
     action('CreateItem(Note From King, OpenScroll)')
     action('SetPosition(Note From King, Prison.DirtPile)')
     action('AddToList(Note From King, OpenScroll)')

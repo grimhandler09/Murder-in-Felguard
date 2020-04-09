@@ -34,19 +34,20 @@ def use_PrisonDoor_action(door):
     action('EnableIcon(Read, research, Prison Ledger, Read, true)')
     action('EnableIcon(Read, research, Dire News, Read, true)')
     action('EnableIcon(Sit, Chair, Prison.Chair, Sit, true)')
-    action('Face(Guard, John)')
-    set_left_right('John', 'Guard')
-    dungeon_convo('Guard')
+    action('Face(Guard Lyra, John)')
+    set_left_right('John', 'Guard Lyra')
+    dungeon_convo('Guard Lyra')
     if not global_game_states.dungeon_guard_lives:
-        approach('Guard')
-        action('Attack(John, Guard, true)')
-        action('Die(Guard)')
-        action('EnableIcon(CheckBody, hand, Guard, Check, true)')
+        approach('Guard Lyra')
+        action('Attack(John, Guard Lyra, true)')
+        action('Die(Guard Lyra)')
+        action('EnableIcon(CheckBody, hand, Guard Lyra, Check, true)')
 
 def read_book(book):
     set_left_right('John', 'null')
     NextDialogOption = ''
     if book == 'Prison Ledger':
+        approach(book)
         PrisonLedgerClues = 'Talking to the town Alchemist, Queen\'s Servant, or Grand Maester may yield additional evidence'
         add_clue(PrisonLedgerClues)
         while NextDialogOption != 'input Selected Exit':
@@ -58,12 +59,12 @@ def read_book(book):
             elif NextDialogOption == 'input Selected Queen\'sServantInfo':
                 NextDialogOption = set_dialog('The Queen\'s servant claims she saw the suspect put something in the Queen\'s drink. [Next | Next]')
             elif NextDialogOption == 'input Selected GrandMaesterInfo':
-                NextDialogOption = set_dialog('The Grand Maester claimed that the currently jailed suspect was falsely accused, but provided no evidence to the guards. [Next | Next]')
+                NextDialogOption = set_dialog('The Grand Maester claimed that the currently jailed suspect was falsely accused, but provided no evidence to the Guard Lyras. [Next | Next]')
         if global_game_states.dungeon_guard_lives:
             action('HideDialog()')
-            action('Face(Guard, John)')
-            action('Face(John, Guard)')
-            set_left_right('John', 'Guard')
+            action('Face(Guard Lyra, John)')
+            action('Face(John, Guard Lyra)')
+            set_left_right('John', 'Guard Lyra')
             set_dialog('If you\'re really trying to help the King, you might wanna actually leave before I throw you back in your cell. Just a thought. [Next | Next]', ['Next'], True)
         action('HideDialog()')
         time.sleep(0.25)
@@ -74,13 +75,12 @@ def read_book(book):
         ' Take this key, escape your cell, and do whatever it takes to uncover the identity of the true murderer. I command it. -King Phillip [Next | Next]', ['Next'], True)
         action('HideDialog()')
     if book == 'Dire News':
-        approach(book)
         midscene_narration('This missive describes the untimely and tragic death of the Queen. Penned by Royal Successor Tianna.')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
 
 def check_body_action(unconscious_body):
-    midscene_narration('The guard is unconscious but still breathing. She will live.')
+    midscene_narration('The Guard Lyra is unconscious but still breathing. She will live.')
 
 def leave_action(exit_door):
     action('Exit(John, ' + exit_door + ', true)')
@@ -99,12 +99,12 @@ def change_clothes_action(attire):
     action('FadeIn()')
 
 def opening_dialog_two():
-    midscene_narration('John has been arrested by the Queen\'s guards.')
+    midscene_narration('John has been arrested by the Queen\'s Guard.')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
-    action('Face(John, Guard)')
     action('FadeIn()')
-    set_left_right('Guard', 'John')
+    set_left_right('Guard Lyra', 'John')
+    action('Face(John, Guard Lyra)')
     set_dialog('I hope you\'re happy. You just killed the most beloved queen this kingdom has ever had. I can\'t even look at you.' +
     ' [Next | What are you talking about] [Next | I didn\'t do anything]', ['Next'], True)
     action('HideDialog()')
