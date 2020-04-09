@@ -86,6 +86,7 @@ def leave_action(exit_door):
     action('Exit(John, ' + exit_door + ', true)')
     global_game_states.current_scene = 'city'
     global_game_states.prev_scene = 'dungeon'
+    
 
 def change_clothes_action(attire):
     action('HideList()')

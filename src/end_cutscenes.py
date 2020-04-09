@@ -9,23 +9,24 @@ from end_cutscene_setup import end_cutscene_setup
 #     for clue in global_game_states.current_clues:
     
 def commence_execution():
+    action('DisableInput()')
     action('HideDialog()')
+    action('WalkToSpot(' + global_game_states.accused + ', 1185.7, 11.7, 17.2)')
     action('Face(' + global_game_states.accused + ', Guard Gallant)')
     action('SetCameraFocus(Guard Gallant)')
     action('SetCameraMode(follow)')
     action('Attack(Guard Gallant, ' + global_game_states.accused + ', true)')
     action('Die(' + global_game_states.accused + ')')
+    action('EnableInput()')
 
 def end_cutscene():
     end_cutscene_setup()
-    scene_start()
     action('FadeIn()')
-    action('SetCameraMode(focus)')
-    action('SetCameraFocus(King Phillip)')
     set_left_right('King Phillip', 'null')
+    action('EnableInput()')
     set_dialog('We are gathered here today to face the person who has killed my dearest Margerie. [Next | Next]', ['Next'], True)
     set_dialog('My trusted advisor, John, has gathered the necessary evidence to bring ' + global_game_states.accused + ' to justice. [Next | Next]')
-    display_clues_action() # implement present_evidence()
+    #display_clues_action() # implement present_evidence()
     set_dialog('It brings me no joy in sentencing you to death, but you have committed the greatest atrocity to this kingdom. [Next | Next]')
     action('HideDialog()')
     action('SetCameraMode(focus)')

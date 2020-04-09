@@ -3,7 +3,7 @@ from action import action
 def city_setup():
     #Create City
     action('CreatePlace("City", City)')
-    
+    action('CreatePlace(Gallows, Ruins)')
     #Set Day
     action('SetDay()')
     
