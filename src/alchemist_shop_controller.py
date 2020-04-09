@@ -5,7 +5,7 @@ import global_game_states
 from threading import Timer
 from talk_controller import *
 from add_clue import add_clue
-#from master_action_controller import add_clue
+from alchemist_shop_setup import alchemist_shop_setup
 
 def inspect_item(item):
 	action('WalkTo(John, ' + item + ')')
@@ -58,7 +58,7 @@ def inspect_item(item):
 		action('SetRight(null)')
 		action('ShowDialog()')
 		pr = 'input Selected Menu'
-		while(pr != 'input Selected Next'):
+		while pr != 'input Selected Next':
 			if pr == 'input Selected Menu':
 				pr = set_dialog('There is a book sticking out of the bookcase. Which part do you want to read? [First| Blue Potions] [Second| Green Potions] [Third| Purple Potions] [Fourth| Red Potions] [Next| Put it back]')
 		#Blue Potions
@@ -99,7 +99,7 @@ def inspect_item(item):
 		action('SetRight(null)')
 		action('ShowDialog()')
 		pr = 'input Selected Menu'
-		while(pr != 'input Selected Next'):
+		while pr != 'input Selected Next':
 			if pr == 'input Selected Menu':
 				pr = set_dialog('There is a book sticking out of the bookcase. Which part do you want to read? [First| First Page] [Second| Second Page] [Third| Third Page] [Next| Put it back]')
 			elif pr == 'input Selected First':
@@ -116,10 +116,7 @@ def inspect_item(item):
 		action('ShowNarration()')
 
 def alchemist_shop_controller():
-	if global_game_state.first_alchemist_entry:
-		alchemist_shop_setup()
-		global_game_state.first_alchemist_entry = False
-	action('FadeIn()')
+	action('Enter(John, Alch.Door, true)')
 	action('SetCameraFocus(John)')
 	action('SetCameraMode(follow)')
 	action('EnableInput()')
@@ -129,9 +126,9 @@ def alchemist_shop_controller():
 			received = received.split(' ')
 			item = received[2]
 			inspect_item(item)
-		elif recieved.startswith('input Leave'):
-			action('Exit(John, ' + exit_door + ', true)')
-    		global_game_states.current_scene = 'city'
-  		  global_game_states.prev_scene = 'alchemist_shop'
+		elif received.startswith('input Leave'):
+			action('Exit(John, ' + received[12:] + ', true)')
+			global_game_states.current_scene = 'city'
+			global_game_states.prev_scene = 'alchemist_shop'
 		else:
 			check_master_actions(received)

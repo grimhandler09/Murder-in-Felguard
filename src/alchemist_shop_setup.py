@@ -2,7 +2,7 @@ from action import action
 
 def alchemist_shop_setup():
 	action('CreatePlace(Alch, AlchemyShop)')
-	action('SetPosition(John, Alch.Door)')
+	
 
 	#Alchemist Henry
 	action('CreateCharacter(Alchemist Henry, D)')
@@ -60,6 +60,5 @@ def alchemist_shop_setup():
 	action('EnableIcon(Inspect, cauldron, Alch.Cauldron, Inspect, false)')
 
 	action('EnableIcon(Talk, talk, Alchemist Henry, Talk to Alchemist Henry, true)')
-	#action('EnableIcon(Accuse, arrest, Alchemist Henry, Accuse Alchemist Henry, false)')
 	#action('EnableIcon(TakeLeft, hand, Poison, Take Giant Rat Poison, false)')
 	action('EnableIcon(Leave, door, Alch.Door, Leave, true)') 

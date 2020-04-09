@@ -101,7 +101,7 @@ def city_convo(person):
 
 def alchemist_shop_convo(person):
     pr = 'input Selected Menu'
-    while(pr != 'input Selected Done' and person == 'Alchemist Henry'):
+    while pr != 'input Selected Done' and person == 'Alchemist Henry':
         if pr == 'input Selected Menu' and global_game_states.found_poison_purchase == False and global_game_states.found_poison == False and global_game_states.identified_poison == False:
             pr = set_dialog('Welcome! Feel free to look around. [Done| Thanks]')
         elif pr == 'input Selected Menu' and global_game_states.found_poison_purchase == True and global_game_states.found_poison == False and global_game_states.identified_poison == False:
