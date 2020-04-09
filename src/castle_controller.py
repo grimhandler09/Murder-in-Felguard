@@ -3,6 +3,7 @@ from action import action
 from master_action_controller import check_master_actions, scene_start, add_clue
 import global_game_states
 from talk_controller import *
+from add_clue import add_clue
 
 def opening_cutscene():
     action('SetCameraFocus(QueensCastle.DiningTable)')
@@ -15,15 +16,15 @@ def opening_cutscene():
     action('FadeIn()')
     set_left_right('King Phillip', 'Queen Margerie')
     set_dialog('Happy Birthday Darling! I\'ve invited all of your closest friends and family to celebrate! [Next| Next]', ['Next'], True)
-    set_dialog('Enjoy your night Margerie. You\'ve earned it after ruling Felgard faithfully by my side for the last 20 years. [Next | Next]')
-    set_dialog('In honor of the momentous occasion I got Carlita the Castle Witch to give you a very special present! [Next | Next]')
+    set_dialog('Enjoy your night Margerie. You\'ve earned it after ruling Felgard faithfully by my side for the last 20 years. [Next| Next]')
+    set_dialog('In honor of the momentous occasion I got Carlita the Castle Witch to give you a very special present! [Next| Next]')
     action('HideDialog()')
     action('WalkToSpot(Witch Carlita, 303.1, 0.1, 5.2)')
     action('Cast(Witch Carlita, Queen Margerie)')
     action('EnableEffect(Queen Margerie, Heart)')
     time.sleep(2.5)
     set_left_right('King Phillip', 'Queen Margerie')
-    set_dialog('Let the party commence! [Next | Next]', ['Next'], True)
+    set_dialog('Let the party commence! [Next| Next]', ['Next'], True)
     action('HideDialog()')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
@@ -39,13 +40,13 @@ def death_cutscene():
     action('SetCameraFocus(Queen Margerie)')
     action('SetCameraMode(focus)')
     set_left_right('Queen Margerie', 'null')
-    set_dialog('Thank you all for coming to my birthday bash! [Next | Next]', ['Next'], True)
-    set_dialog('It\'s so wonderful to see you all here. I look forward to many more glorious years ruling the kingdom! Cheers! [Next | Next]')
+    set_dialog('Thank you all for coming to my birthday bash! [Next| Next]', ['Next'], True)
+    set_dialog('It\'s so wonderful to see you all here. I look forward to many more glorious years ruling the kingdom! Cheers! [Next| Next]')
     action('HideDialog()')
     action('Drink(Queen Margerie)')
     #action('Put(Queen Margerie, QueensCup)')
     action('SetPosition(QueensCup, QueensCastle.DiningTable.Right)')
-    set_dialog('Now let us... [Next | Next]', ['Next'], True)
+    set_dialog('Now let us... [Next| Next]', ['Next'], True)
     action('HideDialog()')
     action('SetExpression(Queen Margerie, Disgusted)')
     action('Die(Queen Margerie)')
@@ -89,14 +90,14 @@ def arrest_cutscene():
     action('SetCameraFocus(Chamber Maid Scarlet)')
     set_left_right('Chamber Maid Scarlet', 'null')
     action('SetExpression(Chamber Maid Scarlet, Surprised)')
-    set_dialog('Guards! It was the queen\'s aide! He killed the Queen! [Next | Next]', ['Next'], True)
+    set_dialog('Guards! It was the queen\'s aide! He killed the Queen! [Next| Next]', ['Next'], True)
     action('HideDialog()')
     action('SetCameraFocus(QueensCastle.Door)')
     action('Enter(Guard Tom, QueensCastle.Door)')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
     set_left_right('Guard Tom', 'null')
-    set_dialog('Get him! [Next | Next]', ['Next'], True)
+    set_dialog('Get him! [Next| Next]', ['Next'], True)
     action('HideDialog()')
     global_game_states.current_scene = 'dungeon'
     global_game_states.prev_scene = 'castle'
