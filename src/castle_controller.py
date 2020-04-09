@@ -3,6 +3,7 @@ from action import action
 from master_action_controller import check_master_actions, scene_start, add_clue
 import global_game_states
 from talk_controller import *
+from add_clue import add_clue
 
 def opening_cutscene():
     action('SetCameraFocus(QueensCastle.DiningTable)')

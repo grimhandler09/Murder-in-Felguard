@@ -1,5 +1,6 @@
 from action import action
 import global_game_states 
+from add_clue import add_clue
 
 def set_left_right(left, right):
     action('SetLeft('+left+')')
@@ -137,7 +138,7 @@ def alchemist_shop_convo(person):
             action('EnableIcon(TakeLeft, hand, Poison, Take Giant Rat Poison, false)')
             if 'Found Poison' not in global_game_states.current_clues:
                 global_game_states.current_clues.append('Found Poison')
-            #add_clue('Found Poison')
+            add_clue('Found Poison')
             global_game_states.found_poison = True
         
 def tavern_convo(person):
