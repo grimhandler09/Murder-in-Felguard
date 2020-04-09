@@ -62,8 +62,6 @@ def castle_postdeath(person):
         set_dialog('Where we always get it, the local tavern. [Next | Where was the taste tester?]')
         set_dialog('Errrm....I think he was off today because of the Queen\'s birthday [Next | Thanks for your time]')
 
-    
-
 def dungeon_convo(person):
     if person == 'Guard':
         received = set_dialog('Wait, how did you open the cell... [Attack | I need to escape, for the King! (Attack)] [Talk | Listen, the King told me to escape. (Persuade)', ['Attack', 'Talk'], True)
@@ -75,11 +73,6 @@ def dungeon_convo(person):
         action('HideDialog()')
         
 def city_convo(person):
-    if person == 'Guard':
-        set_dialog('Wait, how did you open the cell... [Next | I need to escape, for the King (Attack)]', ['Next'], True)
-        action('HideDialog()')
-        
-def scene_two_and_half_convo(person):
     if person == 'Beggar Adeline':
         set_dialog('I\'m not sad about the Queen\'s death. She\'s been rolling in wealth while decent folks can\'t even find a job to support their families. [Next | ... okay?]')
     elif person == 'Beggar Miles':

@@ -11,11 +11,11 @@ def enable_accusation():
 
 def determine_entry():
     if global_game_states.prev_scene == 'dungeon':
-        action('Enter(John, City.WestEnd, True)')
+        action('Enter(John, City.WestEnd, true)')
     elif global_game_states.prev_scene == 'alchemist_shop':
-        action('Enter(John, City.BrownHouseDoor, True)')
+        action('Enter(John, City.BrownHouseDoor, true)')
     elif global_game_states.prev_scene == 'tavern':
-        action('Enter(John, City.GreenHouseDoor, True)')
+        action('Enter(John, City.GreenHouseDoor, true)')
 
 def opening_dialog():
     time.sleep(1)
@@ -33,7 +33,7 @@ def enter_building(door):
     elif door == 'City.BrownHouseDoor':
         global_game_states.prev_scene = 'city'
         global_game_states.current_scene = 'alchemist_shop'
-    action('Exit(John, ' + door + ', True)')
+    action('Exit(John, ' + door + ', true)')
 
 def city_controller():
     scene_start()
