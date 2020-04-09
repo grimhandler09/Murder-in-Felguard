@@ -61,6 +61,7 @@ def city_setup():
     action('SetPosition(Priestess Esmerelda, City.RedHouseDoor)')
     action('CreateItem(EsmereldaBook, RedBook)')
     action('SetPosition(EsmereldaBook, Priestess Esmerelda)')
+    action('WalkToSpot(Priestess Esmerelda, 928.9, 0.4, -1.7)')
     
     #Blind Bandit
     action('CreateCharacter(Blind Bandit, C)')
@@ -73,6 +74,7 @@ def city_setup():
     action('SetClothing(Gossiping Gail, Peasant)')
     action('SetHairStyle(Gossiping Gail, Spiky)')
     action('SetPosition(Gossiping Gail, City.BlueHouseDoor)')
+    action('WalkToSpot(Gossiping Gail, 924.8, 0.3, -10.2)')
     
     #Enable Icons
     action('EnableIcon(Talk, Talk, Beggar Adeline, Talk to Beggar Adeline, true)')
