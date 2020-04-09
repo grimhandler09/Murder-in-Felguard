@@ -1,6 +1,5 @@
-import time
 from action import action
-from master_action_controller import check_master_actions, scene_start
+from master_action_controller import check_master_actions, scene_start, midscene_narration
 from city_setup import city_setup
 import global_game_states
 from talk_controller import *
@@ -19,13 +18,9 @@ def determine_entry():
         action('Enter(John, City.GreenHouseDoor, true)')
 
 def opening_dialog():
-    time.sleep(1)
-    action('SetNarration(John must explore the city to solve the Queen\'s Murder.)')
-    action('ShowNarration()')
-    input()
-    action('SetNarration(\"You can now accuse every person you meet of killing Queen Margerie. Be careful, once you commit to accusing' +
-    ' an individual, you can\'t go back!\")')
-    action('ShowNarration()')
+    midscene_narration('John must explore the city to solve the Queen\'s Murder.')
+    midscene_narration('You can now accuse every person you meet of killing Queen Margerie. Be careful, once you commit to accusing' +
+    ' an individual, you can\'t go back!')
 
 def enter_building(door):
     if door == 'City.GreenHouseDoor':
@@ -45,7 +40,6 @@ def city_controller():
         opening_dialog()
         global_game_states.first_city_entry = False
     determine_entry()
-    action('FadeIn()')
     while global_game_states.current_scene == 'city' and global_game_states.accused == '':
         received = input()
         if received.startswith('input Enter'):
