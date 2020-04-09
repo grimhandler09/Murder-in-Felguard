@@ -1,9 +1,7 @@
 from action import action
 
 def alchemist_shop_setup():
-	action('CreatePlace(Alch, AlchemyShop)')
 	
-
 	#Alchemist Henry
 	action('CreateCharacter(Alchemist Henry, D)')
 	action('SetClothing(Alchemist Henry, Warlock)')
