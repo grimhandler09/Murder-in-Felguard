@@ -103,31 +103,31 @@ def alchemist_shop_convo(person):
     pr = 'input Selected Menu'
     while pr != 'input Selected Done' and person == 'Alchemist Henry':
         if pr == 'input Selected Menu' and global_game_states.found_poison_purchase == False and global_game_states.found_poison == False and global_game_states.identified_poison == False:
-            pr = set_dialog('Welcome! Feel free to look around. [Done| Thanks]')
+            pr = set_dialog('Welcome! Feel free to look around. [Next| Thanks]')
         elif pr == 'input Selected Menu' and global_game_states.found_poison_purchase == True and global_game_states.found_poison == False and global_game_states.identified_poison == False:
-            pr = set_dialog('Find anything you like? [Purchase| Who is Tianna?] [Done| Still looking around]')
+            pr = set_dialog('Find anything you like? [Purchase| Who is Tianna?] [Next| Still looking around]',['Purchase','Next'])
         elif pr == 'input Selected Menu' and global_game_states.found_poison_purchase == False and global_game_states.found_poison == True and global_game_states.identified_poison == False:
-            pr = set_dialog('Need help with anything else? [Free| Are you sure I can have this?] [Done| No, thanks]')
+            pr = set_dialog('Need help with anything else? [Free| Are you sure I can have this?] [Next| No, thanks]',['Free','Next'])
         elif pr == 'input Selected Menu' and global_game_states.found_poison_purchase == True and global_game_states.found_poison == True and global_game_states.identified_poison == False:
-            pr = set_dialog('Need help with anything else? [Purchase| Who is Tianna?] [Free| Are you sure I can have this?] [Done| No, thanks]')
+            pr = set_dialog('Need help with anything else? [Purchase| Who is Tianna?] [Free| Are you sure I can have this?] [Next| No, thanks]',['Purchase','Free','Next'])
         elif pr == 'input Selected Menu' and global_game_states.found_poison_purchase == False and global_game_states.found_poison == False and global_game_states.identified_poison == True:
-            pr = set_dialog('Find anything you like? [About| Actually...] [Done| Still looking around]')
+            pr = set_dialog('Find anything you like? [About| Actually...] [Next| Still looking around]',['About','Next'])
         elif pr == 'input Selected Menu' and global_game_states.found_poison_purchase == True and global_game_states.found_poison == False and global_game_states.identified_poison == True:
-            pr = set_dialog('Find anything you like? [Purchase| Who is Tianna?] [About| Actually...] [Done| Still looking around]')
+            pr = set_dialog('Find anything you like? [Purchase| Who is Tianna?] [About| Actually...] [Next| Still looking around]',['Purchase','About','Next'])
         elif pr == 'input Selected Menu' and global_game_states.found_poison_purchase == False and global_game_states.found_poison == True and global_game_states.identified_poison == True:
-            pr = set_dialog('Need help with anything else? [Free| Are you sure I can have this?] [About| Actually...] [Done| No, thanks]')
+            pr = set_dialog('Need help with anything else? [Free| Are you sure I can have this?] [About| Actually...] [Next| No, thanks]',['About','Next'])
         elif pr == 'input Selected Menu' and global_game_states.found_poison_purchase == True and global_game_states.found_poison == True and global_game_states.identified_poison == True:
-            pr = set_dialog('Need help with anything else? [Purchase| Who is Tianna?] [Free| Are you sure I can have this?] [About| Actually...] [Done| No, thanks]')
+            pr = set_dialog('Need help with anything else? [Purchase| Who is Tianna?] [Free| Are you sure I can have this?] [About| Actually...] [Next| No, thanks]',['Purchase','Free','About','Next'])
         elif pr == 'input Selected Purchase':
-            pr = set_dialog('Oh, Tianna? She\'s the Queen\'s sister. She recently bought some giant rat poison to help clear the sewers. [Menu| Thanks]')
+            pr = set_dialog('Oh, Tianna? She\'s the Queen\'s sister. She recently bought some giant rat poison to help clear the sewers. [Menu| Thanks]',['Menu'])
         elif pr == 'input Selected Free':
-            pr = set_dialog('If you\'re investigating for the king, take it! Quick, before I change my mind! [Menu| Okay...]')
+            pr = set_dialog('If you\'re investigating for the king, take it! Quick, before I change my mind! [Menu| Okay...]',['Menu'])
         elif pr == 'input Selected About' and global_game_states.found_poison == False:
-            pr = set_dialog('Oh, the giant rat poison? I usually don\'t sell it to civilians. [About2| The king asked me]')
+            pr = set_dialog('Oh, the giant rat poison? I usually don\'t sell it to civilians. [About2| The king asked me]',['About2'])
         elif pr == 'input Selected About' and global_game_states.found_poison == True:
-            pr = set_dialog('The giant rat poison? Didn\'t you already grab it? [Menu| Yeah...]')
+            pr = set_dialog('The giant rat poison? Didn\'t you already grab it? [Menu| Yeah...]',['Menu'])
         elif pr == 'input Selected About2':
-            pr = set_dialog('You\'re investigating for the king? Take the display bottle. It\'s the one with a skull and crossbones. [Menu| Thanks]')
+            pr = set_dialog('You\'re investigating for the king? Take the display bottle. It\'s the one with a skull and crossbones. [Menu| Thanks]',['Menu'])
             action('EnableIcon(TakeLeft, hand, Poison, Take Giant Rat Poison, false)')
             if 'Found Poison' not in global_game_states.current_clues:
                 global_game_states.current_clues.append('Found Poison')
