@@ -117,7 +117,7 @@ def dungeon_controller():
         received = input()
         if received.startswith('input Look_in_DirtPile'):
             received = received.split(' ')
-            container = received[2]
+            container = received[2] 
             look_inside_nonfurniture_action(container)
         elif ((global_game_states.acquired_CellDoorKey) and (['Cell Door Key', 'Cell Door Key'] in global_game_states.player_inventory)):
             action('EnableIcon(UsePrisonDoor, door, Prison.CellDoor, Open, true)')

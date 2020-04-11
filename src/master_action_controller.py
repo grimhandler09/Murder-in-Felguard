@@ -1,3 +1,8 @@
+'''
+Authors: Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis
+Purpose: Handles actions that should be playable regardless of players location
+'''
+
 from action import action
 from talk_controller import *
 import global_game_states
