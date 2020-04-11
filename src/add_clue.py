@@ -1,8 +1,23 @@
+'''
+Authors: Zach Moore and Travis Conley
+Purpose: Adds the input clue to the global game state of clues
+'''
 import global_game_states
 
+'''
+Purpose: Adds the input clue to the global game state of clues
+Inputs: Clue to be added
+Outputs: None
+'''
 def add_clue(clue):
+
+    # If clue was already added, do not add again
     if clue not in global_game_states.current_clues:
+
+        # Append the clue to the clue list
         global_game_states.current_clues.append(clue)
+
+        # Depending on the current scene, add the clue to the appropriate clue scene list
         if global_game_states.current_scene == 'castle':
             global_game_states.castle_clues.append(clue)
         elif global_game_states.current_scene == 'dungeon':

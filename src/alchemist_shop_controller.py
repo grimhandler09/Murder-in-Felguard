@@ -107,10 +107,7 @@ def inspect_item(item):
 		midscene_narration('The cauldron is bubbling happily.')
 
 def alchemist_shop_controller():
-	action('Enter(John, Alch.Door, true)')
-	action('SetCameraFocus(John)')
-	action('SetCameraMode(follow)')
-	action('EnableInput()')
+	alchemist_shop_setup()
 	while global_game_states.current_scene == 'alchemist_shop' and global_game_states.accused == '':
 		received = input()
 		if received.startswith('input Inspect'):
@@ -121,6 +118,5 @@ def alchemist_shop_controller():
 			#action('Exit(John, ' + received[12:] + ', true)')
 			global_game_states.current_scene = 'city'
 			global_game_states.prev_scene = 'alchemist_shop'
-			action('FadeOut()')
 		else:
 			check_master_actions(received)

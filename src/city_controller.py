@@ -13,8 +13,10 @@ def determine_entry():
     if global_game_states.prev_scene == 'dungeon':
         action('Enter(John, City.WestEnd, true)')
     elif global_game_states.prev_scene == 'alchemist_shop':
+        action('Exit(John, Alch.Door)')
         action('Enter(John, City.BrownHouseDoor, true)')
     elif global_game_states.prev_scene == 'tavern':
+        action('Exit(John, Tavern.Door)')
         action('Enter(John, City.GreenHouseDoor, true)')
 
 def opening_dialog():
@@ -35,7 +37,6 @@ def city_controller():
     scene_start()
     if global_game_states.first_city_entry:
         city_setup()
-        alchemist_shop_setup()
         enable_accusation()
         opening_dialog()
         global_game_states.first_city_entry = False
