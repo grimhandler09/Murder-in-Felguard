@@ -56,7 +56,12 @@ def main():
                     alchemist_shop_controller()
                 elif global_game_states.current_scene == 'tavern':
                     tavern_controller()
-
+        elif received == 'input Selected Credits':
+            action('ShowCredits()')
+        elif received == 'input Close Credits':
+            action('HideCredits()')
+        elif received == 'input Selected Quit':
+            action('Quit')
             # Call the end cutscene to end the game
             end_cutscene()
 main() #COMMENT OUT WHEN TESTING

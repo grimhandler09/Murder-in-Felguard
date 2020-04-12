@@ -2,7 +2,8 @@
 Authors: Travis Conley
 Purpose: Functions that deal with pocketing and sheathing inventory plus their opposites
 '''
-
+from action import action
+import global_game_states
 
 '''
 Purpose: Removes item from non player inventories
