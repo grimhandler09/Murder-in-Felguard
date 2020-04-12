@@ -192,40 +192,41 @@ def alchemist_shop_convo(person):
             if global_game_states.found_poison_purchase == True:
                 if global_game_states.found_poison == False:
                     if global_game_states.identified_poison == False:
-                        player_response = set_dialog('Find anything you like? [Purchase | Who is Tianna?] [Next | Still looking around]', ['Purchase', 'Next'])
+                        player_response = set_dialog('Find anything you like? \\n[Purchase | Who is Tianna?] \\n[Next | Still looking around]', ['Purchase', 'Next'])
                     else:
-                        player_response = set_dialog('Find anything you like? [Purchase | Who is Tianna?] [About | About that rat poison...] [Next | Still looking around]', ['Purchase', 'About', 'Next'])
+                        player_response = set_dialog('Find anything you like? \\n[Purchase | Who is Tianna?] \\n[About | About that rat poison...] \\n[Next | Still looking around]', ['Purchase', 'About', 'Next'])
                 else:
                     if global_game_states.identified_poison == False:
-                        player_response = set_dialog('Need help with anything else? [Purchase | Who is Tianna?] [Free | Are you sure I can have this?] [Next | No, thanks]', ['Purchase', 'Free', 'Next'])
+                        player_response = set_dialog('Need help with anything else? \\n[Purchase | Who is Tianna?] \\n[Free | Are you sure I can have this?] \\n[Next | No, thanks]', ['Purchase', 'Free', 'Next'])
                     else:
-                        player_response = set_dialog('Need help with anything else? [Purchase | Who is Tianna?] [Free | Are you sure I can have this?] [About | About that rat poison...] [Next | No, thanks]', ['Purchase', 'Free', 'About', 'Next'])
+                        player_response = set_dialog('Need help with anything else? \\n[Purchase | Who is Tianna?] \\n[Free | Are you sure I can have this?] \\n[About | About that rat poison...] \\n[Next | No, thanks]', ['Purchase', 'Free', 'About', 'Next'])
             else:
                 if global_game_states.found_poison == False:
                     if global_game_states.identified_poison == False:
-                        player_response = set_dialog('Welcome! Feel free to look around. [Next | Thanks]')
+                        player_response = set_dialog('Welcome! Feel free to look around. \\n[Next | Thanks]')
                     else:
-                        player_response = set_dialog('Find anything you like? [About | About that rat poison...] [Next | Still looking around]', ['About', 'Next'])
+                        player_response = set_dialog('Find anything you like? \\n[About | About that rat poison...] \\n[Next | Still looking around]', ['About', 'Next'])
                 else:
                     if global_game_states.identified_poison == False:
-                        player_response = set_dialog('Need help with anything else? [Free | Are you sure I can have this?] [Next | No, thanks]', ['Free', 'Next'])
+                        player_response = set_dialog('Need help with anything else? \\n[Free | Are you sure I can have this?] \\n[Next | No, thanks]', ['Free', 'Next'])
                     else:
-                        player_response = set_dialog('Need help with anything else? [Free | Are you sure I can have this?] [About | About that rat poison...] [Next| No, thanks]', ['About','Next'])
+                        player_response = set_dialog('Need help with anything else? \\n[Free | Are you sure I can have this?] \\n[About | About that rat poison...] \\n[Next| No, thanks]', ['About','Next'])
         if player_response == 'input Selected Purchase':
-            player_response = set_dialog('Oh, Tianna? She\'s the Queen\'s sister. She recently bought some giant rat poison to help clear the sewers. [Menu| Thanks]', ['Menu'])
+            player_response = set_dialog('Oh, Tianna? She\'s the Queen\'s sister. She recently bought some giant rat poison to help clear the sewers. \\n[Menu| Thanks]', ['Menu'])
         elif player_response == 'input Selected Free':
-            player_response = set_dialog('If you\'re investigating for the king, take it! Quickly now! [Menu| Okay...]', ['Menu'])
+            player_response = set_dialog('If you\'re investigating for the king, take it! Quickly now! \\n[Menu| Okay...]', ['Menu'])
         elif player_response == 'input Selected About' and global_game_states.found_poison == False:
-            player_response = set_dialog('Oh, the giant rat poison? I usually don\'t sell it to civilians. [About2 | The king asked me]', ['About2'])
+            player_response = set_dialog('Oh, the giant rat poison? I usually don\'t sell it to civilians. \\n[About2 | The king asked me]', ['About2'])
             if player_response == 'input Selected About2':
-                player_response = set_dialog('You\'re investigating for the king? Take the display bottle. It\'s one of the purple ones, with a skull and crossbones. [Menu | Thanks]', ['Menu'])
+                player_response = set_dialog('You\'re investigating for the king? Take the display bottle. It\'s one of the purple ones, with a skull and crossbones. \\n[Menu | Thanks]', ['Menu'])
                 action('EnableIcon(TakeLeft, hand, Poison, Take Giant Rat Poison, false)')
                 if 'Found Poison' not in global_game_states.current_clues:
                     global_game_states.current_clues.append('Found Poison')
-                    add_clue('Found Poison')
+                    action('CreateItem(Found Poison, PurplePotion')
+                    add_clue('The potion was sold by Alchemist Henry','Found Poison')
                     global_game_states.found_poison = True
         elif player_response == 'input Selected About' and global_game_states.found_poison == True:
-            player_response = set_dialog('The giant rat poison? Didn\'t you already grab it? [Menu | Yeah...]', ['Menu'])
+            player_response = set_dialog('The giant rat poison? Didn\'t you already grab it? \\n[Menu | Yeah...]', ['Menu'])
         action('HideDialog()')
 
 '''
