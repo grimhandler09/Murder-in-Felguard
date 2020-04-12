@@ -1,6 +1,6 @@
 '''
 Authors: Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis
-Purpose: Handles actions that should be playable regardless of players location
+Purpose: Handles actions that should be playable regardless of player location
 '''
 
 from action import action
@@ -27,10 +27,11 @@ def display_clues_action():
     if not global_game_states.current_clues == []:
         midscene_narration('These are the clues gathered so far')
         all_clues = ''
+        action('PlaySound(Write)')
         for item in global_game_states.current_clues:
-            all_clues = all_clues + ' ' + item
+            all_clues = all_clues + '' + item + '\\n'
         set_left_right('John', 'null')
-        set_dialog(all_clues + ' [Next | Next]', ['Next'], True)
+        set_dialog(all_clues + '\\n[Next | Next]', ['Next'], True)
         action('HideDialog()')
     else:
         midscene_narration('Clues will be stored here when they are found.')
@@ -98,14 +99,21 @@ def sit_action(place):
 
 #Don't read this. Nothing is going on here. Mind your business
 def drink_beverage_action(item):
+    action('StopSound()')
     action('HideList()')
+    action('PlaySound(Potion)')
     action('Drink(John)')
     if item == 'Poison':
         midscene_narration('What a delicious beverage!')
+        action('PlaySound(Danger1)')
         time.sleep(2)
         midscene_narration('John begins to feel a strange sensation just moments after ingesting the thick purple liquid...')
+        action('SetCameraFocus(John)')
+        action('SetCameraMode(focus)')
         action('Die(John)')
-        midscene_narration('(Accusation Score: 0/5.  The pressure of making a deadly accusation caused John to be parched, and not being the brightest individual, he drank the first thing he could. As it turns out, deadly poison is deadly. The actual perpetrators remain free, however, that is the last thing on John\'s mind. Clue Score: ')
+        action('SetCameraFocus(John)')
+        action('SetCameraMode(follow)')
+        midscene_narration('Accusation Score: 0/5.  The pressure of making a deadly accusation caused John to be parched, and not being the brightest individual, he drank the first thing he could. As it turns out, deadly poison is deadly. The actual perpetrators remain free, however, that is the last thing on John\'s mind. Clue Score: ')
         midscene_narration('Thanks for playing, try again and probably don\'t drink the poison!')
         action('ShowMenu()')
 
@@ -144,6 +152,17 @@ def check_master_actions(received):
         action('ShowList(John)')
     elif received == 'input Key Interact':
         display_clues_action()
+    elif received == 'input Key Pause':
+        action('ShowMenu()')
+    elif received == 'input Selected Resume':
+        action('HideMenu()')
+        action('EnableInput()')
+    elif received == 'input Selected Credits':
+        action('ShowCredits()')
+    elif received == 'input Close Credits':
+        action('HideCredits()')
+    elif received == 'input Selected Quit':
+        action('Quit')
     elif received.startswith('input Accuse'):
         acc_character = received[13:]
         set_left_right('John', acc_character)

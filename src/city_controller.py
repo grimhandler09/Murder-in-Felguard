@@ -11,12 +11,18 @@ def enable_accusation():
 
 def determine_entry():
     if global_game_states.prev_scene == 'dungeon':
+        action('StopSound()')
+        action('PlaySound(Kingdom)')
         action('Enter(John, City.WestEnd, true)')
     elif global_game_states.prev_scene == 'alchemist_shop':
-        action('Exit(John, Alch.Door)')
+        action('Exit(John, Alch.Door, true)')
+        action('StopSound()')
+        action('PlaySound(Kingdom)')
         action('Enter(John, City.BrownHouseDoor, true)')
     elif global_game_states.prev_scene == 'tavern':
-        action('Exit(John, Tavern.Door)')
+        action('Exit(John, Tavern.Door, true)')
+        action('StopSound()')
+        action('PlaySound(Kingdom)')
         action('Enter(John, City.GreenHouseDoor, true)')
 
 def opening_dialog():

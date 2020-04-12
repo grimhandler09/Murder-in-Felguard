@@ -92,3 +92,7 @@ def castle_setup():
 
     # Start in black
     action('FadeOut()')
+
+    # Start Background music for castle
+    action('PlaySound(LivelyMusic)')
+    action('PlaySound(Fireplace, QueensCastle.Fireplace, true)')

@@ -11,6 +11,8 @@ def populate_audience():
             position -= 1
 
 def end_cutscene_setup():
+    action('StopSound()')
+    action('PlaySound(Danger3)')
     action('DisableInput()')
     action('SetCameraMode(focus)')
     action('SetCameraFocus(King Phillip)')

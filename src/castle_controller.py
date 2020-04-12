@@ -78,6 +78,7 @@ def death_cutscene():
     add_clue('The Queen died after drinking from her cup')
 
 def arrest_cutscene():
+    action('StopSound()')
     action('HideDialog()')
     action('HideNarration()')
     action('CreateCharacter(Guard Tom, B)')

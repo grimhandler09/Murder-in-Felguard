@@ -1,3 +1,8 @@
+'''
+Authors: Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis
+Purpose: Handles setup actions for the dungeon scene
+'''
+
 from action import action
 import global_game_states
 import time
@@ -6,17 +11,16 @@ def dungeon_setup():
 
     action('FadeOut()')
 
-    # Create the Prison that John will be thrown into
-
+    # Focus the camera back on John, away from the castle arrest cutscene
     action('SetCameraFocus(Prison.CellDoor)')
     action('SetCameraMode(follow)')
     
-    # Adjust player inventory
+    # Adjust player inventory to empty it of any items aquired in the castle
     global_game_states.player_inventory = []
 
-    # Move Character(John) to the dungeon
+    # Move the player character John to the dungeon and change his clothes to reflect his incarceration
     action('SetClothing(John, Peasant)')
     action('SetPosition(John, Prison.CellDoor.Inside)')
 
-    # Adjust List
-    action('AddToList(Note From King, OpenScroll)')
+    # Start Background music for dungeon
+    action('PlaySound(Explorer)')
