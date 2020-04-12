@@ -7,6 +7,12 @@ from talk_controller import *
 
 def tavern_controller():
     scene_start()
+
+    # Start Background noises for tavern
+    action('StopSound()')
+    action('PlaySound(Tavern)')
+    action('PlaySound(Fireplace, Tavern.Fireplace, true)')
+
     if global_game_states.first_tavern_entry:
         tavern_setup()
         global_game_states.first_tavern_entry = False

@@ -138,11 +138,14 @@ Outputs: None
 '''
 def dungeon_convo(person):
     if person == 'Guard Lyra':
-        received = set_dialog('Wait, how did you open the cell... [Attack | I need to escape, for the King! (Attack)] [Talk | Listen, the King told me to escape. (Persuade)', ['Attack', 'Talk'], True)
+        action('SetExpression(Guard Lyra, surprised)')
+        received = set_dialog('Wait, how did you open the cell... \\n[Attack | I need to escape, for the King! (Attack)] \\n[Talk | Listen, the King told me to escape. (Persuade)]', ['Attack', 'Talk'], True)
         if received == 'input Selected Talk':
-            received = set_dialog('You expect me to believe that? I\'m calling the other guards. [Attack | I can\'t let you do that! (Attack)] [Show | I have a letter from the King! (Persuade)]', ['Attack', 'Show'])
+            action('SetExpression(Guard Lyra, angry)')
+            received = set_dialog('You expect me to believe that? I\'m calling the other guards. \\n[Attack | I can\'t let you do that! (Attack)] \\n[Show | I have a letter from the King! (Persuade)]', ['Attack', 'Show'])
             if received == 'input Selected Show':
-                set_dialog('That has the King\'s official seal on it... Fine, I\'ll let you go, but get out of here before I change my mind. [Next | Next]')
+                action('SetExpression(Guard Lyra, neutral)')
+                set_dialog('That has the King\'s official seal on it... Fine, I\'ll let you go, but get out of here before I change my mind. \\n[Next | Next]')
                 global_game_states.dungeon_guard_lives = True
         action('HideDialog()')
 
