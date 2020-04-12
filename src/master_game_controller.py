@@ -59,7 +59,7 @@ def main():
 
             # Call the end cutscene to end the game
             end_cutscene()
-main() #COMMENT OUT WHEN TESTING
+#main() #COMMENT OUT WHEN TESTING
 
 #Replace the StartExperienceManager batch file with your manager ex:
 #python ../../../CS499/CS499Camelot/src/master_game_controller.py
