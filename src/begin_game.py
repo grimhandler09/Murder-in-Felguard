@@ -7,6 +7,8 @@ from action import action
 # Setup beginning of the game
 def begin_game_setup():    
     
+    action('SetTitle(\"Murder in Felguard\")')
+
     # Create Game Locations
     action('CreatePlace(QueensCastle, DiningRoom)')
     action('CreatePlace(Prison, Dungeon)')
@@ -25,11 +27,13 @@ def begin_game_setup():
     # Main Character(John)
     action('CreateCharacter(John, B)')
     action('SetHairStyle(John, Long)')
+    action('SetEyeColor(John, blue)')
     
     # Queen Margerie
     action('CreateCharacter(Queen Margerie, A)')
     action('SetClothing(Queen Margerie, Queen)')
     action('SetHairStyle(Queen Margerie, Long)')
+    action('SetEyeColor(Queen Margerie, green)')
     
     # Guard Gallant
     action('CreateCharacter(Guard Gallant, F)')
@@ -180,14 +184,18 @@ def begin_game_setup():
     # DUNGEON                                                     #
     ###############################################################
     
-    # Create CellDoor Guard Lyra
+    # Create Cell Door Guard Lyra
     action('CreateCharacter(Guard Lyra, C)')
+    action('SetEyeColor(Guard Lyra, green)')
     action('SetClothing(Guard Lyra, LightArmour)')
     action('SetHairStyle(Guard Lyra, Short)')
+    action('SetSkinColor(Guard Lyra, 2)')
+    action('SetHairColor(Guard Lyra, red)')
     action('SetPosition(Guard Lyra, Prison.CellDoor)')
+    action('SetExpression(Guard Lyra, disgusted)')
     #action('WalkToSpot(Guard Lyra, -608.6, 0.0, -2.7)')
 
-    # Create Items and position them 'Change_of_Clothes'
+    # Create items and position them
     action('CreateItem(Cell Door Key, BlueKey)')
     action('SetPosition(Cell Door Key, QueensCastle.Door)')
     action('CreateItem(Dire News, PurpleBook)')
@@ -203,7 +211,7 @@ def begin_game_setup():
     action('EnableIcon(Look_in_DirtPile, hand, Prison.DirtPile, Look through dirt, true)')
     action('EnableIcon(TakeLeft, hand, Cell Door Key, Take, true)')
     action('EnableIcon(Read, Research, Note From King, Read, true)')
-    action('EnableIcon(TakeLeft, hand, Party Invitation, Take, true)')
+    #action('EnableIcon(TakeLeft, hand, Party Invitation, Take, true)')
     action('EnableIcon(ChangeClothes, armour, Change of Clothes, Change Clothes, true)')
 
     ###############################################################
@@ -218,6 +226,7 @@ def begin_game_setup():
     action('CreateCharacter(Alchemist Henry, D)')
     action('SetClothing(Alchemist Henry, Warlock)')
     action('SetHairStyle(Alchemist Henry, Short_Full)')
+    action('SetEyeColor(Alchemist Henry, red)')
     action('SetPosition(Alchemist Henry, Alch.Bar.Behind)')
 
     # Enable Effects

@@ -1,6 +1,6 @@
 '''
 Authors: Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis
-Purpose: Handles actions that should be playable regardless of players location
+Purpose: Handles actions that should be playable regardless of player location
 '''
 # Import files 
 from action import action
@@ -69,16 +69,23 @@ Inputs: Item to be drank
 Outputs: None
 '''
 def drink_beverage_action(item):
+    action('StopSound()')
     action('HideList()')
+    action('PlaySound(Potion)')
     action('Drink(John)')
 
     # Special case if poison is drank
     if item == 'Poison':
         midscene_narration('What a delicious beverage!')
+        action('PlaySound(Danger1)')
         time.sleep(2)
         midscene_narration('John begins to feel a strange sensation just moments after ingesting the thick purple liquid...')
+        action('SetCameraFocus(John)')
+        action('SetCameraMode(focus)')
         action('Die(John)')
-        midscene_narration('(Accusation Score: 0/5.  The pressure of making a deadly accusation caused John to be parched, and not being the brightest individual, he drank the first thing he could. As it turns out, deadly poison is deadly. The actual perpetrators remain free, however, that is the last thing on John\'s mind. Clue Score: ')
+        action('SetCameraFocus(John)')
+        action('SetCameraMode(follow)')
+        midscene_narration('Accusation Score: 0/5.  The pressure of making a deadly accusation caused John to be parched, and not being the brightest individual, he drank the first thing he could. As it turns out, deadly poison is deadly. The actual perpetrators remain free, however, that is the last thing on John\'s mind. Clue Score: ')
         midscene_narration('Thanks for playing, try again and probably don\'t drink the poison!')
         action('ShowMenu()')
 
@@ -143,6 +150,19 @@ def check_master_actions(received):
     # Look at clues
     elif received == 'input Key Interact':
         display_clues_action()
+
+    # Menu navigation options
+    elif received == 'input Key Pause':
+        action('ShowMenu()')
+    elif received == 'input Selected Resume':
+        action('HideMenu()')
+        action('EnableInput()')
+    elif received == 'input Selected Credits':
+        action('ShowCredits()')
+    elif received == 'input Close Credits':
+        action('HideCredits()')
+    elif received == 'input Selected Quit':
+        action('Quit')
 
     # Accuse someone
     elif received.startswith('input Accuse'):

@@ -9,7 +9,8 @@ import global_game_states
 Purpose: Performs setup for the end cutscene
 '''
 def end_cutscene_setup():
-    # Set Focus on king at throne
+    action('StopSound()')
+    action('PlaySound(Danger3)')
     action('DisableInput()')
     action('SetCameraMode(focus)')
     action('SetCameraFocus(King Phillip)')
