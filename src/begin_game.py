@@ -285,3 +285,23 @@ def begin_game_setup():
     ###############################################################
     # END ALCHEMIST SHOP                                          #
     ###############################################################
+
+    ###############################################################
+    # STORAGE                                                     #
+    ###############################################################
+
+    action('CreateCharacter(Tester, D)')
+    action('SetClothing(Tester, Noble)')
+    action('SetPosition(Tester, CastleStorage.Shelf)')
+    action('WalkToSpot(Tester, 2101.8, 0.1, -2.1)')
+    action('Die(Tester)')
+    action('CreateItem(AlchemistLetter, OpenScroll)')
+    action('SetPosition(AlchemistLetter, CastleStorage.Barrel)')
+    action('EnableIcon(ReadAlchemistLetter, Read, AlchemistLetter, Read Letter, true)')
+    action('EnableIcon(OpenStorageChest, Chest, CastleStorage.Chest, Open Chest, true)')
+    action('EnableIcon(InspectTester, Research, Tester, Inspect Body, true)')
+    action('EnableIcon(ExitStorage, Door, CastleStorage.Door, Exit, true)')
+
+    ###############################################################
+    # END STORAGE                                                 #
+    ###############################################################
