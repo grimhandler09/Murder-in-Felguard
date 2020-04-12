@@ -50,3 +50,5 @@ character_list = ['Guard Gallant', 'King Phillip', 'Witch Carlita', 'Noble Jerem
     'Priestess Esmerelda', 'Blind Bandit', 'Gossiping Gail', 'Guard', 'Alchemist Henry'
 ]
 
+
+

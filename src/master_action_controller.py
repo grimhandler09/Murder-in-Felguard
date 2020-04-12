@@ -2,104 +2,77 @@
 Authors: Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis
 Purpose: Handles actions that should be playable regardless of players location
 '''
-
+# Import files 
 from action import action
 from talk_controller import *
 import global_game_states
 from add_clue import add_clue
+from inventory_management import *
 import time
 
+'''
+Purpose: Performs generic start for most scenes
+Inputs: None
+Outputs: None
+'''
 def scene_start():
     action('HideMenu()')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
     action('EnableInput()')
 
+'''
+Purpose: Handles narrations by making it modular for Camelot
+Inputs: None
+Outputs: None
+'''
 def midscene_narration(text):
+    # Set and show
     action('SetNarration(\"' + text + '\")')
     action('ShowNarration()')
+
+    # Only close with correct input
     received = input()
     while not (received == 'input Close Narration'):
         received = input()
     action('HideNarration()')
 
+'''
+Purpose: Displays the clues after pressing E
+Inputs: None
+Outputs: None
+'''
 def display_clues_action():
     if not global_game_states.current_clues == []:
         midscene_narration('These are the clues gathered so far')
-        all_clues = ''
-        for item in global_game_states.current_clues:
-            all_clues = all_clues + ' ' + item
-        set_left_right('John', 'null')
-        set_dialog(all_clues + ' [Next | Next]', ['Next'], True)
-        action('HideDialog()')
+        action('ClearList()')
+        action('HideList()')
+        for clue in global_game_states.current_clues:
+            action('AddToList(' + clue[0] + ', ' + clue[1] + ')')
+        action('ShowList(John)')
     else:
         midscene_narration('Clues will be stored here when they are found.')
 
-def talk_action(person):
-    set_left_right('John', person)
-    action('ShowDialog()')
-    if not global_game_states.queen_death:
-        castle_predeath(person)
-    elif global_game_states.queen_death and global_game_states.current_scene == 'castle':
-        castle_postdeath(person)
-    elif global_game_states.current_scene == 'dungeon':
-        dungeon_convo(person)
-    elif global_game_states.current_scene == 'city':
-        city_convo(person)
-    elif global_game_states.current_scene == 'alchemist_shop':
-        alchemist_shop_convo(person)
-    elif global_game_states.current_scene == 'tavern':
-        tavern_convo(person)
-    action('HideDialog()')
 
-def remove_item(item):
-    for inventory in global_game_states.list_of_inventories:
-           for individual_item in inventory:
-               if individual_item == [item, item] and not (inventory == global_game_states.player_inventory):
-                   inventory.remove([item, item])
-
-def take_leftitem_action(item):
-    if [item, item] not in global_game_states.player_inventory:
-        global_game_states.player_inventory.append([item, item])
-        remove_item(item)
-        action('HideList()')
-        action('Pickup(John, ' + item +')')
-    else:
-        action('Unpocket(John, ' + item +')')
-    action('DisableIcon(TakeLeft, ' + item + ')')
-    action('EnableIcon(StowLeft, hand, ' + item + ', Stow, true)')
-
-def take_rightitem_action(item):
-    if [item, item] not in global_game_states.player_inventory:
-       global_game_states.player_inventory.append([item, item])
-       remove_item(item)
-       #action('Pickup(John, ' + item +')')
-       action('HideList()')
-       action('Draw(John, ' + item +')')
-    else:
-        action('Draw(John, ' + item +')')
-    action('DisableIcon(TakeRight, ' + item + ')')
-    action('EnableIcon(StowRight, hand, ' + item + ', Stow, true)')
-
-def stow_leftitem_action(item):
-    action('Pocket(John, ' + item +')')
-    action('DisableIcon(StowLeft, ' + item + ')')
-    action('EnableIcon(TakeLeft, hand, ' + item + ', Take, true)')
-
-def stow_rightitem_action(item):
-    action('Sheathe(John, ' + item +')')
-    action('DisableIcon(StowRight, ' + item + ')')
-    action('EnableIcon(TakeRight, hand, ' + item + ', Take, true)')
-
-#Send sit command with the place as the parameter
+'''
+Purpose: Handles seating in all chairs
+Inputs: Place where John will sit
+Outputs: None
+'''
 def sit_action(place):
     command = "Sit(John, " + place + ")"
     action(command)
 
-#Don't read this. Nothing is going on here. Mind your business
+'''
+Purpose: Handles generic drinking action
+Inputs: Item to be drank
+Outputs: None
+'''
 def drink_beverage_action(item):
     action('HideList()')
     action('Drink(John)')
+
+    # Special case if poison is drank
     if item == 'Poison':
         midscene_narration('What a delicious beverage!')
         time.sleep(2)
@@ -109,47 +82,84 @@ def drink_beverage_action(item):
         midscene_narration('Thanks for playing, try again and probably don\'t drink the poison!')
         action('ShowMenu()')
 
+'''
+Purpose: Handles generic actions from other controllers
+Inputs: input received from Camelot
+Outputs: None
+'''
 def check_master_actions(received):
+    # Sit action
     if received.startswith('input Sit'):
         received = received.split(' ')
         place = received[len(received) - 1]
         sit_action(place)
+    
+    # Talk action
     elif received.startswith('input Talk'):
         person = received[11:]
         talk_action(person)
+    
+    # Close Narration
     elif received == 'input Close Narration':
         action('HideNarration()')
+
+    # Close List
     elif received == 'input Close List':
         action('HideList()')
+
+    # Take right-handed item
     elif received.startswith('input TakeRight'):
         item = received[16:]
         take_rightitem_action(item)
+
+    # Take left-handed item
     elif received.startswith('input TakeLeft'):
         item = received[15:]
         take_leftitem_action(item)
+
+    # Stow right-handed item
     elif received.startswith('input StowRight'):
         item = received[16:]
         stow_rightitem_action(item)
+
+    # Stow left-handed item
     elif received.startswith('input StowLeft'):
         item = received[15:]
         stow_leftitem_action(item)
+
+    # Drink action
     elif received.startswith('input Drink'):
         item = received[12:]
         drink_beverage_action(item)
+
+    # View inventory
     elif received == "input Key Inventory":
         action('ClearList()')
         action('HideList()')
         for item in global_game_states.player_inventory:
             action('AddToList(' + item[0] + ', ' + item[1] + ')')
         action('ShowList(John)')
+
+    # Look at clues
     elif received == 'input Key Interact':
         display_clues_action()
+
+    # Accuse someone
     elif received.startswith('input Accuse'):
+        # Get accused
         acc_character = received[13:]
+
+        # Ensure they want to accuse
         set_left_right('John', acc_character)
-        received = set_dialog('Are you sure you want to accuse ' + acc_character + '? You can only do this once! [Yes | Yes] [No | No]', ['Yes', 'No'], True)
+        received = set_dialog('Are you sure you want to accuse ' + acc_character + '? You can only do this once! \\n[Yes | Yes] [No | No]', ['Yes', 'No'], True)
         if received == 'input Selected Yes':
             global_game_states.accused = acc_character
             action('FadeOut()')
         action('HideDialog()')
+    
+    elif received.startswith('input ReadClue'):
+        clue_item = received[15:]
+        for clue in global_game_states.current_clues:
+            if clue_item == clue[0]:
+                midscene_narration(clue[1])
          

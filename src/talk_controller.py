@@ -1,68 +1,141 @@
+''' 
+Authors: Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis
+Purpose: Handle dialogue throughout the game
+'''
+
+# Import files 
 from action import action
 import global_game_states 
 from add_clue import add_clue
 
+'''
+Purpose: Set left and right characters for dialogue
+Inputs: Left and right person
+Outputs: None
+''' 
 def set_left_right(left, right):
     action('SetLeft('+left+')')
     action('SetRight('+right+')')
+    
+'''
+Purpose: Performs basic talk setup in a modular fashion
+Inputs: Person being talked to
+Outputs: None
+'''
+def talk_action(person):
+    # Set left and right character
+    set_left_right('John', person)
+    action('ShowDialog()')
 
+    # Determine which dialog sequence to check depending on the current scene
+    if not global_game_states.queen_death:
+        castle_predeath(person)
+    elif global_game_states.queen_death and global_game_states.current_scene == 'castle':
+        castle_postdeath(person)
+    elif global_game_states.current_scene == 'dungeon':
+        dungeon_convo(person)
+    elif global_game_states.current_scene == 'city':
+        city_convo(person)
+    elif global_game_states.current_scene == 'alchemist_shop':
+        alchemist_shop_convo(person)
+    elif global_game_states.current_scene == 'tavern':
+        tavern_convo(person)
+    action('HideDialog()')
+
+'''
+Purpose: Performs repeated Camelot dialogue setup actions
+Inputs: Dialogue to be said, the acceptable responses, and whether or not it is the first dialog interaction
+Outputs: Selected dialogue response
+'''
 def set_dialog(dialog, responses=['Next'], show=False):
+    # Set the new dialog
     action('ClearDialog()')
     action('SetDialog(\"'+dialog+'\")')
+
+    # Show dialogue if first interaction
     if show:
         action('ShowDialog()')
+
+    # Return selected response
     return wait_for_response(responses)
 
+'''
+Purpose: Only moves on from dialogue if the player selected an available response
+Inputs: acceptable responses
+Outputs: Selected dialogue response
+'''
 def wait_for_response(responses):
     response_list = []
+
+    # Populate the list of acceptable responses
     for response in responses:
         response_list.append('input Selected ' + response)
+
+    # Remove white space
     received = input().strip()
+
+    # Wait for acceptable response
     while not received in response_list:
         received = input().strip()
     return received
 
+'''
+Purpose: Handles dialogue for castle scene, pre queen death
+Inputs: person being talked to
+Outputs: None
+'''
 def castle_predeath(person):
     if person == 'Maester Purcell':
         set_dialog('Oh, who do we have here? The Queen\'s assistant you say? Well, the Queen and I may not agree on everything' +
-        ' but you seem like a fine young gentleman. [Next| Thanks who are you again?]')
+        ' but you seem like a fine young gentleman. \\n[Next| Thanks who are you again?]')
         set_dialog('I\'m not that important. I\'m just the Kingdom\'s Grand Maester. Mainly just an advisory role, but' +
-        ' I plan on retiring at the end of the year...err...who are you again? [Next| ...The Queen\'s Assistant]')
-        set_dialog('Right the castle chef. *The maester gets a glassy look and stares off in the distance* [Next| Goodbye]')
+        ' I plan on retiring at the end of the year...err...who are you again? \\n[Next| ...The Queen\'s Assistant]')
+        set_dialog('Right the castle chef. *The maester gets a glassy look and stares off in the distance* \\n[Next| Goodbye]')
     elif person == 'Guard Gallant':
-        set_dialog('Grrr... [Next| I\'ll be on my way.]')
+        set_dialog('Grrr... \\n[Next| I\'ll be on my way.]')
     elif person == 'Queen Margerie':
-        set_dialog('Isn\'t my husband so sweet! He did all of this for me! [Next| He sure is]')
+        set_dialog('Isn\'t my husband so sweet! He did all of this for me! \\n[Next| He sure is]')
     elif person == 'Witch Carlita':
-        set_dialog('How can I help you? [Next| Can you teach me how to cast spells?]')
-        set_dialog("Unfortunately, that takes year of training. Maybe some other time [Next| Darn]")
+        set_dialog('How can I help you? \\n[Next| Can you teach me how to cast spells?]')
+        set_dialog("Unfortunately, that takes year of training. Maybe some other time \\n[Next| Darn]")
     elif person == 'Tiana':
         received = set_dialog('I don\'t know why King Phillip went through all this trouble for Margerie. She\'s hardly' + 
-        ' worth it [One| Why are you so upset?] [Two| You should appreciate Margerie more]', ['One', 'Two'])
+        ' worth it \\n[One| Why are you so upset?] [Two| You should appreciate Margerie more]', ['One', 'Two'])
         if received == 'input Selected One':
-            set_dialog('You would understand if you grew up with her[Next| I\'m sure]')
+            set_dialog('You would understand if you grew up with her \\n[Next| I\'m sure]')
         else:
-            set_dialog('I\'m sure she\'ll she appreciate what she\'s got coming to her [Next| ...okay]')
+            set_dialog('I\'m sure she\'ll she appreciate what she\'s got coming to her \\n[Next| ...okay]')
     elif person == 'King Phillip':
-        set_dialog('Isn\'t Margerie lovely. I would be devastated if anything were to happen to her [Next| You really out did yourself]')
+        set_dialog('Isn\'t Margerie lovely. I would be devastated if anything were to happen to her \\n[Next| You really out did yourself]')
 
+'''
+Purpose: Handles dialogue for castle scene, post queen death
+Inputs: person being talked to
+Outputs: None
+'''
 def castle_postdeath(person):
     if person == 'King Phillip':
-        set_dialog('My Margerie...what has happened to you! Please find out what has happened. [Next| I\'m so sorry Phillip, let me look around]')
+        action('PlaySound(Cry2)')
+        set_dialog('My Margerie...what has happened to you! Please find out what has happened.\\n [Next| I\'m so sorry Phillip, let me look around]')
     if person == 'Tiana':
-        set_dialog('I mean I never preferred my sister, but I would never have wished this upon her. [Next| Why exactly did you two not get along?]')
-        set_dialog('Father always favored her since she was in line for the throne. But again, I would never kill her because of it. [Next| I think the whole kingdom will feel the gravity of this loss]')
+        set_dialog('I mean I never preferred my sister, but I would never have wished this upon her. \\n[Next| Why exactly did you two not get along?]')
+        set_dialog('Father always favored her since she was in line for the throne. But again, I would never kill her because of it. \\n[Next| I think the whole kingdom will feel the gravity of this loss]')
     if person == 'Maester Purcell':
-        set_dialog('Margerie was never supposed to go before this old coot. Whoever did this has pure malice in their heart. [Next| We will bring them to justice]')
+        set_dialog('Margerie was never supposed to go before this old coot. Whoever did this has pure malice in their heart. \\n[Next| We will bring them to justice]')
     if person == 'Noble Jeremy' or person == 'Noble Cecilia' or person == 'Merchant Bert':
-        set_dialog('Oh how horrible! [Next| Did you see anything?]')
-        set_dialog('I\'m sorry I didn\'t see anything. [Next| Okay let me know if you think of anything]')
+        set_dialog('Oh how horrible! \\n[Next| Did you see anything?]')
+        set_dialog('I\'m sorry I didn\'t see anything. \\n[Next| Okay let me know if you think of anything]')
     if person == 'Chamber Maid Scarlet':
-        set_dialog('How can I help? [Next| You served the drink did you notice anything unusual?]')
-        set_dialog('No, I poured the wine straight out of the bottle when I was setting up earlier. Everyone\'s cups were filled from the same bottle. [Next| Where did you get the wine?]')
-        set_dialog('Where we always get it, the local tavern. [Next| Where was the taste tester?]')
-        set_dialog('Errrm....I think he was off today because of the Queen\'s birthday [Next| Thanks for your time]')
+        set_dialog('How can I help? \\n[Next| You served the drink did you notice anything unusual?]')
+        set_dialog('No, I poured the wine straight out of the bottle when I was setting up earlier. Everyone\'s cups were filled from the same bottle. \\n[Next| Where did you get the wine?]')
+        set_dialog('Where we always get it, the local tavern. \\n[Next| Where was the taste tester?]')
+        set_dialog('Errrm....I think he was off today because of the Queen\'s birthday \\n[Next| Thanks for your time]')
 
+'''
+Purpose: Handles dialogue for dungeon scene
+Inputs: person being talked to
+Outputs: None
+'''
 def dungeon_convo(person):
     if person == 'Guard Lyra':
         received = set_dialog('Wait, how did you open the cell... [Attack | I need to escape, for the King! (Attack)] [Talk | Listen, the King told me to escape. (Persuade)', ['Attack', 'Talk'], True)
@@ -72,7 +145,12 @@ def dungeon_convo(person):
                 set_dialog('That has the King\'s official seal on it... Fine, I\'ll let you go, but get out of here before I change my mind. [Next | Next]')
                 global_game_states.dungeon_guard_lives = True
         action('HideDialog()')
-        
+
+'''
+Purpose: Handles dialogue for city scene
+Inputs: person being talked to
+Outputs: None
+'''
 def city_convo(person):
     if person == 'Beggar Adeline':
         set_dialog('I\'m not sad about the Queen\'s death. She\'s been rolling in wealth while decent folks can\'t even find a job to support their families. [Next| ... okay?]')
@@ -99,6 +177,11 @@ def city_convo(person):
     elif person == 'Gossiping Gail':
         set_dialog('I know everything going on in this town. Go ahead, ask me. [Next| I\'d rather not.')
 
+'''
+Purpose: Handles dialogue for alchemist shop scene
+Inputs: person being talked to
+Outputs: None
+'''
 def alchemist_shop_convo(person):
     player_response = 'input Selected Menu'
     if person == 'Alchemist Henry':
@@ -141,7 +224,12 @@ def alchemist_shop_convo(person):
         elif player_response == 'input Selected About' and global_game_states.found_poison == True:
             player_response = set_dialog('The giant rat poison? Didn\'t you already grab it? [Menu | Yeah...]', ['Menu'])
         action('HideDialog()')
-        
+
+'''
+Purpose: Handles dialogue for tavern scene
+Inputs: person being talked to
+Outputs: None
+'''
 def tavern_convo(person):
     if person == 'Maester Purcell':
         set_dialog('Oh! Where am I? Oh that\'s right, the tavern. I really should be going. Who are you again? *The maester gets a glassy look and stares off in the distance* [Next| erm... ok?]')
