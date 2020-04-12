@@ -4,6 +4,10 @@ def castle_setup():
     #Set at Night
     action('SetNight()')
 
+    # Sound Affect
+    action('PlaySound(LivelyMusic, QueensCastle, true)')
+    action('PlaySound(LivelyMusic, Storage, true)')
+
     # Setup and position John
     action('SetClothing(John, Noble)')
     action('SetPosition(John, QueensCastle.BackRightChair)')
@@ -26,6 +30,7 @@ def castle_setup():
     # Witch Carlita
     action('SetPosition(Witch Carlita, QueensCastle.LeftWindow)')
     action('SetPosition(CarlitaBook, Witch Carlita)')
+    action('SetSkinColor(Witch Carlita, 3)')
 
     # Noble Jeremy
     action('SetPosition(Noble Jeremy, QueensCastle.FrontRightChair)')
@@ -38,6 +43,7 @@ def castle_setup():
     # Merchant Bert
     action('SetPosition(Merchant Bert, QueensCastle.BackLeftChair)')
     action('Sit(Merchant Bert, QueensCastle.BackLeftChair)')
+    action('SetSkinColor(Merchant Bert, 8)')
 
     # Chamber Maid Scarlet
     action('SetPosition(Chamber Maid Scarlet, QueensCastle.BackDoor)')
