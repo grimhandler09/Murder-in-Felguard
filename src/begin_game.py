@@ -100,6 +100,8 @@ def begin_game_setup():
     action('SetClothing(Beggar Adeline, Beggar)')
     action('SetHairStyle(Beggar Adeline, Long)')
     action('SetPosition(Beggar Adeline, City.Fountain)')
+    action('SetExpression(Beggar Adeline, neutral)')
+    action('SetSkinColor(Beggar Adeline, 4)')
     
     # Beggar Miles
     action('CreateCharacter(Beggar Miles, H)')
@@ -107,6 +109,8 @@ def begin_game_setup():
     action('SetHairStyle(Beggar Miles, Mage)')
     action('SetPosition(Beggar Miles, City.Bench)')
     action('Sit(Beggar Miles, City.Bench)')
+    action('SetExpression(Beggar Miles, sad')
+    action('SetSkinColor(Beggar Miles, 4)')
     
     # Alchemist Jeremy
     action('CreateCharacter(Alchemist Jeremy, F)')
@@ -114,6 +118,8 @@ def begin_game_setup():
     action('SetHairStyle(Alchemist Jeremy, Spiky)')
     action('SetPosition(Alchemist Jeremy, City.BrownHouseDoor)')
     action('WalkToSpot(Alchemist Jeremy, 925.3, 0.3, 5.0)')
+    action('SetExpression(Alchemist Jeremy, happy)')
+    action('SetSkinColor(Alchemist Jeremy, 7)')
     
     # Scout Joanna
     action('CreateCharacter(Scout Joanna, C)')
@@ -122,6 +128,7 @@ def begin_game_setup():
     action('SetPosition(Scout Joanna, City.NorthEnd)')
     action('CreateItem(JoannaTorch, Torch)')
     action('SetPosition(JoannaTorch, Scout Joanna)')
+    action('SetSkinColor(Scout Joanna, 2)')
     
     # Scout Tom
     action('CreateCharacter(Scout Tom, D)')
@@ -131,6 +138,7 @@ def begin_game_setup():
     action('CreateItem(TomTorch, Torch)')
     action('SetPosition(TomTorch, Scout Joanna)')
     action('WalkToSpot(Scout Tom, 916.0, 0.3, -12.6)')
+    action('SetSkinColor(Scout Tom, 2)')
     
     # Drunk Devon
     action('CreateCharacter(Drunk Devon, F)')
@@ -140,6 +148,8 @@ def begin_game_setup():
     action('CreateItem(DevonsBottle, Bottle)')
     action('SetPosition(DevonsBottle, Drunk Devon)')
     action('WalkToSpot(Drunk Devon, 906.4, 0.3, -1.2)')
+    action('SetExpression(Drunk Devon, happy)')
+    action('SetSkinColor(Drunk Devon, 3)')
     
     # Priestess Esmerelda
     action('CreateCharacter(Priestess Esmerelda, E)')
@@ -149,12 +159,14 @@ def begin_game_setup():
     action('CreateItem(EsmereldaBook, RedBook)')
     action('SetPosition(EsmereldaBook, Priestess Esmerelda)')
     action('WalkToSpot(Priestess Esmerelda, 928.9, 0.4, -1.7)')
+    action('SetExpression(Priestess Esmerelda, angry)')
     
     # Blind Bandit
     action('CreateCharacter(Blind Bandit, C)')
     action('SetClothing(Blind Bandit, Bandit)')
     action('SetHairStyle(Blind Bandit, Long)')
     action('SetPosition(Blind Bandit, City.Alley)')
+    action('SetSkinColor(Blind Bandit, 5)')
     
     #Gossiping Gail
     action('CreateCharacter(Gossiping Gail, A)')
@@ -162,6 +174,7 @@ def begin_game_setup():
     action('SetHairStyle(Gossiping Gail, Spiky)')
     action('SetPosition(Gossiping Gail, City.BlueHouseDoor)')
     action('WalkToSpot(Gossiping Gail, 924.8, 0.3, -10.2)')
+    action('SetExpression(Gossiping Gail, happy)')
     
     #Enable Icons
     action('EnableIcon(Talk, Talk, Beggar Adeline, Talk to Beggar Adeline, true)')
