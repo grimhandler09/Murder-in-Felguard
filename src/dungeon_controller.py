@@ -84,10 +84,16 @@ Outputs: None
 def read_book(book):
     set_left_right('John', 'null')
     NextDialogOption = ''
+    
+    # Dialog for Prison Ledger
     if book == 'Prison Ledger':
         approach(book)
         PrisonLedgerClues = 'Talking to the town Alchemist, Queen\'s Servant, or Grand Maester may yield additional evidence\\n'
-        add_clue(PrisonLedgerClues)
+
+        # Creating clue object for clue tracking system
+        action('CreateItem(Starting Investigations, OpenScroll)')
+        add_clue(PrisonLedgerClues, 'Starting Investigations')
+
         while NextDialogOption != 'input Selected Exit':
             NextDialogOption = set_dialog('There are several entries that you could read to discover more clues about the Queen\'s Death\\n' + 
             '[AlchemistInfo | Read about the Alchemist] \\n[Queen\'sServantInfo | Read about the Queen\'s personal servant] \\n[GrandMa' +

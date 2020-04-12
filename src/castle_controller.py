@@ -124,7 +124,7 @@ Outputs: None
 '''
 def arrest_cutscene():
     # Cutscene setup
-    action('StopSound(LivelyMusic)')
+    action('StopSound()')
     action('PlaySound(Danger3, QueensCastle, true)')
     action('HideDialog()')
     action('HideNarration()')
