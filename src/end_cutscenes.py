@@ -29,6 +29,25 @@ def commence_execution():
     action('Die(' + global_game_states.accused + ')')
     action('EnableInput()')
 
+def select_clues():
+    midscene_narration('Select the clues you will use to convict ' + global_game_states.accused + '. Right click on the clues you want to use and '
+    + ' select the \"Use clue" action. Be careful, exiting this screen will prevent you from selecting anymore clues.')
+    received = ' '
+    while not received == 'input Close List':
+        received = input()
+        if received.startswith('input UseClue'):
+            selected_clue = received[14:]
+            for clue_item in global_game_states.current_clues:
+                if clue_item[0] == selected_clue:
+                    global_game_states.selected_clues.append(clue_item[1])
+
+def king_reads_clues():
+    clue_bulletin = 'Official Evidence Proclamation\\nThe following evidence has officially been approved by the king to charge ' 
+    + global_game_states.accused + ' with the murder of Queen Margerie. The king hereby sentences ' + global_game_states.accused + ' to death.\\n\\n'
+    for clue in global_game_states.selected_clues:
+        clue_bulletin += clue 
+        clue_bulletin += '\\n'
+    midscene_narration(clue_bulletin)
 '''
 Purpose: Handles the flow of the execution scene
 Inputs: None
@@ -45,7 +64,11 @@ def end_cutscene():
     action('EnableInput()')
     set_dialog('We are gathered here today to face the person who has killed my dearest Margerie. \\n[Next | Next]', ['Next'], True)
     set_dialog('My trusted advisor, John, has gathered the necessary evidence to bring ' + global_game_states.accused + ' to justice. \\n[Next | Next]')
-    #display_clues_action() # implement present_evidence()
+    # Select the clues to accuse
+    select_clues()
+
+    # Bulletin of the clues selected
+    king_reads_clues()
     set_dialog('It brings me no joy in sentencing you to death, but you have committed the greatest atrocity to this kingdom. \\n[Next | Next]')
     action('HideDialog()')
 

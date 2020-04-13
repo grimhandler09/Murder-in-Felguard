@@ -185,7 +185,7 @@ def castle_controller():
             # Contents of ledger
             action('PlaySound(Book)')
             midscene_narration('Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie\\nNoblewoman Celcilia -'
-            + 'Wife of Nobleman Jeremy\\nMerchant Bert - The most prominent merchant in all of Felgard\\nGrand Maester Purcell - Felgard\'s '
+            + 'Wife of Nobleman Jeremy\\nMerchant Bert - The most prominent merchant in all of Felguard\\nGrand Maester Purcell - Felgard\'s '
             + 'longest serving maester\\nWitch Carlita - The castle mage')
             trigger_death += 1
         elif received == 'input ReadInvitation Party Invitation':

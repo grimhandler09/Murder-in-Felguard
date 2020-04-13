@@ -3,10 +3,9 @@ Authors: Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis
 Purpose: Performs a lot of Camelot calls to setup a majority of the game.
 '''
 from action import action
+from castle_setup import castle_setup
 
-# Setup beginning of the game
-def begin_game_setup():    
-    
+def all_game_setup():
     action('SetTitle(\"Murder in Felguard\")')
     action("SetCredits(Experience Manager by Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis)")
 
@@ -319,3 +318,12 @@ def begin_game_setup():
     ###############################################################
     # END STORAGE                                                 #
     ###############################################################
+
+# Setup beginning of the game
+def begin_game_setup():    
+    all_game_setup()
+    castle_setup()
+    
+    # Show the menu
+    action('ShowMenu()')
+    
