@@ -130,8 +130,8 @@ def inspect_item(item):
 			elif player_response == 'input Selected Third':
 				player_response = set_dialog('1x Giant Rat Poison - Tiana. 3x Health Potion - Prison Guards. The rest is empty. \\n[AllPotionsList| Back]', ['AllPotionsList'])
 				global_game_states.found_poison_purchase = True
-				action('CreateItem(Sales Recods, GreenBook)')
-				add_clue('Tianna bought some rat poison')
+				action('CreateItem(Sales Records, GreenBook)')
+				add_clue('Tianna bought some rat poison', 'Sales Records')
 		action('HideDialog()')
 		action('PlaySound(Book, Alch.LeftBookcase, false')
 	

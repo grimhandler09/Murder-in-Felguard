@@ -9,3 +9,4 @@ def test_action_fail(monkeypatch):
     monkeypatch.setattr('builtins.input', lambda: 'failed CreateCharacter(Bob, B)')
     output = action.action('CreateCharacter(Bob, B)')
     assert output == False
+
