@@ -137,7 +137,7 @@ def inspect_item(item):
 	
 	elif item == 'Alch.Cauldron':
 		#Cauldron
-		action('PlaySound(Brew, Alch.Cauldron, false')
+		action('PlaySound(Brew, Alch.Cauldron, false)')
 		midscene_narration('The cauldron is bubbling happily.')
 
 '''

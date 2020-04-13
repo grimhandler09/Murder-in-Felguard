@@ -70,7 +70,7 @@ def use_PrisonDoor_action(door):
     set_left_right('John', 'Guard Lyra')
     dungeon_convo('Guard Lyra')
     if not global_game_states.dungeon_guard_lives:
-        action('SetExpression(Guard Lyra, angry)')
+        action('SetExpression(Guard Lyra, scared)')
         approach('Guard Lyra')
         action('Attack(John, Guard Lyra, true)')
         action('Die(Guard Lyra)')
