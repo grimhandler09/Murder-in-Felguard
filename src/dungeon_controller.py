@@ -5,7 +5,7 @@ Purpose: Handles actions that should be playable if the player is located within
 
 import time
 from action import action
-from master_action_controller import check_master_actions, scene_start, midscene_narration, add_clue, remove_item
+from master_action_controller import check_master_actions, scene_start, midscene_narration, add_clue, remove_item, display_clues_action
 import global_game_states
 from talk_controller import *
 from add_clue import add_clue
@@ -88,20 +88,20 @@ def read_book(book):
     # Dialog for Prison Ledger
     if book == 'Prison Ledger':
         approach(book)
-        PrisonLedgerClues = 'Talking to the town Alchemist, Queen\'s Servant, or Grand Maester may yield additional evidence\\n'
 
         # Creating clue object for clue tracking system
-        action('CreateItem(Starting Investigations, OpenScroll)')
-        add_clue(PrisonLedgerClues, 'Starting Investigations')
+        add_clue('Talking to the town Alchemist, Chamber Maid, or Grand Maester may yield additional evidence', 'Starting Investigations')
 
+        action('DisableInput()')
+        action('PlaySound(Book)')
         while NextDialogOption != 'input Selected Exit':
-            NextDialogOption = set_dialog('There are several entries that you could read to discover more clues about the Queen\'s Death\\n' + 
-            '[AlchemistInfo | Read about the Alchemist] \\n[Queen\'sServantInfo | Read about the Queen\'s personal servant] \\n[GrandMa' +
-            'esterInfo | Read about the Grand Maester] \\n[Exit | Stop reading]\\n', ['AlchemistInfo', 'Queen\'sServantInfo', 'GrandMaesterInfo', 'Exit'], True)
+            NextDialogOption = set_dialog('There are several entries that you could read to discover more clues about the Queen\'s death\\n' + 
+            '[AlchemistInfo | Read about the Alchemist] \\n[ChamberMaid | Read about the Chamber Maid, personal servant to the Queen] \\n[GrandMa' +
+            'esterInfo | Read about the Grand Maester] \\n[Exit | Stop reading]\\n', ['AlchemistInfo', 'ChamberMaid', 'GrandMaesterInfo', 'Exit'], True)
             if NextDialogOption == 'input Selected AlchemistInfo':
                 NextDialogOption = set_dialog('The wine has been sent to the local alchemist for inspection.\\n [Next | Next]')
-            elif NextDialogOption == 'input Selected Queen\'sServantInfo':
-                NextDialogOption = set_dialog('The Queen\'s servant claims she saw the suspect put something in the Queen\'s drink.\\n[Next | Next]')
+            elif NextDialogOption == 'input Selected ChamberMaid':
+                NextDialogOption = set_dialog('The Chamber Maid claims she saw the suspect put something in the Queen\'s drink.\\n[Next | Next]')
             elif NextDialogOption == 'input Selected GrandMaesterInfo':
                 NextDialogOption = set_dialog('The Grand Maester claimed that the currently jailed suspect was falsely accused, but provided no evidence to the guards.\\n [Next | Next]')
         if global_game_states.dungeon_guard_lives:
@@ -112,14 +112,15 @@ def read_book(book):
             action('SetExpression(Guard Lyra, angry')
             set_dialog('If you\'re really trying to help the King, you might wanna actually leave before I throw you back in your cell. Just a thought.\\n[Next | Right, I\'ll be quick.]', ['Next'], True)
         action('HideDialog()')
-        time.sleep(0.25)
-        midscene_narration('Clues regarding the Queen\'s murder such as the one obtained here will be stored and can be accessed from anywhere in the game by pressing \'E\'.')
+        #midscene_narration('Clues regarding the Queen\'s murder such as the one obtained here will be stored and can be accessed from anywhere in the game by pressing \'E\'.')
+        action('EnableInput()')
     if book == 'Note From King':
-        action('DisableInput()')
+        action('PlaySound(Book)')
         NextDialogOption = set_dialog('I know in my heart that you are innocent, just as I know that my dear Queen Margerie was stolen from me by some dark force.' +
         ' Take this key, escape your cell, and do whatever it takes to uncover the identity of the true murderer. I command it.\\n-King Phillip \\n[Next | Next]', ['Next'], True)
         action('HideDialog()')
     if book == 'Dire News':
+        action('PlaySound(Book)')
         midscene_narration('This missive describes the untimely and tragic death of the Queen. Penned by Royal Successor Tianna.')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
@@ -146,6 +147,7 @@ def change_clothes_action(attire):
     action('DisableIcon(Change of Clothes, Change Clothes)')
     action('DisableIcon(Look_Inside_Chest, Prison.Chest)')
     remove_item('Change of Clothes')
+    global_game_states.wearing_disguise = True
     midscene_narration('John has changed into more discrete clothes.')
     action('FadeIn()')
 
@@ -155,15 +157,17 @@ Inputs: None
 Outputs: None
 '''
 def opening_dialog_two():
-    midscene_narration('John has been arrested by the Queen\'s Guard.')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
+    action('DisableInput()')
+    action('Face(John, Prison.CellDoor)')
+    midscene_narration('John has been arrested by the Queen\'s Guard.')
     action('FadeIn()')
     set_left_right('Guard Lyra', 'John')
-    action('Face(John, Guard Lyra)')
-    set_dialog('I hope you\'re happy. You just killed the most beloved queen this kingdom has ever had. I can\'t even look at you.\\n' +
+    set_dialog('I hope you\'re happy. You just killed the most beloved Queen this kingdom has ever had. I can\'t even look at you.\\n' +
     ' [Next | What are you talking about] \\n[Next | I didn\'t do anything]', ['Next'], True)
     action('HideDialog()')
+    action('EnableInput()')
 
 '''
 Purpose: Primary loop for the dungeon scene, controls which actions the player can take
@@ -173,7 +177,6 @@ Outputs: None
 def dungeon_controller():
     scene_start()
     opening_dialog_two()
-    action('EnableInput()')
     while global_game_states.current_scene == 'dungeon':
         received = input()
         if received.startswith('input Look_in_DirtPile'):
@@ -191,11 +194,9 @@ def dungeon_controller():
             received = received.split(' ')
             door = received[2]
             use_PrisonDoor_action(door)
-        elif received.startswith('input Read'):
+        elif received.startswith('input Read '):
             book = received[11:]
             read_book(book)
-            time.sleep(0.25)
-            action('EnableInput()')
         elif received.startswith('input Leave'):
             received = received.split(' ')
             exit_door = received[2]
