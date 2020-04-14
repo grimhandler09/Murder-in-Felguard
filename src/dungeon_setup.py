@@ -24,3 +24,6 @@ def dungeon_setup():
 
     # Start Background music for dungeon
     action('PlaySound(Explorer)')
+
+    # Create the possible clues for the dungeon
+    action('CreateItem(Starting Investigations, OpenScroll)')

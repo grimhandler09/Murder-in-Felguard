@@ -7,7 +7,7 @@ from castle_setup import castle_setup
 
 def all_game_setup():
     action('SetTitle(\"Murder in Felguard\")')
-    action("SetCredits(Experience Manager by Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis)")
+    action("SetCredits(\"Experience Manager by Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis\")")
 
     # Create Game Locations
     action('CreatePlace(QueensCastle, DiningRoom)')

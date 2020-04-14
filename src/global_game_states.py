@@ -43,6 +43,7 @@ selected_clues = []
 current_scene = 'castle'
 prev_scene = ''
 accused = ''
+wearing_disguise = False
 player_inventory = [['Party Invitation', 'Party Invitation']]
 list_of_inventories = [player_inventory, dungeon_chest_inventory, dirtpile_inventory]
 current_clues = []
