@@ -177,7 +177,7 @@ def check_master_actions(received):
             action('FadeOut()')
         action('HideDialog()')
     
-    elif received.startswith('input ReadClue'):
+    elif received.startswith('input ClueRead'):
         clue_item = received[15:]
         for clue in global_game_states.current_clues:
             if clue_item == clue[0]:
