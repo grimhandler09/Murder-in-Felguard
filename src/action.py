@@ -8,6 +8,7 @@ Purpose: Waits for success or fail response from Camelot
 Inputs: command that was sent to Camelot
 Outputs: True for success, False for failure
 '''
+
 def check_for_success(command):
 
     # Keep getting responses until the success of fail the given command is received
