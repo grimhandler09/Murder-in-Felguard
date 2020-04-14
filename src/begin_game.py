@@ -321,3 +321,16 @@ def begin_game_setup():
     ###############################################################
     # END STORAGE                                                 #
     ###############################################################
+    
+    ###############################################################
+    # Tavern                                                      #
+    ###############################################################
+    
+    action('CreateCharaceter(Bartender Bill, D)')
+    action('SetClothing(Bartender Bill, Merchant)')
+    action('SetPosition(Bartender Bill, Tavern.Bar.Behind)')
+    action('EnableIcon(Talk, Talk, Bartender Bill, Talk to Bartender Bill, true)')
+    
+    ###############################################################
+    # END Tavern                                                  #
+    ###############################################################    
