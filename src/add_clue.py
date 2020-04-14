@@ -13,11 +13,11 @@ Outputs: None
 def add_clue(clue, clue_item):
 
     # If clue was already added, do not add again
-    if clue not in global_game_states.current_clues:
+    if [clue_item, clue] not in global_game_states.current_clues:
 
         # Append the clue to the clue list
         global_game_states.current_clues.append([clue_item,  clue])
-        action('EnableIcon(ReadClue, Book, ' + clue_item + ', Read Clue, true)')
+        action('EnableIcon(ClueRead, Book, ' + clue_item + ', Read Clue, true)')
         # Depending on the current scene, add the clue to the appropriate clue scene list
         if global_game_states.current_scene == 'castle':
             global_game_states.castle_clues.append([clue_item, clue])

@@ -37,6 +37,7 @@ tavern_clues = []
 
 # Ending
 execution_characters = ['Noble Jeremy', 'Noble Cecilia', 'Tiana']
+selected_clues = []
 
 # Global
 current_scene = 'castle'

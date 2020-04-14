@@ -122,8 +122,8 @@ def read_book(book):
     if book == 'Dire News':
         action('PlaySound(Book)')
         midscene_narration('This missive describes the untimely and tragic death of the Queen. Penned by Royal Successor Tianna.')
-    action('SetCameraFocus(John)')
-    action('SetCameraMode(follow)')
+    # action('SetCameraFocus(John)')
+    # action('SetCameraMode(follow)')
 
 '''
 Purpose: To enable the dungeon door as an exit from the dungeon to the town

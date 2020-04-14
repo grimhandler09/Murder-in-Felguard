@@ -100,7 +100,7 @@ def castle_predeath(person):
         set_dialog("Unfortunately, that takes year of training. Maybe some other time \\n[Next| Darn]")
     elif person == 'Tiana':
         received = set_dialog('I don\'t know why King Phillip went through all this trouble for Margerie. She\'s hardly' + 
-        ' worth it \\n[One| Why are you so upset?] [Two| You should appreciate Margerie more]', ['One', 'Two'])
+        ' worth it \\n[One| Why are you so upset?] \\n[Two| You should appreciate Margerie more]', ['One', 'Two'])
         if received == 'input Selected One':
             set_dialog('You would understand if you grew up with her \\n[Next| I\'m sure]')
         else:

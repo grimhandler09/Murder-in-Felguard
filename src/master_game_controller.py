@@ -8,7 +8,6 @@ Purpose: The master game controller handles the flow of the player from scene to
 from action import action
 from begin_game import begin_game_setup
 from castle_controller import castle_controller
-from castle_setup import castle_setup
 from dungeon_setup import dungeon_setup
 from dungeon_controller import dungeon_controller
 from city_controller import city_controller
@@ -18,6 +17,8 @@ from tavern_setup import tavern_setup
 from tavern_controller import tavern_controller
 import global_game_states
 from end_cutscenes import end_cutscene
+from reset_globals import reset_globals
+from add_clue import add_clue
 
 '''
 Purpose: Handles game flow. Integrates rest of program by calling the appropriate scenes when necessary
@@ -28,10 +29,7 @@ def main():
 
     # Begin setup of the game
     begin_game_setup()
-    castle_setup()
     
-    # Show the menu
-    action('ShowMenu()')
     # Loop prevents the experience manager from closing and crashing the game
     while True:
 
@@ -56,14 +54,21 @@ def main():
                     alchemist_shop_controller()
                 elif global_game_states.current_scene == 'tavern':
                     tavern_controller()
+            # Call the end cutscene to end the game
+            end_cutscene()
+            # Reset Camelot
+            action('Reset()')
+            # Reset global game states
+            reset_globals()
+            # Perform begin game setup again
+            begin_game_setup()
         elif received == 'input Selected Credits':
             action('ShowCredits()')
         elif received == 'input Close Credits':
             action('HideCredits()')
         elif received == 'input Selected Quit':
-            action('Quit')
-            # Call the end cutscene to end the game
-            end_cutscene()
+            action('Quit()')
+            
 main() #COMMENT OUT WHEN TESTING
 
 #Replace the StartExperienceManager batch file with your manager ex:
