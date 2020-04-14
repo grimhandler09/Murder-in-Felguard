@@ -13,11 +13,14 @@ def tavern_controller():
     action('PlaySound(Tavern)')
     action('PlaySound(Fireplace, Tavern.Fireplace, true)')
 
+    # Begin first entry to tavern
     if global_game_states.first_tavern_entry:
         tavern_setup()
         global_game_states.first_tavern_entry = False
     action('SetPosition(John, Tavern.Door)')
     action('FadeIn()')
+    
+    # Endless loop until John leaves the tavern
     while global_game_states.current_scene == 'tavern' and global_game_states.accused == '':
         received = input()
         if received.startswith('input Enter'):
