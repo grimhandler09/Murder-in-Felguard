@@ -16,19 +16,19 @@ def determine_entry():
     # Enter from dungeon (can only happen once)
     if global_game_states.prev_scene == 'dungeon':
         action('StopSound()')
-        action('PlaySound(Kingdom)')
+        action('PlaySound(Town_Day)')
         action('Enter(John, City.WestEnd, true)')
     # Enter from Alchemist shop
     elif global_game_states.prev_scene == 'alchemist_shop':
         action('Exit(John, Alch.Door, true)')
         action('StopSound()')
-        action('PlaySound(Kingdom)')
+        action('PlaySound(Town_Day)')
         action('Enter(John, City.BrownHouseDoor, true)')
     # Enter from tavern
     elif global_game_states.prev_scene == 'tavern':
         action('Exit(John, Tavern.Door, true)')
         action('StopSound()')
-        action('PlaySound(Kingdom)')
+        action('PlaySound(Town_Day)')
         action('Enter(John, City.GreenHouseDoor, true)')
 
 # Give city instructions

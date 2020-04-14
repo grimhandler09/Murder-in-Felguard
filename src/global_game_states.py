@@ -17,11 +17,13 @@ dungeon_clues = []
 
 # City
 first_city_entry = True
-blind_bandit_clue = False
+blind_bandit_offended = False
+blind_bandit_clue_aquired = False
 priestess_false_trail = False
 city_clues = []
 
 # Alchemy Shop
+alchemist_is_paranoid = False
 first_alchemist_entry = True
 found_poison_purchase = False #Evidence for buyer of poison
 found_poison = False #Evidence for alchemist

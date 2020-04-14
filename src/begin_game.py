@@ -152,6 +152,7 @@ def all_game_setup():
     action('SetSkinColor(Drunk Devon, 3)')
     
     # Priestess Esmerelda
+    action('CreateItem(A Possible Smiting, SpellBook)')
     action('CreateCharacter(Priestess Esmerelda, E)')
     action('SetClothing(Priestess Esmerelda, Priest)')
     action('SetHairStyle(Priestess Esmerelda, Short)')
@@ -162,6 +163,7 @@ def all_game_setup():
     action('SetExpression(Priestess Esmerelda, angry)')
     
     # Blind Bandit
+    action('CreateItem(A Contract Killing, Coin)')
     action('CreateCharacter(Blind Bandit, C)')
     action('SetClothing(Blind Bandit, Bandit)')
     action('SetHairStyle(Blind Bandit, Long)')

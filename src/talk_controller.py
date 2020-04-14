@@ -169,14 +169,44 @@ def city_convo(person):
         set_dialog('My name is Devon. This here is the Tavern, a good place to hear the comings and goings of the town. [Next | Thanks!]')
     elif person == 'Priestess Esmerelda':
         set_dialog('The witches must burn! It is no surprise the Queen is dead given the monarchy\'s flagrant disrespect of the sacred texts and ancient traditions. [Next | err... ok]')
-        if global_game_states.priestess_false_trail == False:
-            global_game_states.priestess_false_trail = True
-            global_game_states.current_clues.append('The Priestess seems to have strong feelings about killing the Queen.')
+        add_clue('The Priestess seems to have strong feelings about killing the Queen.', 'A Possible Smiting')
     elif person == 'Blind Bandit':
-        set_dialog('I heard a rumour last fortnight about a contract killing of the Queen, but I didn\'t believe it until now. [Next | ... Interesting]')
-        if global_game_states.blind_bandit_clue == False:
-            global_game_states.blind_bandit_clue = True
-            global_game_states.current_clues.append('The Blind Bandid mentions there may be more than one person involved.')
+        if global_game_states.blind_bandit_offended == False:
+            if global_game_states.wearing_disguise == True:
+                set_dialog('I had heard a rumour last fortnight about a contract killing of the Queen, but I didn\'t believe it until now. [Next | ... Interesting]')
+                add_clue('The Blind Bandit mentioned there may be more than one person involved', 'A Contract Killing')
+                global_game_states.blind_bandit_clue_aquired = True
+            else:
+                recieved = set_dialog('What are you doing dressed up in rags, begging for money or looking for work? \\n[Begging | Could you spare some change?] \\n[Work | Looking for work.] \\n[Investigate | Neither, I\'m actually investigating the Queen\'s death. Would you happen to know anything?]' , ['Begging', 'Work', 'Investigate'], True)
+                if recieved == 'input Selected Begging':
+                    set_dialog('Beggars. Always looking for coin, never willing to do the job. \\n[Next | Fine]')
+                elif recieved == 'input Selected Work':
+                    recieved = set_dialog('You think you got what it takes to be in my line of work? \\n[Yes | Just made it out of prison for murder] \\n[No | I won\'t break the law]', ['Yes', 'No'], False)
+                    if recieved == 'input Selected Yes':
+                        add_clue('The Blind Bandit mentioned there may be more than one person involved', 'A Contract Killing')
+                        global_game_states.blind_bandit_clue_aquired = True
+                        recieved = set_dialog('Wait... are you the one that took that assassination job? Look, I don\'t want anything to do with you, regicide ain\'t in my playbook. But I\'m not gonna leave you out to dry. Need a disguise? \\n[Yes | Thanks, I\'ll remember you] \\n[No | I don\'t need your help] \\n[More | Can\'t you do more?]', ['Yes', 'No', 'More'], False)
+                        if recieved == 'input Selected Yes':
+                            set_dialog('Don\'t even think about remembering me. I\'m just a nobody. Take these clothes. \\n[Next | (Change into a disguise)]')
+                            action('FadeOut')
+                            action('HideDialog()')
+                            global_game_states.wearing_disguise = True
+                            action('SetClothing(John, Bandit)')
+                            action('FadeIn()')
+                        elif recieved == 'input Selected No':
+                            global_game_states.blind_bandit_offended = True
+                            set_dialog('Fine, be that way. But we are done speaking, I ain\'t going down with you. \\n[Next | (Blind Bandit seems unwilling to speak further)]')
+                        elif recieved == 'input Selected More':
+                            global_game_states.blind_bandit_offended = True
+                            set_dialog('I\'m already risking execution, and you ask for more? We\'re done, come back here and I\'ll take you out myself! \\n[Next | (Blind Bandit seems unwilling to speak further)]')
+                    elif recieved == 'input Selected No':
+                        set_dialog('Yeah, I didn\'t think so. Come back when you\'re serious. \\n[Next | Maybe]')
+                elif recieved == 'input Selected Investigate':
+                    global_game_states.blind_bandit_offended = True
+                    set_dialog('I ain\'t done nothing wrong, you better walk away before things get ugly. \\n[Next | ok]')
+        else:
+            set_dialog('You better walk away right now. \\n[Next | I\'m going]')
+        action('EnableInput()')
     elif person == 'Gossiping Gail':
         set_dialog('I know everything going on in this town. Go ahead, ask me. [Next| I\'d rather not.')
 
@@ -188,6 +218,8 @@ Outputs: None
 def alchemist_shop_convo(person):
     player_response = 'input Selected Menu'
     if person == 'Alchemist Henry':
+        if global_game_states.blind_bandit_clue_aquired and (not global_game_states.alchemist_is_paranoid):
+            player_response = set_dialog('Welcome! \\n[Menu | I had a few questions about the store...] \\n[Conspire | I may have overheard that a group of people conspired to kill the Queen] \\n[Next | Still looking around]', ['Menu', 'Conspire', 'Next'])
         if player_response == 'input Selected Menu':
             if global_game_states.found_poison_purchase == True:
                 if global_game_states.found_poison == False:
@@ -203,7 +235,7 @@ def alchemist_shop_convo(person):
             else:
                 if global_game_states.found_poison == False:
                     if global_game_states.identified_poison == False:
-                        player_response = set_dialog('Welcome! Feel free to look around. \\n[Next | Thanks]')
+                        player_response = set_dialog('Feel free to look around. \\n[Next | Thanks]')
                     else:
                         player_response = set_dialog('Find anything you like? \\n[About | About that rat poison...] \\n[Next | Still looking around]', ['About', 'Next'])
                 else:
@@ -211,6 +243,17 @@ def alchemist_shop_convo(person):
                         player_response = set_dialog('Need help with anything else? \\n[Free | Are you sure I can have this?] \\n[Next | No, thanks]', ['Free', 'Next'])
                     else:
                         player_response = set_dialog('Need help with anything else? \\n[Free | Are you sure I can have this?] \\n[About | About that rat poison...] \\n[Next| No, thanks]', ['About','Next'])
+        elif player_response == 'input Selected Conspire':
+            player_response = set_dialog('Did you? I-I-I wouldn\'t know anything about that. A travesty, yes. Her death was a travesty. \\n[DirectLie | I know you poisoned the Queen (lie)] \\n[DirectTruth | I know you poisoned the Queen] \\n[Indirect | I heard an alchemist brewed the Queen\'s last drink] \\n[Relent | I guess so]', ['DirectLie', 'DirectTruth', 'Indirect', 'Relent'])
+            if player_response == 'input Selected DirectLie':
+                set_dialog('Please, I didn\'t mean to! I only... I only sold the poison! I thought they were going to kill rats with it! You gotta believe me! \\n[Next | We\'ll see about that]')
+                global_game_states.alchemist_is_paranoid = True
+            elif player_response == 'input Selected DirectTruth':
+                set_dialog('You know no such thing! I should call the guard on you, but you are lucky I feel generous today! \\n[Next | We\'ll see about that]')
+                global_game_states.alchemist_is_paranoid = True
+            elif player_response == 'input Selected Indirect':
+                set_dialog('I see how it is. I will say only this. An alchemist brewing a Queen\'s drink would be very unlikely. However, a chamber maid could easily access such things as poison and a certain Queen\'s cup after it had been prepared. With that information, I would say that all alchemists are innocent. \\n[Next | We\'ll see about that]')
+                global_game_states.alchemist_is_paranoid = True
         if player_response == 'input Selected Purchase':
             player_response = set_dialog('Oh, Tianna? She\'s the Queen\'s sister. She recently bought some giant rat poison to help clear the sewers. \\n[Menu| Thanks]', ['Menu'])
         elif player_response == 'input Selected Free':

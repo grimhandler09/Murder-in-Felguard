@@ -140,7 +140,7 @@ Purpose: Change John from his peasant clothes into bandit clothes
 Inputs: attire - the clothing object that John will change into
 Outputs: None
 '''
-def change_clothes_action(attire):
+def change_clothes_action():
     action('HideList()')
     action('FadeOut')
     action('SetClothing(John, Bandit)')
@@ -204,7 +204,6 @@ def dungeon_controller():
         elif received.startswith('input CheckBody'):
             midscene_narration('Guard Lyra is unconscious but still breathing. She will live.')
         elif received.startswith('input ChangeClothes'):
-            attire = received[20:]
-            change_clothes_action(attire)
+            change_clothes_action()
         else:
             check_master_actions(received)
