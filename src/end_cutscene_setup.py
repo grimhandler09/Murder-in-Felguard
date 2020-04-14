@@ -7,7 +7,8 @@ import global_game_states
 
 def enable_use_clues():
     for clue in global_game_states.current_clues:
-        action('EnableIcon(UseClue, openscroll, '  + clue[0] + ', Use Clue, false)')
+        action('DisableIcon(ClueRead, ' + clue[0])
+        action('EnableIcon(UseClue, openscroll, '  + clue[0] + ', Use Clue, true)')
 
 '''
 Purpose: Performs setup for the end cutscene
@@ -31,3 +32,4 @@ def end_cutscene_setup():
     enable_use_clues()
     # Accused 
     action('SetPosition(' + global_game_states.accused + ', Gallows.Altar)')
+    action('SetExpression(' + global_game_states.accused + ', Sad)')

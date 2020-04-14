@@ -18,6 +18,7 @@ from tavern_controller import tavern_controller
 import global_game_states
 from end_cutscenes import end_cutscene
 from reset_globals import reset_globals
+from add_clue import add_clue
 
 '''
 Purpose: Handles game flow. Integrates rest of program by calling the appropriate scenes when necessary
@@ -28,7 +29,7 @@ def main():
 
     # Begin setup of the game
     begin_game_setup()
-
+    
     # Loop prevents the experience manager from closing and crashing the game
     while True:
 
