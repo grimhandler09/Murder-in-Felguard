@@ -322,7 +322,7 @@ def all_game_setup():
     ###############################################################
 
     ###############################################################
-    # Tavern                                                      #
+    # TAVERN                                                      #
     ###############################################################
     
     action('CreateCharacter(Bartender Bill, D)')
@@ -331,7 +331,7 @@ def all_game_setup():
     action('EnableIcon(Talk, Talk, Bartender Bill, Talk to Bartender Bill, true)')
     
     ###############################################################
-    # END Tavern                                                  #
+    # END TAVERN                                                  #
     ###############################################################    
 
 # Setup beginning of the game

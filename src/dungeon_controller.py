@@ -109,11 +109,12 @@ def read_book(book):
             action('Face(Guard Lyra, John)')
             action('Face(John, Guard Lyra)')
             set_left_right('John', 'Guard Lyra')
-            action('SetExpression(Guard Lyra, angry')
+            action('SetExpression(Guard Lyra, angry)')
             set_dialog('If you\'re really trying to help the King, you might wanna actually leave before I throw you back in your cell. Just a thought.\\n[Next | Right, I\'ll be quick.]', ['Next'], True)
+        action('EnableInput()')
         action('HideDialog()')
         #midscene_narration('Clues regarding the Queen\'s murder such as the one obtained here will be stored and can be accessed from anywhere in the game by pressing \'E\'.')
-        action('EnableInput()')
+        
     if book == 'Note From King':
         action('PlaySound(Book)')
         NextDialogOption = set_dialog('I know in my heart that you are innocent, just as I know that my dear Queen Margerie was stolen from me by some dark force.' +
