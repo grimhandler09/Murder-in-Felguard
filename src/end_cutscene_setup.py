@@ -19,10 +19,7 @@ def end_cutscene_setup():
     action('DisableInput()')
     action('SetCameraMode(focus)')
     action('SetCameraFocus(King Phillip)')
-    #action('SetPosition(John, Gallows)')
-    #action('Face(John, Gallows.Altar)')
     action('SetPosition(King Phillip, Gallows.Throne)')
-    #action('Sit(King Phillip, Gallows.Throne)')
 
     # Guard Gallant
     action('SetPosition(Guard Gallant, Gallows.Plant)')
