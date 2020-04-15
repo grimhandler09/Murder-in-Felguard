@@ -1,4 +1,5 @@
 from action import action
+import global_game_states
 
 def tavern_setup():
     # Witch Carlita
@@ -48,7 +49,7 @@ def tavern_setup():
     action('PlaySound(Tavern, Tavern, true)')
     
     #Branching Path
-    if (global_game_states.wearing_disguise):
+    if (not global_game_states.wearing_disguise):
         action('SetExpression(Tiana, scared)')
         action('SetExpression(Maester Purcell, scared)')
         action('SetExpression(Chamber Maid Scarlet, scared)')
