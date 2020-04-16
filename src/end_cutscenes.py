@@ -122,7 +122,7 @@ def end_cutscene():
         # Execution
         commence_execution()
         # Score screen
-        midscene_narration('(Accusation Score: 1/5.  \\nDefinitely room for improvement! The actual perpetrators remain free!\\n\\n')
+        midscene_narration('Accusation Score: 1/5.  \\nDefinitely room for improvement! The actual perpetrators remain free!\\n\\n')
     midscene_narration('Thanks for playing!')
     action('ShowMenu()')
         

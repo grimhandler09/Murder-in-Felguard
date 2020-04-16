@@ -9,6 +9,11 @@ import time
 
 def dungeon_setup():
 
+
+    ###############################################################
+    # Dungeon Setup                                               #
+    ###############################################################  
+
     action('FadeOut()')
 
     # Focus the camera back on John, away from the castle arrest cutscene
@@ -23,7 +28,4 @@ def dungeon_setup():
     action('SetPosition(John, Prison.CellDoor.Inside)')
 
     # Start Background music for dungeon
-    action('PlaySound(Explorer)')
-
-    # Create the possible clues for the dungeon
-    action('CreateItem(Starting Investigations, OpenScroll)')
+    action('PlaySound(Explorer, Prison, true)')

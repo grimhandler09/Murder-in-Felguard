@@ -26,9 +26,9 @@ def opening_cutscene():
 
     # King's dialogue
     set_left_right('King Phillip', 'Queen Margerie')
-    set_dialog('Happy Birthday Darling! I\'ve invited all of your closest friends and family to celebrate!\\n [Next| Next]', ['Next'], True)
-    set_dialog('Enjoy your night Margerie. You\'ve earned it after ruling Felgard faithfully by my side for the last 20 years.\\n [Next| Next]')
-    set_dialog('In honor of the momentous occasion I got Carlita the Castle Witch to give you a very special present!\\n [Next| Next]')
+    set_dialog('Happy Birthday Darling! I\'ve invited all of your closest friends and family to celebrate! \\n[Next| Next]', ['Next'], True)
+    set_dialog('Enjoy your night Margerie. You\'ve earned it after ruling Felgard faithfully by my side for the last 20 years. \\n[Next| Next]')
+    set_dialog('In honor of the momentous occasion I got Carlita the Castle Witch to give you a very special present! \\n[Next| Next]')
     action('HideDialog()')
     
     # Witch casting spell
@@ -39,7 +39,7 @@ def opening_cutscene():
     
     # Finishing Dialog
     set_left_right('King Phillip', 'Queen Margerie')
-    set_dialog('Let the party commence!\\n [Next| Next]', ['Next'], True)
+    set_dialog('Let the party commence! \\n[Next| Next]', ['Next'], True)
     action('HideDialog()')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
@@ -65,14 +65,14 @@ def death_cutscene():
     set_left_right('Queen Margerie', 'null')
 
     # Queen Dialog
-    set_dialog('Thank you all for coming to my birthday bash!\\n [Next| Next]', ['Next'], True)
-    set_dialog('It\'s so wonderful to see you all here. I look forward to many more glorious years ruling the kingdom! Cheers!\\n [Next| Next]')
+    set_dialog('Thank you all for coming to my birthday bash! \\n[Next| Next]', ['Next'], True)
+    set_dialog('It\'s so wonderful to see you all here. I look forward to many more glorious years ruling the kingdom! Cheers! \\n[Next| Next]')
     action('HideDialog()')
 
     # Drinking and Death
     action('Drink(Queen Margerie)')
     action('SetPosition(QueensCup, QueensCastle.DiningTable.Right)')
-    set_dialog('Now let us...\\n [Next| Next]', ['Next'], True)
+    set_dialog('Now let us... \\n[Next| Next]', ['Next'], True)
     action('HideDialog()')
     action('SetExpression(Queen Margerie, Disgusted)')
     action('Die(Queen Margerie)')
@@ -126,6 +126,8 @@ Outputs: None
 def arrest_cutscene():
     # Cutscene setup
     action('StopSound()')
+    action('StopSound(QueensCastle)')
+    action('StopSound(Storage)')
     action('PlaySound(Danger3, QueensCastle, true)')
     action('HideDialog()')
     action('HideNarration()')
@@ -138,7 +140,7 @@ def arrest_cutscene():
     action('SetCameraFocus(Chamber Maid Scarlet)')
     set_left_right('Chamber Maid Scarlet', 'null')
     action('SetExpression(Chamber Maid Scarlet, Surprised)')
-    set_dialog('Guards! It was the queen\'s aide! He killed the Queen!\\n [Next| Next]', ['Next'], True)
+    set_dialog('Guards! It was the queen\'s aide! He killed the Queen! \\n[Next| Next]', ['Next'], True)
     action('HideDialog()')
 
     # Guard Enters
@@ -147,7 +149,7 @@ def arrest_cutscene():
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
     set_left_right('Guard Tom', 'null')
-    set_dialog('Get him!\\n [Next| Next]', ['Next'], True)
+    set_dialog('Get him! \\n[Next| Next]', ['Next'], True)
     action('HideDialog()')
     action('StopSound()')
     # Next scene setup
