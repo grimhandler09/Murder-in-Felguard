@@ -221,6 +221,10 @@ def all_game_setup():
     action('SetPosition(Note From King, Prison.DirtPile)')
     action('CreateItem(Change of Clothes, RedCloth)')
     
+    # Creating the possible clues within the dungeon scene
+    action('CreateItem(Starting Investigations, MagnifyingGlass)')
+    action('CreateItem(A Testimonial by the Alchemist, PurplePotion)')
+
     # Enable Icons
     action('EnableIcon(Sit, Bed, Prison.Bed, Sit, true)')
     action('EnableIcon(Look_in_DirtPile, hand, Prison.DirtPile, Look through dirt, true)')
@@ -325,9 +329,19 @@ def all_game_setup():
     # Tavern                                                      #
     ###############################################################
     
+    
+    # Creating the possible clues within the tavern scene
+    action('CreateItem(Purcell Senile, OpenScroll)')
+    action('CreateItem(Tiana Jealous, BlueBook)')
+    action('CreateItem(Chamber Maid Distressed, PurpleBook)')
+
+    # Creating the Tavern Bartender and enabling interactivity
     action('CreateCharacter(Bartender Bill, D)')
     action('SetClothing(Bartender Bill, Merchant)')
     action('SetPosition(Bartender Bill, Tavern.Bar.Behind)')
+    action('SetEyeColor(Bartender Bill, blue)')
+    action('SetSkinColor(Bartender Bill, 5)')
+    action('SetHairColor(Bartender Bill, blonde)')
     action('EnableIcon(Talk, Talk, Bartender Bill, Talk to Bartender Bill, true)')
     
     ###############################################################

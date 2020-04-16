@@ -88,10 +88,6 @@ def read_book(book):
     # Dialog for Prison Ledger
     if book == 'Prison Ledger':
         approach(book)
-
-        # Creating clue object for clue tracking system
-        add_clue('Talking to the town Alchemist, Chamber Maid, or Grand Maester may yield additional evidence', 'Starting Investigations')
-
         action('DisableInput()')
         action('PlaySound(Book)')
         while NextDialogOption != 'input Selected Exit':
@@ -100,20 +96,22 @@ def read_book(book):
             'esterInfo | Read about the Grand Maester] \\n[Exit | Stop reading]\\n', ['AlchemistInfo', 'ChamberMaid', 'GrandMaesterInfo', 'Exit'], True)
             if NextDialogOption == 'input Selected AlchemistInfo':
                 NextDialogOption = set_dialog('The wine has been sent to the local alchemist for inspection.\\n [Next | Next]')
+                add_clue('The Alchemist analyzed the poison used to kill the Queen', 'A Testimonial by the Alchemist')
             elif NextDialogOption == 'input Selected ChamberMaid':
                 NextDialogOption = set_dialog('The Chamber Maid claims she saw the suspect put something in the Queen\'s drink.\\n[Next | Next]')
             elif NextDialogOption == 'input Selected GrandMaesterInfo':
                 NextDialogOption = set_dialog('The Grand Maester claimed that the currently jailed suspect was falsely accused, but provided no evidence to the guards.\\n [Next | Next]')
+                add_clue('The Grand Maester seems to believe something strange is going on', 'Starting Investigations')
         if global_game_states.dungeon_guard_lives:
             action('HideDialog()')
             action('Face(Guard Lyra, John)')
             action('Face(John, Guard Lyra)')
             set_left_right('John', 'Guard Lyra')
-            action('SetExpression(Guard Lyra, angry')
+            action('SetExpression(Guard Lyra, angry)')
             set_dialog('If you\'re really trying to help the King, you might wanna actually leave before I throw you back in your cell. Just a thought.\\n[Next | Right, I\'ll be quick.]', ['Next'], True)
+        action('EnableInput()')
         action('HideDialog()')
         #midscene_narration('Clues regarding the Queen\'s murder such as the one obtained here will be stored and can be accessed from anywhere in the game by pressing \'E\'.')
-        action('EnableInput()')
     if book == 'Note From King':
         action('PlaySound(Book)')
         NextDialogOption = set_dialog('I know in my heart that you are innocent, just as I know that my dear Queen Margerie was stolen from me by some dark force.' +

@@ -283,38 +283,29 @@ def tavern_convo(person):
             set_dialog('Oh! Where am I? Oh that\'s right, the tavern. I really should be going. Who are you again? *The maester gets a glassy look and stares off in the distance* \\n[Next| erm... ok?]')
         elif person == 'Witch Carlita':
             set_dialog('That Maester Purcell sure acts like a fool, but he\'s sharp as a tack. Don\'t let him fool you \\n[Leave | Hmmm that\'s interesting]', ['Leave'])
-            if 'Purcell Senile' not in global_game_states.current_clues:
-                global_game_states.current_clues.append('Purcell Senile')
-                action('CreateItem(Purcell Senile, OpenScroll)')
-                add_clue('Witch Carlita mentioned that Maester Purcell is not as senile as he acts.', 'Purcell Senile')
-                global_game_states.maester_purcell_senile = True       
+            add_clue('Witch Carlita mentioned that Maester Purcell is not as senile as he acts.', 'Purcell Senile')
+            global_game_states.maester_purcell_senile = True
         elif person == 'Noble Jeremy':
             set_dialog('This murder is the most interesting thing to happen in years. Remember back when the Queen\'s Uncle got his leg eaten by that bear? Now that was a story. \\n[Next| ...Fascinating.]')
         elif person == 'Noble Cecilia':
             received = set_dialog('Tiana has always been jealous of her sister. \\n[Continue | What does that have to do with anything?] \\n[Leave | Ok]', ['Continue', 'Leave'])
             if received == 'input Selected Continue':
                 set_dialog('I\'m just saying Tiana has always wanted the crown ever since she was a child \\n[Next | Thanks]')
-                if 'Tiana Jealous' not in global_game_states.current_clues:
-                    global_game_states.current_clues.append('Tiana Jealous')
-                    action('CreateItem(Tiana Jealous, BlueBook)')
-                    add_clue('Noblewoman Cecilia mentions that Tiana has always envied the crown', 'Tiana Jealous')
-                    global_game_states.cecilia_accusations = True
+                add_clue('Noblewoman Cecilia mentions that Tiana has always envied the crown', 'Tiana Jealous')
+                global_game_states.cecilia_accusations = True
         elif person == 'Merchant Bert':
             set_dialog('I sold the Alchemist a whole cart-load of ingredients last week, some of them were poisons. If you want to look for clues, I\'d start with the Alchemist shop \\n[Next| Thanks, I\'ll do that.]')
         elif person == 'Chamber Maid Scarlet':
             set_dialog('*Scarlet sits silently trembling, fumbling for words* \\n[Next | ...]')
-            if 'Chamber Maid Distressed' not in global_game_states.current_clues:
-                global_game_states.current_clues.append('Chamber Maid Distressed')
-                action('CreateItem(Chamber Maid Distressed, PurpleBook)')
-                add_clue('Scarlet the chamber maid was acting odd and unable to speak in the tavern', 'Chamber Maid Distressed')
-                global_game_states.chamber_maid_odd_behaviours = True
-            elif person == 'Tiana':
-                set_dialog('Why do you speak to me?! Can\'t you see I\'m distraught?! \\n[Next | ...]')
+            add_clue('Scarlet the chamber maid was acting odd and unable to speak in the tavern', 'Chamber Maid Distressed')
+            global_game_states.chamber_maid_odd_behaviours = True
+        elif person == 'Tiana':
+            set_dialog('Why do you speak to me?! Can\'t you see I\'m distraught?! \\n[Next | ...]')
         elif person == 'Bartender Bill':
-            response = set_dialog('My name is Bill the Bartender. what can I get you? \\n[Investigate | I\'m looking into the Queen\'s murder] \\n[Reveal | It\'s me Bill. Your old friend John. (Reveal Identity)]', ['Investigate','Reveal'])
-            if response == 'input Selected Investigate':
+            received = set_dialog('My name is Bill the Bartender. what can I get you? \\n[Investigate | I\'m looking into the Queen\'s murder] \\n[Reveal | It\'s me Bill. Your old friend John. (Reveal Identity)]', ['Investigate','Reveal'])
+            if received == 'input Selected Investigate':
                 set_dialog('Well feel free to talk to the people here. Alcohol has a way of loosening people\'s lips. \\n[Next | You\'re not wrong]')
-            elif response == 'input Selected Reveal':
+            elif received == 'input Selected Reveal':
                 set_dialog('John! Well now this puts me in a tricky spot. You\'ve always been a good friend to me. I can help you get out of the kingdom if you\'d like \\n[Decline | No, I can prove my innocence] \\n[Accept | I\'ll take your offer.', ['Decline','Accept'])
         else:
             if person == 'Bartender Bill':
