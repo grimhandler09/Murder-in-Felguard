@@ -27,6 +27,7 @@ def determine_entry():
     # Enter from tavern
     elif global_game_states.prev_scene == 'tavern':
         action('Exit(John, Tavern.Door, true)')
+        action('StopSound(Tavern)')
         action('StopSound()')
         action('PlaySound(Town_Day)')
         action('Enter(John, City.GreenHouseDoor, true)')
