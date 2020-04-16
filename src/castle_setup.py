@@ -5,6 +5,8 @@ def castle_setup():
     action('SetNight()')
 
     # Sound Affect
+    # Start Background sound for castle
+    action('PlaySound(Fireplace, QueensCastle.Fireplace, true)')
     action('PlaySound(LivelyMusic, QueensCastle, true)')
     action('PlaySound(LivelyMusic, Storage, true)')
 
@@ -98,7 +100,3 @@ def castle_setup():
 
     # Start in black
     action('FadeOut()')
-
-    # Start Background music for castle
-    #action('PlaySound(LivelyMusic)')
-    action('PlaySound(Fireplace, QueensCastle.Fireplace, true)')

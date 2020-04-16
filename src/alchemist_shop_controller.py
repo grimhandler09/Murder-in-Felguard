@@ -154,7 +154,6 @@ def alchemist_shop_controller():
 			item = received[2]
 			inspect_item(item)
 		elif received.startswith('input Leave'):
-			#action('Exit(John, ' + received[12:] + ', true)')
 			global_game_states.current_scene = 'city'
 			global_game_states.prev_scene = 'alchemist_shop'
 		else:

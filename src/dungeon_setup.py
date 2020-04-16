@@ -28,4 +28,4 @@ def dungeon_setup():
     action('SetPosition(John, Prison.CellDoor.Inside)')
 
     # Start Background music for dungeon
-    action('PlaySound(Explorer)')
+    action('PlaySound(Explorer, Prison, true)')
