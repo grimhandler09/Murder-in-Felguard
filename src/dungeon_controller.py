@@ -126,6 +126,7 @@ def read_book(book):
             set_left_right('John', 'Guard Lyra')
             action('SetExpression(Guard Lyra, angry)')
             set_dialog('If you\'re really trying to help the King, you might wanna actually leave before I throw you back in your cell. Just a thought.\\n[Next | Right, I\'ll be quick.]', ['Next'], True)
+            action('HideDialog()')
             action('EnableInput()')
 
 '''
