@@ -94,6 +94,11 @@ def all_game_setup():
     # CITY                                                        #
     ###############################################################
     
+    # Creating the possible clues within the city scene
+    action('CreateItem(Desperate Times, Rags)')
+    action('CreateItem(Beggar Miles Testimonial, PurplePotion)')
+    action('CreateItem(Testimonial Gossip, EvilBook)')
+
     # Create City Characters
     # Beggar Adeline
     action('CreateCharacter(Beggar Adeline, G)')
@@ -241,6 +246,10 @@ def all_game_setup():
     # ALCHEMIST SHOP                                              #
     ###############################################################
     
+    # Creating the possible clues within the alchemist shop scene
+    action('CreateItem(Found Poison, PurplePotion')
+    action('CreateItem(Alchemist Testimonial, GreenPotion')
+
     # Alchemist Henry
     action('CreateCharacter(Alchemist Henry, D)')
     action('SetClothing(Alchemist Henry, Warlock)')
@@ -334,6 +343,9 @@ def all_game_setup():
     action('CreateItem(Purcell Senile, OpenScroll)')
     action('CreateItem(Tiana Jealous, BlueBook)')
     action('CreateItem(Chamber Maid Distressed, PurpleBook)')
+    action('CreateItem(Much Smarter than he Looks, Skull')
+    action('CreateItem(Sinister Sister, EvilBook)')
+    action('CreateItem(Chamber Maid Testimonial, PurplePotion)')
 
     # Creating the Tavern Bartender and enabling interactivity
     action('CreateCharacter(Bartender Bill, D)')

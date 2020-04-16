@@ -10,7 +10,7 @@ def tavern_controller():
 
     # Start Background noises for tavern
     action('StopSound()')
-    action('PlaySound(Tavern)')
+    action('PlaySound(Tavern, Tavern, true)')
     action('PlaySound(Fireplace, Tavern.Fireplace, true)')
 
     # Begin entry to tavern

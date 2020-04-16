@@ -20,6 +20,7 @@ first_city_entry = True
 blind_bandit_offended = False
 blind_bandit_clue_aquired = False
 priestess_false_trail = False
+scarlet_working_extra_hard = False
 city_clues = []
 
 # Alchemy Shop
@@ -31,6 +32,7 @@ identified_poison = False #used as a step for found_potion
 alchemist_shop_clues = []
 
 # Tavern
+staring_contest_with_purcell = 0
 first_tavern_entry = True
 maester_purcell_senile = False
 cecilia_accusations = False

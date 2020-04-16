@@ -46,10 +46,6 @@ def tavern_setup():
         #action('EnableIcon(Sit, Chair, Tavern.StoolBackRight, Sit, true)')
         action('EnableIcon(Enter, Exit , Tavern.Door, Leave the Tavern, true)')
         action('EnableIcon(Talk, Talk , Witch Carlita, Talk to Witch Carlita, true)')
-        
-        # Enable Effects
-        action('EnableEffect(Tavern.Fireplace, Campfire)')
-        action('PlaySound(Tavern, Tavern, true)')
 
         global_game_states.first_tavern_entry = False
     
