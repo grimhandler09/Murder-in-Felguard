@@ -43,10 +43,12 @@ Inputs: None
 Outputs: None
 '''
 def display_clues_action():
+    # If the clue isn't empty
     if not global_game_states.current_clues == []:
         midscene_narration('These are the clues gathered so far')
         action('ClearList()')
         action('HideList()')
+        # Add each clue to the Camelot list
         for clue in global_game_states.current_clues:
             action('AddToList(' + clue[0] + ', ' + clue[1] + ')')
         action('ShowList(John)')

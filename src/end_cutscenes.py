@@ -8,10 +8,6 @@ import global_game_states
 from master_action_controller import check_master_actions, scene_start, display_clues_action, midscene_narration
 from talk_controller import *
 from end_cutscene_setup import end_cutscene_setup
-
-
-# def present_evidence():
-#     for clue in global_game_states.current_clues:
     
 '''
 Purpose: Creates a modular way to perform the execution of whomever was accused

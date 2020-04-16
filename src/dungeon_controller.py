@@ -112,6 +112,7 @@ def read_book(book):
         action('EnableInput()')
         action('HideDialog()')
         #midscene_narration('Clues regarding the Queen\'s murder such as the one obtained here will be stored and can be accessed from anywhere in the game by pressing \'E\'.')
+        
     if book == 'Note From King':
         action('PlaySound(Book)')
         NextDialogOption = set_dialog('I know in my heart that you are innocent, just as I know that my dear Queen Margerie was stolen from me by some dark force.' +
