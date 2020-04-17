@@ -38,6 +38,7 @@ def select_clues():
             for clue_item in global_game_states.current_clues:
                 if clue_item[0] == selected_clue and clue_item[1] not in global_game_states.selected_clues:
                     global_game_states.selected_clues.append(clue_item[1])
+                    action('DisableIcon(UseClue, ' + clue_item[0] + ')')
     action('HideList()')
 
 def king_reads_clues():
