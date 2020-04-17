@@ -7,8 +7,7 @@ import global_game_states
 
 def enable_use_clues():
     for clue in global_game_states.current_clues:
-        action('DisableIcon(ClueRead, ' + clue[0])
-        action('EnableIcon(UseClue, openscroll, '  + clue[0] + ', Use Clue, true)')
+        action('EnableIcon(UseClue, openscroll, '  + clue[0] + ', Use Clue, false)')
 
 '''
 Purpose: Performs setup for the end cutscene
