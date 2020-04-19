@@ -87,7 +87,7 @@ def drink_beverage_action(item):
         action('Die(John)')
         action('SetCameraFocus(John)')
         action('SetCameraMode(follow)')
-        midscene_narration('Accusation Score: 0/5.  The pressure of making a deadly accusation caused John to be parched, and not being the brightest individual, he drank the first thing he could. As it turns out, deadly poison is deadly. The actual perpetrators remain free, however, that is the last thing on John\'s mind. Clue Score: ')
+        midscene_narration('Accusation Score: 0/5.  The pressure of making a deadly accusation caused John to be parched, and not being the brightest individual, he drank the first thing he could. As it turns out, deadly poison is deadly. The actual perpetrators remain free, however, that is the last thing on John\'s mind.')
         midscene_narration('Thanks for playing, try again and probably don\'t drink the poison!')
         #action('Reset()')
         action('ShowMenu()')
