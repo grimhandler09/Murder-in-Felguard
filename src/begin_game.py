@@ -355,6 +355,7 @@ def all_game_setup():
     action('SetSkinColor(Bartender Bill, 5)')
     action('SetHairColor(Bartender Bill, blonde)')
     action('EnableIcon(Talk, Talk, Bartender Bill, Talk to Bartender Bill, true)')
+    action('EnableEffect(Tavern.Fireplace, CampFire)')
     
     ###############################################################
     # END TAVERN                                                  #
