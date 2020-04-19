@@ -321,7 +321,7 @@ def all_game_setup():
     action('CreateCharacter(Tester, D)')
     action('SetClothing(Tester, Noble)')
     action('SetPosition(Tester, CastleStorage.Shelf)')
-    action('WalkToSpot(Tester, 2101.8, 0.1, -2.1)')
+    action('WalkToSpot(Tester, 2101.8, 0.1, -220.3)')
     action('Die(Tester)')
     action('CreateItem(AlchemistLetter, OpenScroll)')
     action('SetPosition(AlchemistLetter, CastleStorage.Barrel)')
