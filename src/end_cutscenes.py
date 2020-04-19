@@ -120,7 +120,7 @@ def end_cutscene():
         # Execution
         commence_execution()
         # Score screen
-        midscene_narration('Accusation Score: 5/5. Perfect! Clue Score: ')
+        midscene_narration('Accusation Score: 5/5. Perfect! ')
     elif global_game_states.accused == 'Tiana':
         # Tiana's Dialogue
         set_dialog('I WAS MEANT TO BE THE TRUE QUEEN! \\n[Next | Next]', ['Next'], True)
