@@ -341,7 +341,7 @@ def tavern_convo(person):
             if global_game_states.found_poison and global_game_states.chamber_maid_odd_behaviours:
                 received = set_dialog('*Scarlet sits silently trembling, fumbling for words* \\n[Poison | Do you know what this is? (Show Poison)] \\n[Next | ...]', ['Poison', 'Next'])
                 if received == 'input Selected Poison':
-                    set_dialog('No... No, No! I only did what I was told! Tianna... Queen Tianna... She would never lie! \\n[Next | ...]')
+                    set_dialog('No... No, No! I only did what I was told! Tianna... Princess Tianna... She would never lie! \\n[Next | ...]')
                     add_clue('Chamber Maid Scarlet panicked at the mention of giant rat poison, and mumbled the name Tianna', 'Chamber Maid Testimonial')
             else:
                 set_dialog('*Scarlet sits silently trembling, fumbling for words* \\n[Next | ...]')
