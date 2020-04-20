@@ -57,6 +57,7 @@ def tavern_setup():
         action('SetExpression(Merchant Bert, scared)')
         action('SetExpression(Noble Cecilia, scared)')
         action('SetExpression(Noble Jeremy, scared)')
+        action('SetExpression(Witch Carlita, scared)')
         
     else:
         action('SetExpression(Tiana, sad)')
@@ -65,3 +66,4 @@ def tavern_setup():
         action('SetExpression(Noble Jeremy, happy)')
         action('SetExpression(Noble Cecilia, disgusted)')
         action('SetExpression(Merchant Bert, neutral)')
+        action('SetExpression(Witch Carlita, angry)')
