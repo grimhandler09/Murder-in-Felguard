@@ -27,7 +27,7 @@ def opening_cutscene():
     # King's dialogue
     set_left_right('King Phillip', 'Queen Margerie')
     set_dialog('Happy Birthday Darling! I\'ve invited all of your closest friends and family to celebrate! \\n[Next| Next]', ['Next'], True)
-    set_dialog('Enjoy your night Margerie. You\'ve earned it after ruling Felgard faithfully by my side for the last 20 years. \\n[Next| Next]')
+    set_dialog('Enjoy your night Margerie. You\'ve earned it after ruling Felguard faithfully by my side for the last 20 years. \\n[Next| Next]')
     set_dialog('In honor of the momentous occasion I got Carlita the Castle Witch to give you a very special present! \\n[Next| Next]')
     action('HideDialog()')
     
@@ -188,7 +188,7 @@ def castle_controller():
             # Contents of ledger
             action('PlaySound(Book)')
             midscene_narration('Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie\\nNoblewoman Celcilia -'
-            + 'Wife of Nobleman Jeremy\\nMerchant Bert - The most prominent merchant in all of Felguard\\nGrand Maester Purcell - Felgard\'s '
+            + 'Wife of Nobleman Jeremy\\nMerchant Bert - The most prominent merchant in all of Felguard\\nGrand Maester Purcell - Felguard\'s '
             + 'longest serving maester\\nWitch Carlita - The castle mage')
             trigger_death += 1
         elif received == 'input ReadInvitation Party Invitation':

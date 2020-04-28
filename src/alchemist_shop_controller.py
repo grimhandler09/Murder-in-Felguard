@@ -18,10 +18,10 @@ Inputs: item - The item the player selects
 Outputs: None
 '''
 def inspect_item(item):
-	action('DisableInput()')
-	action('WalkTo(John, ' + item + ')')
-	action('Face(John, ' + item + ')')
-	action('EnableInput()')
+	#action('DisableInput()')
+	#action('WalkTo(John, ' + item + ')')
+	#action('Face(John, ' + item + ')')
+	#action('EnableInput()')
 
 	#Potions
 	if item == 'BluePotion1':
@@ -131,7 +131,7 @@ def inspect_item(item):
 				player_response = set_dialog('1x Giant Rat Poison - Tiana. 3x Health Potion - Prison Guards. The rest is empty. \\n[AllPotionsList| Back]', ['AllPotionsList'])
 				global_game_states.found_poison_purchase = True
 				action('CreateItem(Sales Records, GreenBook)')
-				add_clue('Tianna bought some rat poison', 'Sales Records')
+				add_clue('Tiana bought some rat poison', 'Sales Records')
 		action('HideDialog()')
 		action('PlaySound(Book, Alch.LeftBookcase, false')
 	
