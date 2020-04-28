@@ -255,14 +255,14 @@ def alchemist_shop_convo(person):
             if global_game_states.found_poison_purchase == True:
                 if global_game_states.found_poison == False:
                     if global_game_states.identified_poison == False:
-                        player_response = set_dialog('Find anything you like? \\n[Purchase | Who is Tianna?] \\n[Next | Still looking around]', ['Purchase', 'Next'])
+                        player_response = set_dialog('Find anything you like? \\n[Purchase | Who is Tiana?] \\n[Next | Still looking around]', ['Purchase', 'Next'])
                     else:
-                        player_response = set_dialog('Find anything you like? \\n[Purchase | Who is Tianna?] \\n[About | About that rat poison...] \\n[Next | Still looking around]', ['Purchase', 'About', 'Next'])
+                        player_response = set_dialog('Find anything you like? \\n[Purchase | Who is Tiana?] \\n[About | About that rat poison...] \\n[Next | Still looking around]', ['Purchase', 'About', 'Next'])
                 else:
                     if global_game_states.identified_poison == False:
-                        player_response = set_dialog('Need help with anything else? \\n[Purchase | Who is Tianna?] \\n[Free | Are you sure I can have this?] \\n[Next | No, thanks]', ['Purchase', 'Free', 'Next'])
+                        player_response = set_dialog('Need help with anything else? \\n[Purchase | Who is Tiana?] \\n[Free | Are you sure I can have this?] \\n[Next | No, thanks]', ['Purchase', 'Free', 'Next'])
                     else:
-                        player_response = set_dialog('Need help with anything else? \\n[Purchase | Who is Tianna?] \\n[Free | Are you sure I can have this?] \\n[About | About that rat poison...] \\n[Next | No, thanks]', ['Purchase', 'Free', 'About', 'Next'])
+                        player_response = set_dialog('Need help with anything else? \\n[Purchase | Who is Tiana?] \\n[Free | Are you sure I can have this?] \\n[About | About that rat poison...] \\n[Next | No, thanks]', ['Purchase', 'Free', 'About', 'Next'])
             else:
                 if global_game_states.found_poison == False:
                     if global_game_states.identified_poison == False:
@@ -289,7 +289,7 @@ def alchemist_shop_convo(person):
                 add_clue('The Alchemist claimed innocence and blamed a mysterious trusted advisor of the Queen', 'Alchemist Testimonial')
                 global_game_states.alchemist_is_paranoid = True
         if player_response == 'input Selected Purchase':
-            player_response = set_dialog('Oh, Tianna? She\'s the Queen\'s sister. She recently bought some giant rat poison to help clear the sewers. \\n[Menu| Thanks]', ['Menu'])
+            player_response = set_dialog('Oh, Tiana? She\'s the Queen\'s sister. She recently bought some giant rat poison to help clear the sewers. \\n[Menu| Thanks]', ['Menu'])
         elif player_response == 'input Selected Free':
             player_response = set_dialog('If you\'re investigating for the king, take it! Quickly now! \\n[Menu| Okay...]', ['Menu'])
         elif player_response == 'input Selected About' and global_game_states.found_poison == False:
@@ -341,8 +341,8 @@ def tavern_convo(person):
             if global_game_states.found_poison and global_game_states.chamber_maid_odd_behaviours:
                 received = set_dialog('*Scarlet sits silently trembling, fumbling for words* \\n[Poison | Do you know what this is? (Show Poison)] \\n[Next | ...]', ['Poison', 'Next'])
                 if received == 'input Selected Poison':
-                    set_dialog('No... No, No! I only did what I was told! Tianna... Princess Tianna... She would never lie! \\n[Next | ...]')
-                    add_clue('Chamber Maid Scarlet panicked at the mention of giant rat poison, and mumbled the name Tianna', 'Chamber Maid Testimonial')
+                    set_dialog('No... No, No! I only did what I was told! Tiana... Princess Tiana... She would never lie! \\n[Next | ...]')
+                    add_clue('Chamber Maid Scarlet panicked at the mention of giant rat poison, and mumbled the name Tiana', 'Chamber Maid Testimonial')
             else:
                 set_dialog('*Scarlet sits silently trembling, fumbling for words* \\n[Next | ...]')
                 add_clue('Scarlet the chamber maid was acting odd and unable to speak in the tavern', 'Chamber Maid Distressed')
@@ -354,7 +354,7 @@ def tavern_convo(person):
                     set_dialog('I should have you killed for such insolence! Guards! Where are my guards? ...If my guards show up I\'ll have you jailed. Get lost. \\n[Next | I should be going]')
                 elif received == 'input Selected Sly':
                     set_dialog('Yes, the world has a way of working out for those who deserve it, doesn\'t it? My sister never earned the crown, but I have. \\n[Next | Indeed]')
-                    add_clue('Tianna appears to be proud of the Queen\'s death', 'Sinister Sister')
+                    add_clue('Tiana appears to be proud of the Queen\'s death', 'Sinister Sister')
             else:
                 set_dialog('Why do you speak to me?! Can\'t you see I\'m distraught?! \\n[Next | ...]')
         elif person == 'Bartender Bill':

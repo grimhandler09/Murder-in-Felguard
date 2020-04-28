@@ -115,7 +115,7 @@ def read_book(book):
 
     elif book == 'Dire News':
         action('PlaySound(Book)')
-        midscene_narration('This missive describes the untimely and tragic death of the Queen. Penned by Royal Successor Tianna.')
+        midscene_narration('This missive describes the untimely and tragic death of the Queen. Penned by Royal Successor Tiana.')
 
         # If the guard is not attacked, she will remark on the player's prolonged stay within the dungeon
         if global_game_states.dungeon_guard_lives:
