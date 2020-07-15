@@ -6,8 +6,8 @@ from action import action
 from castle_setup import castle_setup
 
 def all_game_setup():
-    action('SetTitle(\"Murder in Felguard\")')
-    action("SetCredits(\"Experience Manager by Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis\")")
+    action('SetTitle(\"Murder in Felguard\")', False)
+    action("SetCredits(\"Experience Manager by Zach Moore, Travis Conley, Adrian Wyllie, Mitchel Dennis\")", False)
 
     # Create Game Locations
     action('CreatePlace(QueensCastle, DiningRoom)')
@@ -26,65 +26,65 @@ def all_game_setup():
 
     # Main Character(John)
     action('CreateCharacter(John, B)')
-    action('SetHairStyle(John, Long)')
-    action('SetEyeColor(John, blue)')
+    action('SetHairStyle(John, Long)', False)
+    action('SetEyeColor(John, blue)', False)
     
     # Queen Margerie
     action('CreateCharacter(Queen Margerie, A)')
-    action('SetClothing(Queen Margerie, Queen)')
-    action('SetHairStyle(Queen Margerie, Long)')
-    action('SetEyeColor(Queen Margerie, green)')
+    action('SetClothing(Queen Margerie, Queen)', False)
+    action('SetHairStyle(Queen Margerie, Long)', False)
+    action('SetEyeColor(Queen Margerie, green)', False)
     
     # Guard Gallant
     action('CreateCharacter(Guard Gallant, F)')
-    action('SetClothing(Guard Gallant, HeavyArmour)')
-    action('CreateItem(GallantSword, Sword)')
+    action('SetClothing(Guard Gallant, HeavyArmour)', False)
+    action('CreateItem(GallantSword, Sword)', False)
     
     # King Phillip
     action('CreateCharacter(King Phillip, H)')
-    action('SetClothing(King Phillip, King)')
-    action('SetHairStyle(King Phillip, Short_Full)')
+    action('SetClothing(King Phillip, King)', False)
+    action('SetHairStyle(King Phillip, Short_Full)', False)
     
     # Witch Carlita
     action('CreateCharacter(Witch Carlita, C)')
-    action('SetClothing(Witch Carlita, Witch)')
-    action('SetHairStyle(Witch Carlita, Long)')
-    action('SetHairColor(Witch Carlita, Gray)')
+    action('SetClothing(Witch Carlita, Witch)', False)
+    action('SetHairStyle(Witch Carlita, Long)', False)
+    action('SetHairColor(Witch Carlita, Gray)', False)
     action('Face(Witch Carlita, QueensCastle.BackRightChair)')
-    action('CreateItem(CarlitaBook, BlueBook)')
+    action('CreateItem(CarlitaBook, BlueBook)', False)
 
     # Noble Jeremy
     action('CreateCharacter(Noble Jeremy, F)')
-    action('SetClothing(Noble Jeremy, Noble)')
-    action('SetHairStyle(Noble Jeremy, Spiky)')
+    action('SetClothing(Noble Jeremy, Noble)', False)
+    action('SetHairStyle(Noble Jeremy, Spiky)', False)
 
     # Noble Cecilia
     action('CreateCharacter(Noble Cecilia, C)')
-    action('SetClothing(Noble Cecilia, Noble)')
-    action('SetHairStyle(Noble Cecilia, Short)')
+    action('SetClothing(Noble Cecilia, Noble)', False)
+    action('SetHairStyle(Noble Cecilia, Short)', False)
     
     # Merchant Bert
     action('CreateCharacter(Merchant Bert, H)')
-    action('SetClothing(Merchant Bert, Merchant)')
-    action('SetHairColor(Merchant Bert, Blonde)')
+    action('SetClothing(Merchant Bert, Merchant)', False)
+    action('SetHairColor(Merchant Bert, Blonde)', False)
     
     # Chamber Maid Scarlet
     action('CreateCharacter(Chamber Maid Scarlet, E)')
-    action('SetClothing(Chamber Maid Scarlet, Peasant)')
-    action('SetHairStyle(Chamber Maid Scarlet, Ponytail)')
-    action('SetHairColor(Chamber Maid Scarlet, Brown)')
+    action('SetClothing(Chamber Maid Scarlet, Peasant)', False)
+    action('SetHairStyle(Chamber Maid Scarlet, Ponytail)', False)
+    action('SetHairColor(Chamber Maid Scarlet, Brown)', False)
     
     # Tiana
     action('CreateCharacter(Tiana, A)')
-    action('SetClothing(Tiana, Noble)')
-    action('SetHairStyle(Tiana, Straight)')
-    action('SetHairColor(Tiana, Brown)')
+    action('SetClothing(Tiana, Noble)', False)
+    action('SetHairStyle(Tiana, Straight)', False)
+    action('SetHairColor(Tiana, Brown)', False)
     
     # Castle Grand Maester Purcell
     action('CreateCharacter(Maester Purcell, H)')
-    action('SetClothing(Maester Purcell, Priest)')
-    action('SetHairStyle(Maester Purcell, Mage_Full)')
-    action('SetHairColor(Maester Purcell, Gray)')
+    action('SetClothing(Maester Purcell, Priest)', False)
+    action('SetHairStyle(Maester Purcell, Mage_Full)', False)
+    action('SetHairColor(Maester Purcell, Gray)', False)
 
     ###############################################################
     # END CASTLE                                                  #
@@ -95,106 +95,110 @@ def all_game_setup():
     ###############################################################
     
     # Creating the possible clues within the city scene
-    action('CreateItem(Desperate Times, Rags)')
-    action('CreateItem(Beggar Miles Testimonial, PurplePotion)')
-    action('CreateItem(Testimonial Gossip, EvilBook)')
+    action('CreateItem(Desperate Times, Rags)', False)
+    action('CreateItem(Beggar Miles Testimonial, PurplePotion)', False)
+    action('CreateItem(Testimonial Gossip, EvilBook)', False)
 
     # Create City Characters
     # Beggar Adeline
     action('CreateCharacter(Beggar Adeline, G)')
-    action('SetClothing(Beggar Adeline, Beggar)')
-    action('SetHairStyle(Beggar Adeline, Long)')
-    action('SetPosition(Beggar Adeline, City.Fountain)')
-    action('SetExpression(Beggar Adeline, neutral)')
-    action('SetSkinColor(Beggar Adeline, 4)')
+    action('SetClothing(Beggar Adeline, Beggar)', False)
+    action('SetHairStyle(Beggar Adeline, Long)', False)
+    action('SetPosition(Beggar Adeline, City.Fountain)', False)
+    action('SetExpression(Beggar Adeline, neutral)', False)
+    action('SetSkinColor(Beggar Adeline, 4)', False)
     
     # Beggar Miles
     action('CreateCharacter(Beggar Miles, H)')
-    action('SetClothing(Beggar Miles, Beggar)')
-    action('SetHairStyle(Beggar Miles, Mage)')
+    action('SetClothing(Beggar Miles, Beggar)', False)
+    action('SetHairStyle(Beggar Miles, Mage)', False)
     action('SetPosition(Beggar Miles, City.Bench)')
-    action('Sit(Beggar Miles, City.Bench)')
-    action('SetExpression(Beggar Miles, sad')
-    action('SetSkinColor(Beggar Miles, 4)')
+    action('Sit(Beggar Miles, City.Bench)', False)
+    action('SetExpression(Beggar Miles, sad', False)
+    action('SetSkinColor(Beggar Miles, 4)', False)
     
     # Alchemist Jeremy
     action('CreateCharacter(Alchemist Jeremy, F)')
-    action('SetClothing(Alchemist Jeremy, Merchant)')
-    action('SetHairStyle(Alchemist Jeremy, Spiky)')
+    action('SetClothing(Alchemist Jeremy, Merchant)', False)
+    action('SetHairStyle(Alchemist Jeremy, Spiky)', False)
     action('SetPosition(Alchemist Jeremy, City.BrownHouseDoor)')
-    action('WalkToSpot(Alchemist Jeremy, 925.3, 0.3, 5.0)')
-    action('SetExpression(Alchemist Jeremy, happy)')
-    action('SetSkinColor(Alchemist Jeremy, 7)')
+    action('MoveAway(City.BrownHouseDoor)')
+    action('WalkToSpot(Alchemist Jeremy, 925.3, 0.3, 5.0)', False)
+    action('SetExpression(Alchemist Jeremy, happy)', False)
+    action('SetSkinColor(Alchemist Jeremy, 7)', False)
     
     # Scout Joanna
     action('CreateCharacter(Scout Joanna, C)')
-    action('SetClothing(Scout Joanna, LightArmour)')
-    action('SetHairStyle(Scout Joanna, Ponytail)')
-    action('SetPosition(Scout Joanna, City.NorthEnd)')
+    action('SetClothing(Scout Joanna, LightArmour)', False)
+    action('SetHairStyle(Scout Joanna, Ponytail)', False)
+    action('SetPosition(Scout Joanna, City.NorthEnd)', False)
     action('CreateItem(JoannaTorch, Torch)')
-    action('SetPosition(JoannaTorch, Scout Joanna)')
-    action('SetSkinColor(Scout Joanna, 2)')
+    action('SetPosition(JoannaTorch, Scout Joanna)', False)
+    action('SetSkinColor(Scout Joanna, 2)', False)
     
     # Scout Tom
     action('CreateCharacter(Scout Tom, D)')
-    action('SetClothing(Scout Tom, LightArmour)')
-    action('SetHairStyle(Scout Tom, Short)')
-    action('SetPosition(Scout Tom, City.WestEnd)')
+    action('SetClothing(Scout Tom, LightArmour)', False)
+    action('SetHairStyle(Scout Tom, Short)', False)
+    action('SetPosition(Scout Tom, City.EastEnd)', False)
     action('CreateItem(TomTorch, Torch)')
-    action('SetPosition(TomTorch, Scout Joanna)')
-    action('WalkToSpot(Scout Tom, 916.0, 0.3, -12.6)')
-    action('SetSkinColor(Scout Tom, 2)')
+    action('SetPosition(TomTorch, Scout Tom)', False)
+    #action('WalkToSpot(Scout Tom, 916.0, 0.3, -12.6)')
+    action('SetSkinColor(Scout Tom, 2)', False)
     
     # Drunk Devon
     action('CreateCharacter(Drunk Devon, F)')
-    action('SetClothing(Drunk Devon, Peasant)')
-    action('SetHairStyle(Drunk Devon, Musketeer)')
+    action('SetClothing(Drunk Devon, Peasant)', False)
+    action('SetHairStyle(Drunk Devon, Musketeer)', False)
     action('SetPosition(Drunk Devon, City.GreenHouseDoor)')
     action('CreateItem(DevonsBottle, Bottle)')
-    action('SetPosition(DevonsBottle, Drunk Devon)')
-    action('WalkToSpot(Drunk Devon, 906.4, 0.3, -1.2)')
-    action('SetExpression(Drunk Devon, happy)')
-    action('SetSkinColor(Drunk Devon, 3)')
+    action('SetPosition(DevonsBottle, Drunk Devon)', False)
+    action('MoveAway(City.GreenHouseDoor)')
+    #action('WalkToSpot(Drunk Devon, 906.4, 0.3, -1.2)')
+    action('SetExpression(Drunk Devon, happy)', False)
+    action('SetSkinColor(Drunk Devon, 3)', False)
     
     # Priestess Esmerelda
-    action('CreateItem(A Possible Smiting, SpellBook)')
+    action('CreateItem(A Possible Smiting, SpellBook)', False)
     action('CreateCharacter(Priestess Esmerelda, E)')
-    action('SetClothing(Priestess Esmerelda, Priest)')
-    action('SetHairStyle(Priestess Esmerelda, Short)')
+    action('SetClothing(Priestess Esmerelda, Priest)', False)
+    action('SetHairStyle(Priestess Esmerelda, Short)', False)
     action('SetPosition(Priestess Esmerelda, City.RedHouseDoor)')
     action('CreateItem(EsmereldaBook, RedBook)')
-    action('SetPosition(EsmereldaBook, Priestess Esmerelda)')
-    action('WalkToSpot(Priestess Esmerelda, 928.9, 0.4, -1.7)')
-    action('SetExpression(Priestess Esmerelda, angry)')
+    action('SetPosition(EsmereldaBook, Priestess Esmerelda)', False)
+    action('MoveAway(City.RedHouseDoor)')
+    #action('WalkToSpot(Priestess Esmerelda, 928.9, 0.4, -1.7)')
+    action('SetExpression(Priestess Esmerelda, angry)', False)
     
     # Blind Bandit
-    action('CreateItem(A Contract Killing, Coin)')
+    action('CreateItem(A Contract Killing, Coin)', False)
     action('CreateCharacter(Blind Bandit, C)')
-    action('SetClothing(Blind Bandit, Bandit)')
-    action('SetHairStyle(Blind Bandit, Long)')
-    action('SetPosition(Blind Bandit, City.Alley)')
-    action('SetSkinColor(Blind Bandit, 5)')
+    action('SetClothing(Blind Bandit, Bandit)', False)
+    action('SetHairStyle(Blind Bandit, Long)', False)
+    action('SetPosition(Blind Bandit, City.Alley)', False)
+    action('SetSkinColor(Blind Bandit, 5)', False)
     
     #Gossiping Gail
     action('CreateCharacter(Gossiping Gail, A)')
-    action('SetClothing(Gossiping Gail, Peasant)')
-    action('SetHairStyle(Gossiping Gail, Spiky)')
-    action('SetPosition(Gossiping Gail, City.BlueHouseDoor)')
-    action('WalkToSpot(Gossiping Gail, 924.8, 0.3, -10.2)')
-    action('SetExpression(Gossiping Gail, happy)')
+    action('SetClothing(Gossiping Gail, Peasant)', False)
+    action('SetHairStyle(Gossiping Gail, Spiky)', False)
+    #action('SetPosition(Gossiping Gail, City.BlueHouseDoor)')
+    action('SetPosition(Gossiping Gail, City.Horse)', False)
+    #action('WalkToSpot(Gossiping Gail, 924.8, 0.3, -10.2)')
+    action('SetExpression(Gossiping Gail, happy)', False)
     
     #Enable Icons
-    action('EnableIcon(Talk, Talk, Beggar Adeline, Talk to Beggar Adeline, true)')
-    action('EnableIcon(Talk, Talk, Beggar Miles, Talk to Beggar Miles, true)')
-    action('EnableIcon(Talk, Talk, Alchemist Jeremy, Talk to Alchemist Jeremy, true)')
-    action('EnableIcon(Talk, Talk, Scout Joanna, Talk to Scout Joanna, true)')
-    action('EnableIcon(Talk, Talk, Scout Tom, Talk to Scout Tom, true)')
-    action('EnableIcon(Talk, Talk, Drunk Devon, Talk to Drunk Devon, true)')
-    action('EnableIcon(Talk, Talk, Blind Bandit, Talk to Blind Bandit, true)')
-    action('EnableIcon(Talk, Talk, Priestess Esmerelda, Talk to Priestess Esmerelda, true)')
-    action('EnableIcon(Talk, Talk, Gossiping Gail, Talk to Gossiping Gail, true)')
-    action('EnableIcon(Enter, Exit, City.BrownHouseDoor, Enter the Alchemist Shop, true)')
-    action('EnableIcon(Enter, Exit , City.GreenHouseDoor, Enter the Tavern, true)')
+    action('EnableIcon(Talk, Talk, Beggar Adeline, Talk to Beggar Adeline, true)', False)
+    action('EnableIcon(Talk, Talk, Beggar Miles, Talk to Beggar Miles, true)', False)
+    action('EnableIcon(Talk, Talk, Alchemist Jeremy, Talk to Alchemist Jeremy, true)', False)
+    action('EnableIcon(Talk, Talk, Scout Joanna, Talk to Scout Joanna, true)', False)
+    action('EnableIcon(Talk, Talk, Scout Tom, Talk to Scout Tom, true)', False)
+    action('EnableIcon(Talk, Talk, Drunk Devon, Talk to Drunk Devon, true)', False)
+    action('EnableIcon(Talk, Talk, Blind Bandit, Talk to Blind Bandit, true)', False)
+    action('EnableIcon(Talk, Talk, Priestess Esmerelda, Talk to Priestess Esmerelda, true)', False)
+    action('EnableIcon(Talk, Talk, Gossiping Gail, Talk to Gossiping Gail, true)', False)
+    action('EnableIcon(Enter, Exit, City.BrownHouseDoor, Enter the Alchemist Shop, true)', False)
+    action('EnableIcon(Enter, Exit , City.GreenHouseDoor, Enter the Tavern, true)', False)
 
     ###############################################################
     # END CITY                                                    #
@@ -206,37 +210,37 @@ def all_game_setup():
     
     # Create Cell Door Guard Lyra
     action('CreateCharacter(Guard Lyra, C)')
-    action('SetEyeColor(Guard Lyra, green)')
-    action('SetClothing(Guard Lyra, LightArmour)')
-    action('SetHairStyle(Guard Lyra, Short)')
-    action('SetSkinColor(Guard Lyra, 2)')
-    action('SetHairColor(Guard Lyra, red)')
-    action('SetPosition(Guard Lyra, Prison.CellDoor)')
-    action('SetExpression(Guard Lyra, disgusted)')
+    action('SetEyeColor(Guard Lyra, green)', False)
+    action('SetClothing(Guard Lyra, LightArmour)', False)
+    action('SetHairStyle(Guard Lyra, Short)', False)
+    action('SetSkinColor(Guard Lyra, 2)', False)
+    action('SetHairColor(Guard Lyra, red)', False)
+    action('SetPosition(Guard Lyra, Prison.CellDoor)', False)
+    action('SetExpression(Guard Lyra, disgusted)', False)
     #action('WalkToSpot(Guard Lyra, -608.6, 0.0, -2.7)')
 
     # Create items and position them
-    action('CreateItem(Cell Door Key, BlueKey)')
-    action('SetPosition(Cell Door Key, QueensCastle.Door)')
+    action('CreateItem(Cell Door Key, BlueKey)', False)
+    #action('SetPosition(Cell Door Key, QueensCastle.Door)')
     action('CreateItem(Dire News, PurpleBook)')
-    action('SetPosition(Dire News, Prison.Bookshelf.Left)')
+    action('SetPosition(Dire News, Prison.Bookshelf.Left)', False)
     action('CreateItem(Prison Ledger, OpenScroll)')
-    action('SetPosition(Prison Ledger, Prison.Table.Left)')
+    action('SetPosition(Prison Ledger, Prison.Table.Left)', False)
     action('CreateItem(Note From King, OpenScroll)')
-    action('SetPosition(Note From King, Prison.DirtPile)')
+    #action('SetPosition(Note From King, Prison.DirtPile)')
     action('CreateItem(Change of Clothes, RedCloth)')
     
     # Creating the possible clues within the dungeon scene
-    action('CreateItem(Starting Investigations, MagnifyingGlass)')
-    action('CreateItem(A Testimonial by the Alchemist, PurplePotion)')
+    action('CreateItem(Starting Investigations, MagnifyingGlass)', False)
+    action('CreateItem(A Testimonial by the Alchemist, PurplePotion)', False)
 
     # Enable Icons
-    action('EnableIcon(Sit, Bed, Prison.Bed, Sit, true)')
-    action('EnableIcon(Look_in_DirtPile, hand, Prison.DirtPile, Look through dirt, true)')
-    action('EnableIcon(TakeLeft, hand, Cell Door Key, Take, true)')
-    action('EnableIcon(Read, Research, Note From King, Read, true)')
+    action('EnableIcon(Sit, Bed, Prison.Bed, Sit, true)', False)
+    action('EnableIcon(Look_in_DirtPile, hand, Prison.DirtPile, Look through dirt, true)', False)
+    action('EnableIcon(TakeLeft, hand, Cell Door Key, Take, true)', False)
+    action('EnableIcon(Read, Research, Note From King, Read, true)', False)
     #action('EnableIcon(TakeLeft, hand, Party Invitation, Take, true)')
-    action('EnableIcon(ChangeClothes, armour, Change of Clothes, Change Clothes, true)')
+    action('EnableIcon(ChangeClothes, armour, Change of Clothes, Change Clothes, true)', False)
 
     ###############################################################
     # END DUNGEON                                                 #
@@ -247,19 +251,19 @@ def all_game_setup():
     ###############################################################
     
     # Creating the possible clues within the alchemist shop scene
-    action('CreateItem(Found Poison, PurplePotion')
-    action('CreateItem(Alchemist Testimonial, GreenPotion')
+    action('CreateItem(Found Poison, PurplePotion', False)
+    action('CreateItem(Alchemist Testimonial, GreenPotion', False)
 
     # Alchemist Henry
     action('CreateCharacter(Alchemist Henry, D)')
-    action('SetClothing(Alchemist Henry, Warlock)')
-    action('SetHairStyle(Alchemist Henry, Short_Full)')
-    action('SetEyeColor(Alchemist Henry, red)')
-    action('SetPosition(Alchemist Henry, Alch.Bar.Behind)')
+    action('SetClothing(Alchemist Henry, Warlock)', False)
+    action('SetHairStyle(Alchemist Henry, Short_Full)', False)
+    action('SetEyeColor(Alchemist Henry, red)', False)
+    action('SetPosition(Alchemist Henry, Alch.Bar.Behind)', False)
 
     # Enable Effects
-    action('EnableEffect(Alch.Fireplace, Blackflame)')
-    action('EnableEffect(Alch.Cauldron, Poison)')
+    action('EnableEffect(Alch.Fireplace, Blackflame)', False)
+    action('EnableEffect(Alch.Cauldron, Poison)', False)
 
     # Create Items
     action('CreateItem(BluePotion1, BluePotion)')
@@ -275,39 +279,39 @@ def all_game_setup():
     action('CreateItem(RedPotion2, RedPotion)')
 
     # Position Items
-    action('SetPosition(BluePotion1, Alch.Bar.Center)')
-    action('SetPosition(Skull1, Alch.Bar.Right)')
+    action('SetPosition(BluePotion1, Alch.Bar.Center)', False)
+    action('SetPosition(Skull1, Alch.Bar.Right)', False)
 
-    action('SetPosition(Poison, Alch.Table.Left)')
-    action('SetPosition(GreenPotion1, Alch.Table.FrontLeft)')
-    action('SetPosition(GreenPotion2, Alch.Table.BackRight)')
-    action('SetPosition(PurplePotion1, Alch.Table.BackLeft)')
+    action('SetPosition(Poison, Alch.Table.Left)', False)
+    action('SetPosition(GreenPotion1, Alch.Table.FrontLeft)', False)
+    action('SetPosition(GreenPotion2, Alch.Table.BackRight)', False)
+    action('SetPosition(PurplePotion1, Alch.Table.BackLeft)', False)
 
-    action('SetPosition(BluePotion2, Alch.AlchemistTable.Left)')
-    action('SetPosition(GreenPotion3, Alch.AlchemistTable.Right)')
-    action('SetPosition(Skull2, Alch.AlchemistTable.Center)')
+    action('SetPosition(BluePotion2, Alch.AlchemistTable.Left)', False)
+    action('SetPosition(GreenPotion3, Alch.AlchemistTable.Right)', False)
+    action('SetPosition(Skull2, Alch.AlchemistTable.Center)', False)
 
-    action('SetPosition(RedPotion1, Alch.Bookshelf.Left)')
-    action('SetPosition(RedPotion2, Alch.Bookshelf.Right)')
+    action('SetPosition(RedPotion1, Alch.Bookshelf.Left)', False)
+    action('SetPosition(RedPotion2, Alch.Bookshelf.Right)', False)
 
     # Enable Icons
-    action('EnableIcon(Inspect, magnifyingglass, BluePotion1, Read Label, true)')
-    action('EnableIcon(Inspect, magnifyingglass, BluePotion2, Read Label, true)')
-    action('EnableIcon(Inspect, magnifyingglass, GreenPotion1, Read Label, true)')
-    action('EnableIcon(Inspect, magnifyingglass, GreenPotion2, Read Label, true)')
-    action('EnableIcon(Inspect, magnifyingglass, GreenPotion3, Read Label, true)')
-    action('EnableIcon(Inspect, magnifyingglass, Poison, Read Label, true)')
-    action('EnableIcon(Drink, drink, Poison, Drink Deadly Poison, false')
-    action('EnableIcon(Inspect, magnifyingglass, PurplePotion1, Read Label, true)')
-    action('EnableIcon(Inspect, magnifyingglass, RedPotion1, Read Label, true)')
-    action('EnableIcon(Inspect, magnifyingglass, RedPotion2, Read Label, true)')
-    action('EnableIcon(Inspect, magnifyingglass, Skull1, Inspect Skull, true')
-    action('EnableIcon(Inspect, magnifyingglass, Skull2, Inspect Skull, true')
-    action('EnableIcon(Inspect, bookshelf, Alch.RightBookcase, Browse, true)')
-    action('EnableIcon(Inspect, bookshelf, Alch.LeftBookcase, Browse, true)')
-    action('EnableIcon(Inspect, cauldron, Alch.Cauldron, Inspect, true)')
-    action('EnableIcon(Talk, talk, Alchemist Henry, Talk to Alchemist Henry, true)')
-    action('EnableIcon(Leave, door, Alch.Door, Leave, true)')
+    action('EnableIcon(Inspect, magnifyingglass, BluePotion1, Read Label, true)', False)
+    action('EnableIcon(Inspect, magnifyingglass, BluePotion2, Read Label, true)', False)
+    action('EnableIcon(Inspect, magnifyingglass, GreenPotion1, Read Label, true)', False)
+    action('EnableIcon(Inspect, magnifyingglass, GreenPotion2, Read Label, true)', False)
+    action('EnableIcon(Inspect, magnifyingglass, GreenPotion3, Read Label, true)', False)
+    action('EnableIcon(Inspect, magnifyingglass, Poison, Read Label, true)', False)
+    action('EnableIcon(Drink, drink, Poison, Drink Deadly Poison, false', False)
+    action('EnableIcon(Inspect, magnifyingglass, PurplePotion1, Read Label, true)', False)
+    action('EnableIcon(Inspect, magnifyingglass, RedPotion1, Read Label, true)', False)
+    action('EnableIcon(Inspect, magnifyingglass, RedPotion2, Read Label, true)', False)
+    action('EnableIcon(Inspect, magnifyingglass, Skull1, Inspect Skull, true', False)
+    action('EnableIcon(Inspect, magnifyingglass, Skull2, Inspect Skull, true', False)
+    action('EnableIcon(Inspect, bookshelf, Alch.RightBookcase, Browse, true)', False)
+    action('EnableIcon(Inspect, bookshelf, Alch.LeftBookcase, Browse, true)', False)
+    action('EnableIcon(Inspect, cauldron, Alch.Cauldron, Inspect, true)', False)
+    action('EnableIcon(Talk, talk, Alchemist Henry, Talk to Alchemist Henry, true)', False)
+    action('EnableIcon(Leave, door, Alch.Door, Leave, true)', False)
     #action('EnableIcon(TakeLeft, hand, Poison, Take Giant Rat Poison, false)')
 
     ###############################################################
@@ -319,16 +323,17 @@ def all_game_setup():
     ###############################################################
 
     action('CreateCharacter(Tester, D)')
-    action('SetClothing(Tester, Noble)')
+    action('SetClothing(Tester, Noble)', False)
     action('SetPosition(Tester, CastleStorage.Shelf)')
-    action('WalkToSpot(Tester, 2101.8, 0.1, -220.3)')
-    action('Die(Tester)')
+    action('MoveAway(CastleStorage.Shelf)')
+    #action('WalkToSpot(Tester, 2101.8, 0.1, -220.3)')
+    action('Die(Tester)', False)
     action('CreateItem(AlchemistLetter, OpenScroll)')
-    action('SetPosition(AlchemistLetter, CastleStorage.Barrel)')
-    action('EnableIcon(ReadAlchemistLetter, Read, AlchemistLetter, Read Letter, true)')
-    action('EnableIcon(OpenStorageChest, Chest, CastleStorage.Chest, Open Chest, true)')
-    action('EnableIcon(InspectTester, Research, Tester, Inspect Body, true)')
-    action('EnableIcon(ExitStorage, Door, CastleStorage.Door, Exit, true)')
+    action('SetPosition(AlchemistLetter, CastleStorage.Barrel)', False)
+    action('EnableIcon(ReadAlchemistLetter, Read, AlchemistLetter, Read Letter, true)', False)
+    action('EnableIcon(OpenStorageChest, Chest, CastleStorage.Chest, Open Chest, true)', False)
+    action('EnableIcon(InspectTester, Research, Tester, Inspect Body, true)', False)
+    action('EnableIcon(ExitStorage, Door, CastleStorage.Door, Exit, true)', False)
 
     ###############################################################
     # END STORAGE                                                 #
@@ -340,22 +345,22 @@ def all_game_setup():
     
     
     # Creating the possible clues within the tavern scene
-    action('CreateItem(Purcell Senile, OpenScroll)')
-    action('CreateItem(Tiana Jealous, BlueBook)')
-    action('CreateItem(Chamber Maid Distressed, PurpleBook)')
-    action('CreateItem(Much Smarter than he Looks, Skull')
-    action('CreateItem(Sinister Sister, EvilBook)')
-    action('CreateItem(Chamber Maid Testimonial, PurplePotion)')
+    action('CreateItem(Purcell Senile, OpenScroll)', False)
+    action('CreateItem(Tiana Jealous, BlueBook)', False)
+    action('CreateItem(Chamber Maid Distressed, PurpleBook)', False)
+    action('CreateItem(Much Smarter than he Looks, Skull', False)
+    action('CreateItem(Sinister Sister, EvilBook)', False)
+    action('CreateItem(Chamber Maid Testimonial, PurplePotion)', False)
 
     # Creating the Tavern Bartender and enabling interactivity
     action('CreateCharacter(Bartender Bill, D)')
-    action('SetClothing(Bartender Bill, Merchant)')
-    action('SetPosition(Bartender Bill, Tavern.Bar.Behind)')
-    action('SetEyeColor(Bartender Bill, blue)')
-    action('SetSkinColor(Bartender Bill, 5)')
-    action('SetHairColor(Bartender Bill, blonde)')
-    action('EnableIcon(Talk, Talk, Bartender Bill, Talk to Bartender Bill, true)')
-    action('EnableEffect(Tavern.Fireplace, CampFire)')
+    action('SetClothing(Bartender Bill, Merchant)', False)
+    action('SetPosition(Bartender Bill, Tavern.Bar.Behind)', False)
+    action('SetEyeColor(Bartender Bill, blue)', False)
+    action('SetSkinColor(Bartender Bill, 5)', False)
+    action('SetHairColor(Bartender Bill, blonde)', False)
+    action('EnableIcon(Talk, Talk, Bartender Bill, Talk to Bartender Bill, true)', False)
+    action('EnableEffect(Tavern.Fireplace, CampFire)', False)
     
     ###############################################################
     # END TAVERN                                                  #

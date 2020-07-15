@@ -108,6 +108,12 @@ def check_master_actions(received):
     # Talk action
     elif received.startswith('input Talk'):
         person = received[11:]
+        if(person == 'Bartender Bill'):
+            action('WalkTo(John, Tavern.Bar.Center)')
+        elif(person == 'Alchemist Henry'):
+            action('WalkTo(John, Alch.Bar.Center)')
+        else:
+            action('WalkTo(John, '+ person + ')')
         talk_action(person)
     
     # Close Narration
@@ -141,6 +147,10 @@ def check_master_actions(received):
     # Drink action
     elif received.startswith('input Drink'):
         item = received[12:]
+        if [item, item] not in global_game_states.player_inventory:
+            action('Take(John, '+ item + ')')
+        else:
+            take_leftitem_action(item)
         drink_beverage_action(item)
 
     # View inventory

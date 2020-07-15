@@ -20,9 +20,9 @@ def check_for_success(command):
         # Return True if success response, else false for fail response
         if received == 'succeeded ' + command:
             return True
-        elif received == 'failed ' + command:
+        elif received.startswith('failed ' + command):
             return False
-        elif received.startswith('error'):
+        elif received.startswith('error ' + command):
             return False
 
 '''
@@ -30,9 +30,12 @@ Purpose: Format an action for interpretation by Camelot
 Inputs: Action to be sent to Camelot
 Outputs: True for success, False for failure
 '''
-def action(command):
+def action(command, wait=True):
     # Format command
     print('start ' + command)
-
-    # Call function to check for its success
-    return check_for_success(command)
+    if wait==True:
+        # Call function to check for its success
+        return check_for_success(command)
+    else:
+        return True;
+    

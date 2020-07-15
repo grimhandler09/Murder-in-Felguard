@@ -12,7 +12,7 @@ from talk_controller import *
 from add_clue import add_clue
 
 '''
-Purpose: Plays the games beginning butscene
+Purpose: Plays the game's beginning cutscene
 Inputs: None
 Outputs: None
 '''
@@ -20,20 +20,20 @@ def opening_cutscene():
     # Cutscene Setup
     action('SetCameraFocus(QueensCastle.DiningTable)')
     action('HideMenu()')
-    action('EnableInput()')
     midscene_narration('Welcome to the Queen\'s birthday bash!')
     action('FadeIn()')
 
     # King's dialogue
     set_left_right('King Phillip', 'Queen Margerie')
     set_dialog('Happy Birthday Darling! I\'ve invited all of your closest friends and family to celebrate! \\n[Next| Next]', ['Next'], True)
-    set_dialog('Enjoy your night Margerie. You\'ve earned it after ruling Felguard faithfully by my side for the last 20 years. \\n[Next| Next]')
+    set_dialog('Enjoy your night Margerie. You\'ve earned it after ruling Felgard faithfully by my side for the last 20 years. \\n[Next| Next]')
     set_dialog('In honor of the momentous occasion I got Carlita the Castle Witch to give you a very special present! \\n[Next| Next]')
     action('HideDialog()')
     
     # Witch casting spell
-    action('WalkToSpot(Witch Carlita, 303.1, 0.1, 5.2)')
-    action('Cast(Witch Carlita, Queen Margerie)')
+    #action('WalkToSpot(Witch Carlita, 303.1, 0.1, 5.2)')
+    action('WalkTo(Witch Carlita, QueensCastle.Window)')
+    action('Cast(Witch Carlita, Queen Margerie, purple)')
     action('EnableEffect(Queen Margerie, Heart)')
     time.sleep(2.5)
     
@@ -43,6 +43,7 @@ def opening_cutscene():
     action('HideDialog()')
     action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
+    action('EnableInput()')
 
 '''
 Purpose: Plays the Queen's death cutscene
@@ -51,14 +52,16 @@ Outputs: None
 '''
 def death_cutscene():
     # Scene Setup
-    action('DisableEffect(Queen Margerie)')
-    action('DisableIcon(Talk, Queen Margerie)')
+    action('DisableEffect(Queen Margerie)', False)
+    action('DisableIcon(Talk, Queen Margerie)', False)
     action('SetPosition(QueensCup, Queen Margerie)')
-    action('SetCameraFocus(QueensCastle.DiningTable)')
-    time.sleep(1)
+    action('SetCameraFocus(QueensCastle.DiningTable)', False)
+    action('WalkTo(John, QueensCastle.BackRightChair)')
+    action('Face(John, QueensCastle.Door)', False)
     
     # Queen Standing up
-    action('WalkToSpot(Queen Margerie, 305.7, 0.1, 0.6)')
+    #action('WalkToSpot(Queen Margerie, 305.7, 0.1, 0.6)')
+    action('WalkTo(Queen Margerie, QueensCastle)')
     action('Face(Queen Margerie, King Phillip)')
     action('SetCameraFocus(Queen Margerie)')
     action('SetCameraMode(focus)')
@@ -80,42 +83,45 @@ def death_cutscene():
 
     # King rushes over
     action('SetCameraFocus(QueensCastle.DiningTable)')
-    action('WalkToSpot(King Phillip, 307.6, 0.1, -0.9)')
+    #action('WalkToSpot(King Phillip, 307.6, 0.1, -0.9)')
+    action('WalkTo(King Phillip, Queen Margerie)')
     action('Face(King Phillip, Queen Margerie)')
     action('HideNarration()')
 
     # Facial expressions
-    action('SetExpression(King Phillip, Sad)')
-    action('SetExpression(Maester Purcell, Sad)')
-    action('SetExpression(Merchant Bert, Sad)')
-    action('SetExpression(Noble Cecilia, Sad)')
-    action('SetExpression(Noble Jeremy, Sad)')
-    action('SetExpression(Witch Carlita, Sad)')
-    action('SetExpression(Chamber Maid Scarlet, Sad)')
+    action('SetExpression(King Phillip, Sad)', False)
+    action('SetExpression(Maester Purcell, Sad)', False)
+    action('SetExpression(Merchant Bert, Sad)', False)
+    action('SetExpression(Noble Cecilia, Sad)', False)
+    action('SetExpression(Noble Jeremy, Sad)', False)
+    action('SetExpression(Witch Carlita, Sad)', False)
+    action('SetExpression(Chamber Maid Scarlet, Sad)', False)
 
     # New Talking Icons
-    action('EnableIcon(Talk, Talk, Noble Jeremy, Talk to Jeremy, true)')
-    action('EnableIcon(Talk, Talk, Noble Cecilia, Talk to Cecilia, true)')
-    action('EnableIcon(Talk, Talk, Merchant Bert, Talk to Bert, true)')
-    action('EnableIcon(Talk, Talk, Chamber Maid Scarlet, Talk to Scarlet, true)')
-    action('EnableIcon(OpenCloset, Door, QueensCastle.BackDoor, Open Door, true)')
-    action('DisableIcon(Talk, Witch Carlita)')
-    action('DisableIcon(Talk, Guard Gallant)')
+    action('EnableIcon(Talk, Talk, Noble Jeremy, Talk to Jeremy, true)', False)
+    action('EnableIcon(Talk, Talk, Noble Cecilia, Talk to Cecilia, true)', False)
+    action('EnableIcon(Talk, Talk, Merchant Bert, Talk to Bert, true)', False)
+    action('EnableIcon(Talk, Talk, Chamber Maid Scarlet, Talk to Scarlet, true)', False)
+    action('EnableIcon(OpenCloset, Door, QueensCastle.BackDoor, Open Door, true)', False)
+    action('DisableIcon(Talk, Witch Carlita)', False)
+    action('DisableIcon(Talk, Guard Gallant)', False)
 
     # Guard walks over
     action('SetCameraFocus(QueensCastle.Door)')
-    action('Kneel(King Phillip)')
-    action('WalkToSpot(Guard Gallant, 305.8, 0.1, -2.3)')
+    action('Kneel(King Phillip)', False)
+    action('SetCameraMode(track)', False)
+    #action('WalkToSpot(Guard Gallant, 305.8, 0.1, -2.3)')
+    #action('WalkTo(Guard Gallant, King Phillip)')
     action('Face(Guard Gallant, Queen Margerie)')
+    action('Kneel(Guard Gallant)', False)
     action('SetCameraMode(follow)')
     action('SetCameraFocus(John)')
     action('EnableInput()')
-    action('Kneel(Guard Gallant)')
 
     # New Clues
-    action('EnableIcon(InspectCup, Research, QueensCup, Inspect Cup, true)')
-    action('EnableIcon(TriggerGuards, Door, QueensCastle.Door, Leave Castle, true)')
-    action('CreateItem(Cup of the Queen, GoldCup)')
+    action('EnableIcon(InspectCup, Research, QueensCup, Inspect Cup, true)', False)
+    action('EnableIcon(TriggerGuards, Door, QueensCastle.Door, Leave Castle, true)', False)
+    action('CreateItem(Cup of the Queen, GoldCup)', False)
     add_clue('The Queen died after drinking from her cup', 'Cup of the Queen')
 
 '''
@@ -125,29 +131,29 @@ Outputs: None
 '''
 def arrest_cutscene():
     # Cutscene setup
-    action('StopSound()')
+    action('StopSound()', False)
     action('StopSound(QueensCastle)')
-    action('StopSound(Storage)')
-    action('PlaySound(Danger3, QueensCastle, true)')
-    action('HideDialog()')
-    action('HideNarration()')
+    action('StopSound(CastleStorage)', False)
+    action('PlaySound(Danger2, QueensCastle, true)')
+    action('HideDialog()', False)
+    action('HideNarration()', False)
     action('CreateCharacter(Guard Tom, B)')
-    action('SetClothing(Guard Tom, HeavyArmour)')
+    action('SetClothing(Guard Tom, HeavyArmour)', False)
     action('CreateItem(TomSword, Sword)')  
-    action('SetPosition(TomSword, Guard Tom)')
+    action('SetPosition(TomSword, Guard Tom)', False)
 
     # Scarlet's dialog
-    action('SetCameraFocus(Chamber Maid Scarlet)')
+    #action('SetCameraFocus(Chamber Maid Scarlet)')
     set_left_right('Chamber Maid Scarlet', 'null')
     action('SetExpression(Chamber Maid Scarlet, Surprised)')
     set_dialog('Guards! It was the queen\'s aide! He killed the Queen! \\n[Next| Next]', ['Next'], True)
     action('HideDialog()')
 
     # Guard Enters
-    action('SetCameraFocus(QueensCastle.Door)')
+    action('SetCameraFocus(QueensCastle.Door)', False)
     action('Enter(Guard Tom, QueensCastle.Door)')
-    action('SetCameraFocus(John)')
     action('SetCameraMode(follow)')
+    action('SetCameraFocus(John)')
     set_left_right('Guard Tom', 'null')
     set_dialog('Get him! \\n[Next| Next]', ['Next'], True)
     action('HideDialog()')
@@ -166,7 +172,7 @@ Outputs: None
 '''
 def castle_controller():
     # Generic scene start actions
-    scene_start()
+    #scene_start()
 
     # Play the opening cutscene
     opening_cutscene()
@@ -188,7 +194,7 @@ def castle_controller():
             # Contents of ledger
             action('PlaySound(Book)')
             midscene_narration('Nobleman Jeremy - Holder of lands to the south. Childhood friend of Queen Margerie\\nNoblewoman Celcilia -'
-            + 'Wife of Nobleman Jeremy\\nMerchant Bert - The most prominent merchant in all of Felguard\\nGrand Maester Purcell - Felguard\'s '
+            + 'Wife of Nobleman Jeremy\\nMerchant Bert - The most prominent merchant in all of Felguard\\nGrand Maester Purcell - Felgard\'s '
             + 'longest serving maester\\nWitch Carlita - The castle mage')
             trigger_death += 1
         elif received == 'input ReadInvitation Party Invitation':

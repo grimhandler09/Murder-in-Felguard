@@ -42,7 +42,7 @@ def main():
             # Let the player navigate between scenes until someone is accused  
             while global_game_states.accused == '':
 
-                #Navigate to the appropriate scene based on the global game state, then caller the correct setup and controller
+                #Navigate to the appropriate scene based on the global game state, then call the correct setup and controller
                 if global_game_states.current_scene == 'castle':
                     castle_controller()
                 elif global_game_states.current_scene == 'dungeon':

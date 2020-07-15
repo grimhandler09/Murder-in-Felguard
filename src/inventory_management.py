@@ -30,7 +30,10 @@ def take_leftitem_action(item):
         global_game_states.player_inventory.append([item, item])
         remove_item(item)
         action('HideList()')
-        action('Pickup(John, ' + item +')')
+        if item == "Cell Door Key":
+            action('Pickup(John, ' + item +')')
+        else:
+            action('Take(John, ' + item + ')')
     else:
         # If it was in inventory, take it out
         action('Unpocket(John, ' + item +')')

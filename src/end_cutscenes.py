@@ -17,8 +17,8 @@ Outputs: None
 def commence_execution():
     action('DisableInput()')
     action('HideDialog()')
-    action('WalkToSpot(' + global_game_states.accused + ', 1185.7, 11.7, 17.2)')
-    action('Face(' + global_game_states.accused + ', Guard Gallant)')
+    #action('WalkToSpot(' + global_game_states.accused + ', 1185.7, 11.7, 17.2)')
+    #action('Face(' + global_game_states.accused + ', Guard Gallant)')
     action('SetCameraFocus(Guard Gallant)')
     action('SetCameraMode(follow)')
     action('Attack(Guard Gallant, ' + global_game_states.accused + ', true)')
